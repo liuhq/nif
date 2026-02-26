@@ -1,0 +1,128 @@
+// noctalia-shell
+// hotkey-overlay-title="" { spawn-sh "qs -c noctalia-shell "; }
+
+binds {
+    Mod+Escape repeat=false hotkey-overlay-title=null { close-window; }
+    Ctrl+Alt+Delete { quit; }
+
+    // #"Window"
+    Mod+K { focus-window-up-or-bottom; }
+    Mod+J { focus-window-down-or-top; }
+    Mod+Ctrl+K repeat=false { move-window-up; }
+    Mod+Ctrl+J repeat=false { move-window-down; }
+
+    Mod+BracketLeft repeat=false hotkey-overlay-title=null { consume-or-expel-window-left; }
+    Mod+BracketRight repeat=false hotkey-overlay-title=null { consume-or-expel-window-right; }
+    Mod+I repeat=false  { consume-window-into-column; }
+    Mod+O repeat=false { expel-window-from-column; }
+
+    Mod+Shift+C { center-window; }
+
+    Mod+Shift+Grave hotkey-overlay-title=null { toggle-window-floating; }
+    Mod+Grave hotkey-overlay-title=null { switch-focus-between-floating-and-tiling; }
+
+    // #"Column"
+    Mod+H { focus-column-left-or-last; }
+    Mod+L {  focus-column-right-or-first; }
+    Mod+Ctrl+H repeat=false { move-column-left; }
+    Mod+Ctrl+L repeat=false { move-column-right; }
+
+    Mod+Shift+WheelScrollUp hotkey-overlay-title=null cooldown-ms=250 { focus-column-left; }
+    Mod+Shift+WheelScrollDown hotkey-overlay-title=null cooldown-ms=250 { focus-column-right; }
+    Mod+Ctrl+Shift+WheelScrollUp cooldown-ms=250 { move-column-left; }
+    Mod+Ctrl+Shift+WheelScrollDown cooldown-ms=250 { move-column-right; }
+
+    Mod+C { center-column; }
+
+    Mod+Backslash { toggle-column-tabbed-display; }
+
+    // #"Workspace"
+    Mod+P { focus-workspace-up; }
+    Mod+N { focus-workspace-down; }
+    Mod+Ctrl+P repeat=false { move-column-to-workspace-up; }
+    Mod+Ctrl+N repeat=false { move-column-to-workspace-down; }
+    Mod+Shift+P repeat=false { move-workspace-up; }
+    Mod+Shift+N repeat=false { move-workspace-down; }
+
+    Mod+WheelScrollUp cooldown-ms=250 { focus-workspace-up; }
+    Mod+WheelScrollDown cooldown-ms=250 { focus-workspace-down; }
+    Mod+Ctrl+WheelScrollUp cooldown-ms=250 { move-column-to-workspace-up; }
+    Mod+Ctrl+WheelScrollDown cooldown-ms=250 { move-column-to-workspace-down; }
+
+    // #"Size"
+    Mod+Tab repeat=false hotkey-overlay-title=null { switch-preset-column-width; }
+    Mod+Shift+Tab repeat=false { switch-preset-window-height; }
+    Mod+0 { reset-window-height; }
+    Mod+Minus { set-column-width "-10%"; }
+    Mod+Equal { set-column-width "+10%"; }
+    Mod+Shift+Minus { set-window-height "-10%"; }
+    Mod+Shift+Equal { set-window-height "+10%"; }
+
+    // Makes the column "fill the rest of the space".
+    Mod+F hotkey-overlay-title="Fill Screen" { expand-column-to-available-width; }
+
+    // #"Fullscreen"
+    Mod+M repeat=false hotkey-overlay-title="Fullscreen" { fullscreen-window; }
+    Mod+Shift+M repeat=false hotkey-overlay-title="Windowed Fullscreen" { toggle-windowed-fullscreen; }
+
+    // #"Notification"
+    Mod+Slash hotkey-overlay-title="Dismiss Active Notifications" { spawn-sh "qs -c noctalia-shell ipc call notifications dismissAll"; }
+    Mod+Shift+Slash hotkey-overlay-title="Notification History" { spawn-sh "qs -c noctalia-shell ipc call notifications toggleHistory"; }
+    Mod+Ctrl+Slash hotkey-overlay-title="Clear Notification History" { spawn-sh "qs -c noctalia-shell ipc call notifications clear"; }
+
+    // #"Desktop"
+    Mod+B hotkey-overlay-title="Toggle Desktop Widgets" { spawn-sh "qs -c noctalia-shell ipc call desktopWidgets toggle"; }
+    Mod+Ctrl+B hotkey-overlay-title="Edit Desktop Widgets" { spawn-sh "qs -c noctalia-shell ipc call desktopWidgets edit"; }
+
+    Mod+R hotkey-overlay-title="Random Wallpaper" { spawn-sh "qs -c noctalia-shell ipc call wallpaper random"; }
+
+    Mod+Backspace hotkey-overlay-title=null repeat=false { toggle-overview; }
+
+    // #"Run"
+    Mod+Return hotkey-overlay-title=null { spawn "foot"; }
+    Mod+Q repeat=false hotkey-overlay-title=null { spawn "gnome-calculator" "-m" "basic"; }
+    Mod+W repeat=false hotkey-overlay-title=null { spawn "google-chrome-stable"; }
+
+    // #"Panel"
+    Mod+Delete hotkey-overlay-title="Session Menu" { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
+    Mod+Comma hotkey-overlay-title="Settings" { spawn-sh "qs -c noctalia-shell ipc call settings toggle"; }
+    Mod+S hotkey-overlay-title="Control Center" { spawn-sh "qs -c noctalia-shell ipc call controlCenter toggle"; }
+    Mod+D hotkey-overlay-title="Launcher" { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
+    Mod+V hotkey-overlay-title="Clipboard Pick" { spawn-sh "qs -c noctalia-shell ipc call launcher clipboard"; }
+    Mod+X hotkey-overlay-title="System Monitor" { spawn-sh "qs -c noctalia-shell ipc call systemMonitor toggle"; }
+    Mod+Shift+X hotkey-overlay-title="Calendar" { spawn-sh "qs -c noctalia-shell ipc call calendar toggle"; }
+
+    // #"Audio"
+    Mod+Up hotkey-overlay-title="Increase output volume" { spawn-sh "qs -c noctalia-shell ipc call volume increase"; }
+    Mod+Down hotkey-overlay-title="Decrease output volume" { spawn-sh "qs -c noctalia-shell ipc call volume decrease"; }
+    Mod+A hotkey-overlay-title="Audio Panel" { spawn-sh "qs -c noctalia-shell ipc call volume togglePanel"; }
+    Mod+F9 hotkey-overlay-title="Media Panel" { spawn-sh "qs -c noctalia-shell ipc call media toggle"; }
+    Mod+F10 hotkey-overlay-title="Previous Track" { spawn-sh "qs -c noctalia-shell ipc call media previous"; }
+    Mod+F11 hotkey-overlay-title="Toggle Playback" { spawn-sh "qs -c noctalia-shell ipc call media playPause"; }
+    Mod+F12 hotkey-overlay-title="Next Track" { spawn-sh "qs -c noctalia-shell ipc call media next"; }
+
+    // #"Screenshots"
+    Print repeat=false hotkey-overlay-title="Screenshot Region" { screenshot; }
+    Mod+Print repeat=false hotkey-overlay-title="Screenshot window" { screenshot-window write-to-disk=false; }
+    Shift+Print repeat=false hotkey-overlay-title="Screenshot Output (Save)" { screenshot-screen; }
+    // #"Screencast"
+    Mod+Insert repeat=false hotkey-overlay-title="Screencast On/Off" { spawn-sh "qs -c noctalia-shell ipc call plugin:screen-recorder toggle"; }
+    Mod+Ctrl+Insert repeat=false hotkey-overlay-title="Screencast Settingsf" { spawn-sh "qs -c noctalia-shell ipc call plugin openSettings screen-recorder"; }
+    Mod+F4 repeat=false hotkey-overlay-title="Set Dynamic Cast Window" { spawn-sh "niri msg action set-dynamic-cast-window --id $(niri msg --json pick-window | jq .id)"; }
+    Mod+Shift+F4 repeat=false hotkey-overlay-title="Clear Dynamic Cast Target" { spawn-sh "niri msg action clear-dynamic-cast-target"; }
+
+    // #"Pomodoro"
+    Mod+F5 hotkey-overlay-title="Pomodoro Start" { spawn-sh "qs -c noctalia-shell ipc call plugin:pomodoro start"; }
+    Mod+Shift+F5 hotkey-overlay-title="Pomodoro Reset All" { spawn-sh "qs -c noctalia-shell ipc call plugin:pomodoro resetAll"; }
+    Mod+F6 hotkey-overlay-title="Pomodoro Pause" { spawn-sh "qs -c noctalia-shell ipc call plugin:pomodoro pause"; }
+    Mod+Shift+F6 hotkey-overlay-title="Pomodoro Skip" { spawn-sh "qs -c noctalia-shell ipc call plugin:pomodoro skip"; }
+    Mod+F7 hotkey-overlay-title="Pomodoro Stop Alarm" { spawn-sh "qs -c noctalia-shell ipc call plugin:pomodoro stopAlarm"; }
+    Mod+F8 hotkey-overlay-title="Pomodoro Panel" { spawn-sh "qs -c noctalia-shell ipc call plugin:pomodoro toggle"; }
+    Mod+Ctrl+F8 hotkey-overlay-title="Pomodoro Settings" { spawn-sh "qs -c noctalia-shell ipc call plugin openSettings pomodoro"; }
+
+    // #"Misc"
+    Mod+F1 hotkey-overlay-title="Keybind Cheatsheet" { spawn-sh "qs -c noctalia-shell ipc call plugin togglePanel keybind-cheatsheet"; }
+    Mod+F2 repeat=false hotkey-overlay-title="Focus Window Info" { spawn "foot" "--hold" "zsh" "-c" "niri msg focused-window"; }
+    Mod+Shift+I hotkey-overlay-title="Toggle Idle Inhibitor" { spawn-sh "qs -c noctalia-shell ipc call idleInhibitor toggle"; }
+}
+

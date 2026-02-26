@@ -1,0 +1,137 @@
+environment {
+    GDK_BACKEND "wayland,x11,*"
+    SDL_VIDEODRIVER "wayland"
+    CLUTTER_BACKEND "wayland"
+
+    ELECTRON_OZONE_PLATFORM_HINT "wayland"
+
+    GTK_THEME "Adwaita:dark"
+
+    QT_STYLE_OVERRIDE "Adwaita-Dark"
+    QT_AUTO_SCREEN_SCALE_FACTOR "1"
+    QT_QPA_PLATFORM "wayland"
+    QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+    QT_QPA_PLATFORMTHEME "qt5ct"
+}
+
+spawn-sh-at-startup "sleep 2s; setxkbmap -option caps:swapescape"
+// FIX: fcitx5 not connect to X11 display automatically
+// spawn-at-startup "fcitx5-remote" "-x"
+
+prefer-no-csd
+screenshot-path "~/media/pictures/screenshot-%Y%m%d_%H%M%S.png"
+hotkey-overlay {
+    skip-at-startup;
+    hide-not-bound;
+}
+
+cursor {
+    xcursor-theme "Bocchi"
+    xcursor-size 36
+
+    // In games, if your character's point of view jumps down
+    // when you press a key and move the mouse simultaneously,
+    // try disabling this setting.
+    hide-when-typing
+    hide-after-inactive-ms 3000
+}
+
+gestures { hot-corners { off; }; }
+
+input {
+    keyboard {
+        xkb {
+            layout "us"
+            options "caps:swapescape"
+        }
+        repeat-delay 600
+        repeat-rate 25
+        numlock
+    }
+    mouse { accel-speed 0.0; }
+    touchpad { off; }
+    trackpoint { off; }
+
+    warp-mouse-to-focus mode="center-xy"
+}
+
+output "DP-2" {
+    mode "1920x1080@165.002"
+    scale 1
+    transform "normal"
+
+    variable-refresh-rate on-demand=true
+    background-color "#313244"
+    backdrop-color "#1e1e2e"
+}
+
+layout {
+    gaps 4
+    center-focused-column "never"
+    always-center-single-column
+    default-column-display "normal"
+    empty-workspace-above-first
+
+    default-column-width { proportion 0.5; }
+    preset-column-widths {
+        proportion 0.5
+        proportion 0.75
+        proportion 1.0
+    }
+
+    preset-window-heights {
+        proportion 0.25
+        proportion 0.5
+        proportion 0.75
+    }
+
+    focus-ring { off; }
+
+    border { width 3; }
+
+    shadow {
+        on
+        draw-behind-window true
+        softness 24
+        spread 4
+        offset x=0 y=4
+    }
+
+    tab-indicator {
+        width 3
+        length total-proportion=0.75
+        gap 2
+        gaps-between-tabs 2
+        corner-radius 4
+        position "bottom"
+    }
+
+    struts { left 0; right 0; top 0; bottom 3; }
+}
+
+overview {
+    zoom 0.5
+    workspace-shadow {
+        softness 48
+        spread 4
+        offset x=0 y=12
+        color "#0000009a"
+    }
+}
+
+animations {
+    // off
+
+    // Slow down all animations by this factor. Values below 1 speed them up instead.
+    // slowdown 3.0
+}
+
+debug {
+    // Noctalia: Allows notification actions and window activation from Noctalia.
+    honor-xdg-activation-with-invalid-serial
+}
+
+include "./rule.kdl"
+include "./keybind.kdl"
+include "./noctalia.kdl"
+

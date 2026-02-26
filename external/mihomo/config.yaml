@@ -1,0 +1,259 @@
+#!!! all replace to subscription domain
+
+__health_check: &health_check
+  url: https://cp.cloudflare.com
+  interval: 3600
+  timeout: 5000
+  lazy: true
+  expected-status: 204
+__mrs_rule_config: &mrs_rule_config
+  interval: 86400
+  proxy: DIRECT
+  behavior: domain
+  format: mrs
+  size-limit: 0
+
+
+#================================
+#  Proxy Providers
+#================================
+proxy-providers:
+  TAG_NET:
+    type: file
+    path: ./proxies/tag.yaml
+    proxy: DIRECT
+    size-limit: 0
+    health-check:
+      enable: true
+      <<: *health_check
+    filter: "(?i)1x"
+
+
+#================================
+#  General
+#================================
+log-level: warning
+mode: rule
+allow-lan: false
+ipv6: true
+unified-delay: true
+keep-alive-interval: 15
+keep-alive-idle: 15
+disable-keep-alive: false
+find-process-mode: strict
+profile:
+  store-selected: true
+  store-fake-ip: true
+
+
+#================================
+#  External
+#================================
+external-controller: 127.0.0.1:9090
+external-controller-cors:
+  allow-origins:
+    - '*'
+  allow-private-network: true
+secret: "404@mihomo"
+
+
+#================================
+#  GEO
+#================================
+geodata-mode: false
+geodata-loader: memconservative
+geo-auto-update: true
+geo-update-interval: 24
+geox-url:
+  geoip: "https://gh-proxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip.dat"
+  geosite: "https://gh-proxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat"
+  mmdb: "https://gh-proxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/country.mmdb"
+
+
+#================================
+#  DNS
+#================================
+hosts:
+  smtp.gmail.com: 74.125.195.109 # 中国电信
+  mtalk.google.com: 108.177.125.188
+  tagss.pro: 104.26.4.238
+dns:
+  enable: true
+  cache-algorithm: arc
+  prefer-h3: true
+  ipv6: false
+  use-hosts: true
+  use-system-hosts: false
+  listen: 127.0.0.1:53
+  enhanced-mode: redir-host
+  proxy-server-nameserver:
+    - tls://223.5.5.5
+  nameserver-policy:
+    ## replace to subscription domain
+    "villa.parkson-market.org": tls://223.5.5.5
+    "geosite:cn,private,biliintl,bilibili,tld-cn,category-games-cn,category-games@cn,steam@cn": tls://223.5.5.5
+  nameserver:
+    - https://1.1.1.1/dns-query#Proxy
+    - https://185.222.222.222/dns-query # dns.sb
+
+
+#================================
+#  Sniffer
+#================================
+sniffer:
+  enable: true
+  force-dns-mapping: true
+  parse-pure-ip: true
+  override-destination: false
+  sniff:
+    HTTP:
+      ports: [80, 8080-8880]
+      override-destination: true
+    TLS:
+      ports: [443, 8443]
+    QUIC:
+      ports: [443, 8443]
+
+
+#================================
+#  Inbound - TUN
+#================================
+tun:
+  enable: true
+  stack: mixed
+  device: mihomo
+  auto-route: true
+  auto-redirect: true
+  auto-detect-interface: true
+  dns-hijack:
+    - any:53
+    - tcp://any:53
+  strict-route: false
+  endpoint-independent-nat: false
+
+#================================
+#  Proxy Groups
+#================================
+proxy-groups:
+  - name: Proxy
+    type: select
+    <<: *health_check
+    proxies:
+      - FI
+      - JP
+      - SG
+      - HK
+      - US
+      - FR
+      - GB
+      - IT
+      - DE
+      - DIRECT
+  - name: Games
+    type: select
+    <<: *health_check
+    proxies:
+      - DIRECT
+      - JP
+      - HK
+      - US
+  - name: JP
+    type: select
+    <<: *health_check
+    use:
+      - TAG_NET
+    filter: "(?i)jp"
+  - name: SG
+    type: select
+    <<: *health_check
+    use:
+      - TAG_NET
+    filter: "(?i)sg"
+  - name: HK
+    type: select
+    <<: *health_check
+    use:
+      - TAG_NET
+    filter: "(?i)hk"
+  - name: US
+    type: select
+    <<: *health_check
+    use:
+      - TAG_NET
+    filter: "(?i)us"
+  - name: FR
+    type: select
+    <<: *health_check
+    use:
+      - TAG_NET
+    filter: "(?i)fr"
+  - name: GB
+    type: select
+    <<: *health_check
+    use:
+      - TAG_NET
+    filter: "(?i)gb"
+  - name: FI
+    type: select
+    <<: *health_check
+    use:
+      - TAG_NET
+    filter: "(?i)fi"
+  - name: IT
+    type: select
+    <<: *health_check
+    use:
+      - TAG_NET
+    filter: "(?i)it"
+  - name: DE
+    type: select
+    <<: *health_check
+    use:
+      - TAG_NET
+    filter: "(?i)de"
+
+
+#================================
+#  Rules
+#================================
+rules:
+  - GEOSITE,category-ads-all,REJECT
+  - GEOSITE,private,DIRECT
+  - GEOIP,private,DIRECT,no-resolve
+  - DST-PORT,22,DIRECT # https://github.com/vernesong/OpenClash/issues/1960#issuecomment-1115732292
+  - DST-PORT,587,DIRECT # Nodes ban this port
+  - PROCESS-PATH,/usr/bin/qbittorrent,DIRECT,no-resolve
+
+  - GEOSITE,cn,DIRECT
+  - GEOIP,CN,DIRECT
+  - DOMAIN-SUFFIX,cn,DIRECT
+
+  ## replace to subscription domain
+  - DOMAIN,villa.parkson-market.org,DIRECT
+
+  - DOMAIN-SUFFIX,nixos.org,HK
+  - DOMAIN-SUFFIX,cachix.org,HK
+
+  - GEOSITE,google-gemini,US
+  - GEOSITE,spotify,JP
+  - GEOSITE,youtube,JP
+  - GEOSITE,twitch,JP
+  - GEOSITE,github,JP
+  - GEOSITE,mozilla,JP
+  - GEOSITE,telegram,HK
+  - GEOSITE,flatpak,HK
+  - GEOSITE,dlsite,HK
+  - GEOSITE,category-porn,HK
+
+  - GEOSITE,biliintl,DIRECT
+  - GEOSITE,bilibili,DIRECT
+  - GEOSITE,tracker,DIRECT
+  - GEOSITE,trackernetwork,DIRECT
+  - GEOSITE,category-public-tracker,DIRECT
+  - GEOSITE,category-games-cn,DIRECT
+  - GEOSITE,category-games@cn,DIRECT
+  - GEOSITE,steam@cn,DIRECT
+
+  - GEOSITE,category-games,Games
+
+  - MATCH,Proxy

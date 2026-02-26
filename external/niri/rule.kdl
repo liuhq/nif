@@ -1,0 +1,174 @@
+workspace "main"
+workspace "chat"
+workspace "game"
+
+// general
+window-rule {
+    tiled-state true
+    geometry-corner-radius 4
+    clip-to-geometry true
+}
+
+// open on chat with no-focus
+window-rule {
+    match app-id="QQ" title="QQ"
+    match app-id="org.telegram.desktop"
+    match app-id="spotify"
+    open-focused false
+    open-on-workspace "chat"
+}
+
+// open on chat with focus
+window-rule {
+    match app-id="steam"
+    match app-id="org.polymc.PolyMC"
+    open-focused true
+    open-on-workspace "chat"
+}
+
+// open on game with focus
+window-rule {
+    match app-id=r#"Minecraft.*"#
+    match app-id="Tabletop Simulator.x86_64"
+    match app-id=r#"^steam_app_[1-9]\d*$"#
+    open-focused true
+    open-fullscreen true
+    open-on-workspace "game"
+    variable-refresh-rate true
+}
+
+// enable vrr with non-game
+window-rule {
+    match app-id=r#"^mpv$"#
+    variable-refresh-rate true
+}
+
+// force open with tiling
+window-rule {
+    match app-id="steam_app_0" title=""
+    open-floating false
+}
+
+// open with floating
+window-rule {
+    match app-id="imv"
+    open-maximized false
+    open-fullscreen false
+    open-floating true
+    default-floating-position x=0 y=128 relative-to="top"
+}
+
+window-rule {
+    match app-id=r#"Pinentry.*"#
+    open-maximized false
+    open-fullscreen false
+    open-floating true
+    default-floating-position x=0 y=360 relative-to="top"
+}
+
+window-rule {
+    match app-id="com.saivert.pwvucontrol"
+    match app-id="org.pipewire.Helvum"
+    match app-id="org.telegram.desktop" title="Media viewer"
+    match app-id="QQ" title="图片查看器"
+    match app-id="QQ" title=r#"群公告*"#
+    open-maximized false
+    open-fullscreen false
+    open-floating true
+    default-column-width { fixed 1024; }
+    default-window-height { fixed 768; }
+    default-floating-position x=0 y=128 relative-to="top"
+}
+
+window-rule {
+    match app-id="org.fcitx.fcitx5-config-qt"
+    open-maximized false
+    open-fullscreen false
+    open-floating true
+    max-width 800
+    max-height 600
+    default-floating-position x=0 y=180 relative-to="top"
+}
+
+window-rule {
+    match app-id="org.gnome.Calculator"
+    open-maximized false
+    open-fullscreen false
+    open-floating true
+    default-column-width { proportion 0.25; }
+    default-floating-position x=0 y=156 relative-to="top"
+}
+
+window-rule {
+    match app-id="gimp" title="Change Foreground Color"
+
+    open-floating true
+    default-column-width { fixed 1024; }
+    default-window-height { fixed 768; }
+    default-floating-position x=0 y=128 relative-to="top"
+}
+
+window-rule {
+    match title="Picture in picture"
+    open-floating true
+    default-floating-position x=32 y=32 relative-to="bottom-right"
+}
+
+window-rule {
+    match app-id="org.telegram.desktop"
+    match app-id="QQ"
+    match title="KOOK"
+    block-out-from "screencast"
+}
+
+// open with 1/4 screen
+window-rule {
+    match app-id="steam" title="Friends List"
+    default-column-width { proportion 0.25; }
+    default-window-height { proportion 1.0; }
+}
+
+// open with 3/4 screen
+window-rule {
+    match app-id="spotify"
+    match app-id="com.github.phase1geo.minder"
+    default-column-width { proportion 0.75; }
+    default-window-height { proportion 1.0; }
+}
+
+// open with filled screen
+window-rule {
+    match app-id=r#"^mpv$"#
+    match app-id="google-chrome"
+    match app-id="gimp"
+    match app-id="Aseprite"
+    match app-id="com.obsproject.Studio"
+    match app-id="steam" title="Steam"
+    match app-id="UnrealEditor"
+    match app-id="dev.zed.Zed"
+
+    exclude app-id="dev.zed.Zed" title="Zed — Settings"
+
+    default-column-width { proportion 1.0; }
+    default-window-height { proportion 1.0; }
+}
+
+layer-rule {
+    match namespace="notifications"
+
+    shadow {
+        on
+        draw-behind-window true
+        softness 24
+        spread 4
+        offset x=0 y=4
+    }
+
+    geometry-corner-radius 4
+}
+
+// Set the overview wallpaper on the backdrop.
+layer-rule {
+    match namespace="^noctalia-overview*"
+    place-within-backdrop true
+}
