@@ -9,5 +9,6 @@
     just
     meson
     prettier
+    steel
   ];
 }
