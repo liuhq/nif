@@ -56,9 +56,12 @@ in
       environment.sessionVariables = {
         ZDOTDIR = "${hjemCfg.xdg.config.directory}/zsh";
         PATH = [
+          "\${HOME}/.local/bin"
           "\${XDG_CONFIG_HOME}/cargo/bin"
           "\${XDG_DATA_HOME}/pnpm"
         ];
+        KEYTIMEOUT = 5;
+        ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE = "fg=#616E88";
       };
       files =
         let

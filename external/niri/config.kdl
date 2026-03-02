@@ -133,5 +133,5 @@ debug {
 
 include "./rule.kdl"
 include "./keybind.kdl"
-include "./noctalia.kdl"
+include "./theme.kdl"
 

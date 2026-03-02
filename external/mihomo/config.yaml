@@ -243,7 +243,7 @@ rules:
   - GEOSITE,telegram,HK
   - GEOSITE,flatpak,HK
   - GEOSITE,dlsite,HK
-  - GEOSITE,category-porn,HK
+  - GEOSITE,category-porn,SG
 
   - GEOSITE,biliintl,DIRECT
   - GEOSITE,bilibili,DIRECT

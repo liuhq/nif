@@ -11,19 +11,15 @@ let
   inherit (paths) localPkgs;
 in
 {
-  fonts.packages =
-    let
-      ttf-misans = pkgs.callPackage "${localPkgs}/ttf-misans.nix" { };
-    in
-    [
-      ttf-misans
+  fonts.packages = [
+    pkgs.ttf-misans
 
-      pkgs.maple-mono.NF-CN
-      pkgs.noto-fonts
-      pkgs.noto-fonts-cjk-sans
-      pkgs.noto-fonts-cjk-serif
-      pkgs.noto-fonts-color-emoji
-    ];
+    pkgs.maple-mono.NF-CN
+    pkgs.noto-fonts
+    pkgs.noto-fonts-cjk-sans
+    pkgs.noto-fonts-cjk-serif
+    pkgs.noto-fonts-color-emoji
+  ];
 
   # https://wiki.nixos.org/wiki/Fonts#Solution_1:_Copy_fonts_to_$HOME/.local/share/fonts
   fonts.fontDir.enable = true;

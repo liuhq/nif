@@ -1,0 +1,228 @@
+{
+  "allow": {
+    "prefix": "allow",
+    "body": [
+      "#![allow(${1})]"
+    ],
+    "description": "#![allow(…)]"
+  },
+  "deny": {
+    "prefix": "deny",
+    "body": [
+      "#![deny(${1})]"
+    ],
+    "description": "#![deny(…)]"
+  },
+  "warn": {
+    "prefix": "warn",
+    "body": [
+      "#![warn(${1})]"
+    ],
+    "description": "#![warn(…)]"
+  },
+  "no_std": {
+    "prefix": "no_std",
+    "body": [
+      "#![no_std]"
+    ],
+    "description": "#![no_std]"
+  },
+  "no_core": {
+    "prefix": "no_core",
+    "body": [
+      "#![no_core]"
+    ],
+    "description": "#![no_core]"
+  },
+  "feature": {
+    "prefix": "feature",
+    "body": [
+      "#![feature(${1})]"
+    ],
+    "description": "#![feature(…)]"
+  },
+  "macro_use": {
+    "prefix": "macro_use",
+    "body": [
+      "#[macro_use(${1})]"
+    ],
+    "description": "#[macro_use(…)]"
+  },
+  "repr": {
+    "prefix": "repr",
+    "body": [
+      "#[repr(${1})]"
+    ],
+    "description": "#[repr(…)]"
+  },
+  "cfg": {
+    "prefix": "cfg",
+    "body": [
+      "#[cfg(${1})]"
+    ],
+    "description": "#[cfg(…)]"
+  },
+  "cfg_attr": {
+    "prefix": "cfg_attr",
+    "body": [
+      "#[cfg_attr(${1}, ${2})]"
+    ],
+    "description": "#[cfg_attr(…, …)]"
+  },
+  "bench": {
+    "prefix": "bench",
+    "body": [
+      "#[bench]",
+      "fn ${1:name}(b: &mut test::Bencher) {",
+      "    ${2:b.iter(|| ${3:/* benchmark code */})}",
+      "}"
+    ],
+    "description": "#[bench]"
+  },
+  "const": {
+    "prefix": "const",
+    "body": [
+      "const ${1:CONST}: ${2:Type} = ${4:init};"
+    ],
+    "description": "const …: … = …;"
+  },
+  "derive": {
+    "prefix": "derive",
+    "body": [
+      "#[derive(${1})]"
+    ],
+    "description": "#[derive(…)]"
+  },
+  "derive-debug": {
+    "prefix": "derive-debug",
+    "body": [
+      "#[derive(Debug)]"
+    ]
+  },
+  "extern-fn": {
+    "prefix": "extern-fn",
+    "body": [
+      "extern \"C\" fn ${1:name}(${2:arg}: ${3:Type}) -> ${4:RetType} {",
+      "    ${5:// add code here}",
+      "}"
+    ],
+    "description": "extern \"C\" fn …(…) { … }"
+  },
+  "extern-mod": {
+    "prefix": "extern-mod",
+    "body": [
+      "extern \"C\" {",
+      "    ${2:// add code here}",
+      "}"
+    ],
+    "description": "extern \"C\" { … }"
+  },
+  "pfn": {
+    "prefix": "pfn",
+    "body": [
+      "pub fn ${1:name}(${2:arg}: ${3:Type}) -> ${4:RetType} {",
+      "    ${5:todo!();}",
+      "}"
+    ],
+    "description": "pub fn …(…) -> … { … }"
+  },
+  "let-if": {
+    "prefix": "let-if",
+    "body": [
+      "let ${1} = if ${2:expr} {",
+      "    ${0:todo!();}",
+      "}"
+    ],
+    "description": "let … = if … { … }"
+  },
+  "let-else": {
+    "prefix": "let-else",
+    "body": [
+      "let ${1} = ${2} else {",
+      "    ${0:todo!();}",
+      "}"
+    ],
+    "description": "let … = … else { … }"
+  },
+  "let-match": {
+    "prefix": "let-match",
+    "body": [
+      "let {$1} = match ${2:expr} {",
+      "    ${0}",
+      "}"
+    ],
+    "description": "let … = match … { … }"
+  },
+  "inline-fn": {
+    "prefix": "inline-fn",
+    "body": [
+      "#[inline]",
+      "pub fn ${1:name}() {",
+      "    ${2:todo!();}",
+      "}"
+    ],
+    "description": "inlined function"
+  },
+  "static": {
+    "prefix": "static",
+    "body": [
+      "static ${1:STATIC}: ${2:Type} = ${4:init};"
+    ],
+    "description": "static …: … = …;"
+  },
+  "struct-tuple": {
+    "prefix": "struct-tuple",
+    "body": [
+      "struct ${1:Name}(${2:Type});"
+    ],
+    "description": "struct …(…);"
+  },
+  "struct-unit": {
+    "prefix": "struct-unit",
+    "body": [
+      "struct ${1:Name};"
+    ],
+    "description": "struct …;"
+  },
+  "modtest": {
+    "prefix": "modtest",
+    "body": [
+      "#[cfg(test)]",
+      "mod test {",
+      "    #[test]",
+      "    fn ${1:name}() {",
+      "        ${2:todo!();}",
+      "    }",
+      "}"
+    ],
+    "description": "#[cfg(test)]\nmod test {...}"
+  },
+  "test": {
+    "prefix": "test",
+    "body": [
+      "#[test]",
+      "fn ${1:name}() {",
+      "    ${2:todo!();}",
+      "}"
+    ],
+    "description": "#[test]"
+  },
+  "pafn": {
+    "prefix": "pafn",
+    "body": [
+      "pub async fn ${1:name}(${2:arg}: ${3:Type}) -> ${4:RetType} {",
+      "    ${5:todo!();}",
+      "}"
+    ],
+    "description": "pub async fn …(…) { … }"
+  },
+  "afn": {
+    "prefix": "afn",
+    "body": [
+      "async fn ${1:name}(${2:arg}: ${3:Type}) -> ${4:RetType} {",
+      "    ${5:todo!();}",
+      "}"
+    ],
+    "description": "async fn …(…) { … }"
+  }
+}

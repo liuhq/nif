@@ -105,20 +105,12 @@ binds {
     Print repeat=false hotkey-overlay-title="Screenshot Region" { screenshot; }
     Mod+Print repeat=false hotkey-overlay-title="Screenshot window" { screenshot-window write-to-disk=false; }
     Shift+Print repeat=false hotkey-overlay-title="Screenshot Output (Save)" { screenshot-screen; }
+
     // #"Screencast"
     Mod+Insert repeat=false hotkey-overlay-title="Screencast On/Off" { spawn-sh "qs -c noctalia-shell ipc call plugin:screen-recorder toggle"; }
     Mod+Ctrl+Insert repeat=false hotkey-overlay-title="Screencast Settingsf" { spawn-sh "qs -c noctalia-shell ipc call plugin openSettings screen-recorder"; }
     Mod+F4 repeat=false hotkey-overlay-title="Set Dynamic Cast Window" { spawn-sh "niri msg action set-dynamic-cast-window --id $(niri msg --json pick-window | jq .id)"; }
     Mod+Shift+F4 repeat=false hotkey-overlay-title="Clear Dynamic Cast Target" { spawn-sh "niri msg action clear-dynamic-cast-target"; }
-
-    // #"Pomodoro"
-    Mod+F5 hotkey-overlay-title="Pomodoro Start" { spawn-sh "qs -c noctalia-shell ipc call plugin:pomodoro start"; }
-    Mod+Shift+F5 hotkey-overlay-title="Pomodoro Reset All" { spawn-sh "qs -c noctalia-shell ipc call plugin:pomodoro resetAll"; }
-    Mod+F6 hotkey-overlay-title="Pomodoro Pause" { spawn-sh "qs -c noctalia-shell ipc call plugin:pomodoro pause"; }
-    Mod+Shift+F6 hotkey-overlay-title="Pomodoro Skip" { spawn-sh "qs -c noctalia-shell ipc call plugin:pomodoro skip"; }
-    Mod+F7 hotkey-overlay-title="Pomodoro Stop Alarm" { spawn-sh "qs -c noctalia-shell ipc call plugin:pomodoro stopAlarm"; }
-    Mod+F8 hotkey-overlay-title="Pomodoro Panel" { spawn-sh "qs -c noctalia-shell ipc call plugin:pomodoro toggle"; }
-    Mod+Ctrl+F8 hotkey-overlay-title="Pomodoro Settings" { spawn-sh "qs -c noctalia-shell ipc call plugin openSettings pomodoro"; }
 
     // #"Misc"
     Mod+F1 hotkey-overlay-title="Keybind Cheatsheet" { spawn-sh "qs -c noctalia-shell ipc call plugin togglePanel keybind-cheatsheet"; }

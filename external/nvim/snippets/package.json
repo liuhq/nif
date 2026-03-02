@@ -1,0 +1,96 @@
+{
+  "name": "vscode-snippets",
+  "contributes": {
+    "snippets": [
+      {
+        "language": [
+          "all"
+        ],
+        "path": "./global.json"
+      },
+      {
+        "language": [
+          "javascript",
+          "javascriptreact",
+          "typescript",
+          "typescriptreact"
+        ],
+        "path": "./javascript/javascript.json"
+      },
+      {
+        "language": [
+          "typescript",
+          "typescriptreact"
+        ],
+        "path": "./javascript/typescript.json"
+      },
+      {
+        "language": [
+          "html",
+          "javascriptreact",
+          "typescriptreact",
+          "astro"
+        ],
+        "path": "./html.json"
+      },
+      {
+        "language": [
+          "markdown"
+        ],
+        "path": "./markdown.json"
+      },
+      {
+        "language": [
+          "json",
+          "jsonc"
+        ],
+        "path": "./json.json"
+      },
+      {
+        "language": [
+          "c"
+        ],
+        "path": "./c.json"
+      },
+      {
+        "language": [
+          "rust"
+        ],
+        "path": "./rust.json"
+      },
+      {
+        "language": [
+          "nix"
+        ],
+        "path": "./nix.json"
+      },
+      {
+        "language": [
+          "gitcommit",
+          "NeogitCommitMessage"
+        ],
+        "path": "./gitcommit.json"
+      },
+      {
+        "language": [
+          "sh",
+          "bash",
+          "zsh"
+        ],
+        "path": "./shell.json"
+      },
+      {
+        "language": [
+          "license"
+        ],
+        "path": "./license.json"
+      },
+      {
+        "language": [
+          "just"
+        ],
+        "path": "./just.json"
+      }
+    ]
+  }
+}

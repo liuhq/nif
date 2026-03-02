@@ -36,12 +36,16 @@ let
 in
 {
   mkSystemHelper =
-    { inputs, globalSpecialArgs }:
+    {
+      inputs,
+      globalSpecialArgs,
+    }:
     {
       host,
       userName,
       nixosVersion ? "25.11",
       system ? "x86_64-linux",
+      overlays ? [ ],
     }:
     let
       inherit (pathHelper globalSpecialArgs.paths.root) addFile addDir;
@@ -60,6 +64,12 @@ in
       inherit system;
       inherit specialArgs;
       modules = [
+        {
+          nixpkgs = {
+            inherit overlays;
+          };
+        }
+
         inputs.agenix.nixosModules.default
         (addFile "secrets/agenix")
 

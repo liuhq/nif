@@ -8,7 +8,6 @@
     gdb
     just
     meson
-    prettier
     steel
   ];
 }

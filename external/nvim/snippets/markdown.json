@@ -1,0 +1,99 @@
+{
+  "YAML Header": {
+    "prefix": "---",
+    "body": [
+      "---",
+      "title: ${1:title}",
+      "date: ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}",
+      "---"
+    ]
+  },
+  "Insert Link": {
+    "prefix": "link",
+    "body": [
+      "[${1}](${2})"
+    ]
+  },
+  "Insert Picture": {
+    "prefix": "pic",
+    "body": [
+      "![${1}](${2})"
+    ]
+  },
+  "Insert Code Language": {
+    "prefix": "```",
+    "body": [
+      "```${1:lang}",
+      "${0}",
+      "```"
+    ]
+  },
+  "Readme Template": {
+    "prefix": "readme",
+    "body": [
+      "# ${1:Project}",
+      "",
+      "$0",
+      "",
+      "## Installation",
+      "",
+      "",
+      "",
+      "```",
+      "",
+      "```",
+      "",
+      "## Usage",
+      "",
+      "",
+      "",
+      "## Support",
+      "",
+      "",
+      "",
+      "## Contributing",
+      "",
+      "",
+      "",
+      "## Changelog",
+      "",
+      "You can check the [Changelog](./CHANGELOG.md) here.",
+      "",
+      "## License",
+      "",
+      "[$2](./LICENSE)"
+    ]
+  },
+  "Insert Thanks": {
+    "prefix": "thanks",
+    "body": [
+      "## Thanks",
+      "",
+      "- [$1]($2)$0"
+    ]
+  },
+  "Insert License": {
+    "prefix": "license",
+    "body": [
+      "## License",
+      "",
+      "[$1](./LICENSE)"
+    ]
+  },
+  "License BEERWARE": {
+    "prefix": "licc",
+    "body": "COFFEEWARE"
+  },
+  "License MIT": {
+    "prefix": "licm",
+    "body": "MIT"
+  },
+  "License ISC": {
+    "prefix": "lici",
+    "body": "ISC"
+  },
+  "License EUPL": {
+    "prefix": "lice",
+    "body": "EUPL"
+  }
+}

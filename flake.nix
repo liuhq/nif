@@ -35,9 +35,11 @@
   outputs =
     {
       self,
+      nixpkgs,
       ...
     }@inputs:
     let
+      eachSystem = nixpkgs.lib.genAttrs nixpkgs.lib.platforms.linux;
       paths = {
         root = ./.;
         modules = ./modules;
@@ -55,9 +57,26 @@
       mkSystem = mylib.mkSystemHelper { inherit inputs globalSpecialArgs; };
     in
     {
+      packages =
+        let
+          callPackage = system: package: nixpkgs.legacyPackages.${system}.callPackage package { };
+        in
+        eachSystem (system: {
+          ttf-misans = callPackage system ./pkgs/ttf-misans.nix;
+          bocchi-dyn-cursor = callPackage system ./pkgs/bocchi-dyn-cursor.nix;
+        });
+
+      overlays.default = nixpkgs.lib.composeManyExtensions [
+        (import ./overlays/neovim.nix)
+        (import ./overlays/colloid-icon-theme.nix)
+        (final: prev: { ttf-misans = final.callPackage ./pkgs/ttf-misans.nix { }; })
+        (final: prev: { bocchi-dyn-cursor = final.callPackage ./pkgs/bocchi-dyn-cursor.nix { }; })
+      ];
+
       nixosConfigurations.wkst = mkSystem {
         host = "wkst";
         userName = "horin";
+        overlays = [ self.overlays.default ];
       };
     };
 }

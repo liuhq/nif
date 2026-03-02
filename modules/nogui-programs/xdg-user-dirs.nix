@@ -9,22 +9,45 @@ let
   inherit (myvar) userName;
 in
 {
-  hjem.users.${userName}.xdg.config.files = {
-    "user-dirs.dirs".text = ''
-      XDG_DESKTOP_DIR="$HOME/.xdg/Desktop"
-      XDG_DOCUMENTS_DIR="$HOME/.xdg/Documents"
-      XDG_PUBLICSHARE_DIR="$HOME/.xdg/Public"
-      XDG_TEMPLATES_DIR="$HOME/.xdg/Templates"
+  hjem.users.${userName} = {
+    xdg.config.files = {
+      "user-dirs.dirs".text = ''
+        XDG_DESKTOP_DIR="$HOME/.xdg/Desktop"
+        XDG_DOCUMENTS_DIR="$HOME/.xdg/Documents"
+        XDG_PUBLICSHARE_DIR="$HOME/.xdg/Public"
+        XDG_TEMPLATES_DIR="$HOME/.xdg/Templates"
 
-      XDG_DOWNLOAD_DIR="$HOME/downloads"
+        XDG_DOWNLOAD_DIR="$HOME/downloads"
 
-      XDG_MUSIC_DIR="$HOME/media/music"
-      XDG_PICTURES_DIR="$HOME/media/pictures"
-      XDG_VIDEOS_DIR="$HOME/media/videos"
+        XDG_MUSIC_DIR="$HOME/media/music"
+        XDG_PICTURES_DIR="$HOME/media/pictures"
+        XDG_VIDEOS_DIR="$HOME/media/videos"
 
-      XDG_SCRIPTS_DIR="$HOME/scripts"
-      XDG_WORKSPACES_DIR="$HOME/workspaces"
-    '';
+        XDG_SCRIPTS_DIR="$HOME/scripts"
+        XDG_WORKSPACES_DIR="$HOME/workspaces"
+      '';
+    };
+
+    environment.sessionVariables = {
+      XDG_CONFIG_HOME = "\${HOME}/.config";
+      XDG_CACHE_HOME = "\${HOME}/.cache";
+      XDG_DATA_HOME = "\${HOME}/.local/share";
+      XDG_STATE_HOME = "\${HOME}/.local/state";
+
+      XDG_DESKTOP_DIR = "\${HOME}/.xdg/Desktop";
+      XDG_DOCUMENTS_DIR = "\${HOME}/.xdg/Documents";
+      XDG_PUBLICSHARE_DIR = "\${HOME}/.xdg/Public";
+      XDG_TEMPLATES_DIR = "\${HOME}/.xdg/Templates";
+
+      XDG_DOWNLOAD_DIR = "\${HOME}/downloads";
+
+      XDG_MUSIC_DIR = "\${HOME}/media/music";
+      XDG_PICTURES_DIR = "\${HOME}/media/pictures";
+      XDG_VIDEOS_DIR = "\${HOME}/media/videos";
+
+      XDG_SCRIPTS_DIR = "\${HOME}/scripts";
+      XDG_WORKSPACES_DIR = "\${HOME}/workspaces";
+    };
   };
 
   systemd.user.tmpfiles.rules = [

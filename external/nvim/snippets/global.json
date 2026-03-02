@@ -1,0 +1,33 @@
+{
+  "copyright": {
+    "prefix": "copyright",
+    "body": [
+      "Copyright (c) ${CURRENT_YEAR} ${0:Author}. All Rights Reserved."
+    ],
+    "description": "Snippet to put copyright"
+  },
+  "date": {
+    "prefix": "date",
+    "body": [
+      "${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}"
+    ],
+    "description": "Put the date in (Y-m-D) format"
+  },
+  "uuid": {
+    "prefix": "uuid",
+    "body": "${UUID}",
+    "description": "A Version 4 UUID"
+  },
+  "name": {
+    "prefix": "name",
+    "body": "Horace Liu"
+  },
+  "mail": {
+    "prefix": "mail",
+    "body": "im.liuhq@gmail.com"
+  },
+  "me": {
+    "prefix": "me",
+    "body": "Horace Liu <im.liuhq@gmail.com>"
+  }
+}

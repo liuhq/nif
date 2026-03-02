@@ -14,18 +14,14 @@ in
 
   options.mymod = {
     dev.javascript = {
-      enable = lib.mkEnableOption "develop js/ts, use deno and fnm/nodejs+pnpm" // {
+      enable = lib.mkEnableOption "use deno-ts as one of system scripts" // {
         default = true;
       };
     };
   };
 
   config = lib.mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [
-      deno
-      fnm
-      pnpm
-    ];
+    environment.systemPackages = with pkgs; [ deno ];
 
     hjem.users.${userName} = {
       environment.sessionVariables = {

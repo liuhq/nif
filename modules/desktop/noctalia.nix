@@ -16,10 +16,12 @@ in
     services.noctalia-shell.enable = true;
 
     hjem.users.${userName}.xdg.config.files = {
-      "noctalia".source = "${external}/noctalia";
+      "noctalia/colors.json".source = "${external}/noctalia/colors.json";
+      "noctalia/plugins.json".source = "${external}/noctalia/plugins.json";
+      "noctalia/settings.json".source = "${external}/noctalia/settings.json";
     };
 
-    environment.variables = {
+    environment.sessionVariables = {
       QS_ICON_THEME = "Colloid-Dark";
     };
   };

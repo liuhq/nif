@@ -1,0 +1,5 @@
+return {
+    tailwindCSS = {
+        classFunctions = { 'tw', 'clsx', 'tw\\.[a-z-]+' },
+    },
+}

@@ -1,0 +1,19 @@
+{
+  "Interface Definition": {
+    "prefix": "interface",
+    "body": [
+      "interface ${1:name} {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Interface Definition"
+  },
+  "Triple-slash reference": {
+    "prefix": "ref",
+    "body": [
+      "/// <reference path=\"$1\" />",
+      "$0"
+    ],
+    "description": "Triple-slash reference"
+  }
+}

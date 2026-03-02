@@ -1,0 +1,189 @@
+{
+  "new Promise": {
+    "prefix": "np",
+    "body": "new Promise((resolve, reject) => {\n\t${0}\n})"
+  },
+  "const statement from destructuring": {
+    "prefix": "cd",
+    "body": "const { ${2:prop} } = ${1:value}"
+  },
+  "const statement from array destructuring": {
+    "prefix": "cad",
+    "body": "const [ ${2:prop} ] = ${1:value}"
+  },
+  "const assignment awaited": {
+    "prefix": "ca",
+    "body": "const ${1:name} = await ${2:value}"
+  },
+  "const destructuring assignment awaited": {
+    "prefix": "cda",
+    "body": "const { ${1:name} } = await ${2:value}"
+  },
+  "const arrow function assignment": {
+    "prefix": "cf",
+    "body": "const ${1:name} = (${2:arguments}) => {\n\treturn ${0}\n}"
+  },
+  "let assignment awaited": {
+    "prefix": "la",
+    "body": "let ${1:name} = await ${2:value}"
+  },
+  "module export const": {
+    "prefix": "ec",
+    "body": "export const ${1:member} = ${2:value}"
+  },
+  "export named function": {
+    "prefix": "ef",
+    "body": "export function ${1:member} (${2:arguments}) {\n\t${0}\n}"
+  },
+  "module default export": {
+    "prefix": "ed",
+    "body": "export default ${1:member}"
+  },
+  "module default export function": {
+    "prefix": "edf",
+    "body": "export default function ${1:name} (${2:arguments}) {\n\t${0}\n}"
+  },
+  "import module": {
+    "prefix": "im",
+    "body": "import ${2:*} from '${1:module}'"
+  },
+  "import module as": {
+    "prefix": "ia",
+    "body": "import ${2:*} as ${3:name} from '${1:module}'"
+  },
+  "import module destructured": {
+    "prefix": "id",
+    "body": "import {$2} from '${1:module}'"
+  },
+  "throw new Error": {
+    "prefix": "tn",
+    "body": "throw new ${0:error}"
+  },
+  "named function": {
+    "prefix": "fn",
+    "body": "function ${1:name} (${2:params}) {\n\t${0}\n}"
+  },
+  "arrow function": {
+    "prefix": "af",
+    "body": "(${1:arguments}) => ${2:statement}"
+  },
+  "arrow function with body": {
+    "prefix": "f",
+    "body": "(${1:arguments}) => {\n\t${0}\n}"
+  },
+  "console.log": {
+    "prefix": "cl",
+    "body": "console.log(${0})"
+  },
+  "console.error": {
+    "prefix": "ce",
+    "body": "console.error(${0})"
+  },
+  "console.warn": {
+    "prefix": "cw",
+    "body": "console.warn(${0})"
+  },
+  "console.info": {
+    "prefix": "ci",
+    "body": "console.info(${0})"
+  },
+  "JSON.stringify()": {
+    "prefix": "js",
+    "body": "JSON.stringify($0)"
+  },
+  "JSON.parse()": {
+    "prefix": "jp",
+    "body": "JSON.parse($0)"
+  },
+  "getter": {
+    "prefix": "get",
+    "body": "get ${1:property} () {\n\t${0}\n}"
+  },
+  "setter": {
+    "prefix": "set",
+    "body": "set ${1:property} (${2:value}) {\n\t${0}\n}"
+  },
+  "getter + setter": {
+    "prefix": "gs",
+    "body": "get ${1:property} () {\n\t${0}\n}\nset ${1:property} (${2:value}) {\n\t\n}"
+  },
+  "ternary": {
+    "prefix": "te",
+    "body": "${1:cond} ? ${2:true} : ${3:false}"
+  },
+  "Object.keys": {
+    "prefix": "ok",
+    "body": "Object.keys(${1:obj})"
+  },
+  "Object.values": {
+    "prefix": "ov",
+    "body": "Object.values(${1:obj})"
+  },
+  "Object.entries": {
+    "prefix": "oe",
+    "body": "Object.entries(${1:obj})"
+  },
+  "For-Of Loop": {
+    "prefix": "forof",
+    "body": [
+      "for (const ${1:iterator} of ${2:object}) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "For-Of Loop"
+  },
+  "For-Await-Of Loop": {
+    "prefix": "forawaitof",
+    "body": [
+      "for await (const ${1:iterator} of ${2:object}) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "For-Await-Of Loop"
+  },
+  "If Statement": {
+    "prefix": "if",
+    "body": [
+      "if (${1:condition}) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "If Statement"
+  },
+  "If-Else Statement": {
+    "prefix": "ifelse",
+    "body": [
+      "if (${1:condition}) {",
+      "\t$2",
+      "} else {",
+      "\t$0",
+      "}"
+    ],
+    "description": "If-Else Statement"
+  },
+  "Switch Statement": {
+    "prefix": "switch",
+    "body": [
+      "switch (${1:key}) {",
+      "\tcase ${2:value}:",
+      "\t\t$0",
+      "\t\tbreak;",
+      "",
+      "\tdefault:",
+      "\t\tbreak;",
+      "}"
+    ],
+    "description": "Switch Statement"
+  },
+  "Try-Catch Statement": {
+    "prefix": "trycatch",
+    "body": [
+      "try {",
+      "\t$0",
+      "} catch (${1:error}) {",
+      "\t",
+      "}"
+    ],
+    "description": "Try-Catch Statement"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "!": {
+    "prefix": "!",
+    "body": [
+      "<!DOCTYPE html>",
+      "<html lang=\"${1:en}\">",
+      "<head>",
+      "\t<meta charset=\"UTF-8\">",
+      "\t<meta name=\"viewport\" content=\"width=${2:device-width}, initial-scale=${3:1.0}\">",
+      "\t<title>${4:Document}</title>",
+      "</head>",
+      "<body>",
+      "\t${5}",
+      "</body>",
+      "</html>"
+    ],
+    "description": "HTML - Defines a template for a html5 document",
+    "scope": "text.html"
+  },
+  "link": {
+    "prefix": "link",
+    "body": "<link rel=\"$1\" type=\"$2\" href=\"$3\">$4",
+    "description": "HTML - Defines a resource reference",
+    "scope": "text.html"
+  }
+}

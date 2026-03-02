@@ -40,31 +40,37 @@ in
       startAgent = true;
     };
 
-    hjem.users.${userName}.files =
-      let
-        baseConfig = ''
-          Host gh github.com
-              Hostname ssh.github.com
-              Port 443
-              User git
-              IdentitiesOnly yes
-              IdentityFile ~/.ssh/keys/github_auth
-
-          Host aur aur.archlinux.org
-              User aur
-              IdentitiesOnly yes
-              IdentityFile ~/.ssh/keys/aur
-        '';
-      in
-      {
-        ".ssh/config".text = lib.concatStringsSep "\n\n" (
-          builtins.filter (s: s != "") (
-            lib.map (s: lib.trim s) [
-              cfg.extraConfig
-              baseConfig
-            ]
-          )
-        );
+    hjem.users.${userName} = {
+      environment.sessionVariables = {
+        SSH_AUTH_SOCK = "\${XDG_RUNTIME_DIR}/ssh-agent.socket";
       };
+
+      files =
+        let
+          baseConfig = ''
+            Host gh github.com
+                Hostname ssh.github.com
+                Port 443
+                User git
+                IdentitiesOnly yes
+                IdentityFile ~/.ssh/keys/github_auth
+
+            Host aur aur.archlinux.org
+                User aur
+                IdentitiesOnly yes
+                IdentityFile ~/.ssh/keys/aur
+          '';
+        in
+        {
+          ".ssh/config".text = lib.concatStringsSep "\n\n" (
+            builtins.filter (s: s != "") (
+              lib.map (s: lib.trim s) [
+                cfg.extraConfig
+                baseConfig
+              ]
+            )
+          );
+        };
+    };
   };
 }
