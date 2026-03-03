@@ -24,9 +24,18 @@ in
     environment.systemPackages = with pkgs; [ deno ];
 
     hjem.users.${userName} = {
-      environment.sessionVariables = {
-        NPM_CONFIG_USERCONFIG = "\${XDG_CONFIG_HOME}/npm/npmrc";
-      };
+      environment.sessionVariables =
+        let
+          DENO_INSTALL_ROOT = "\${HOME}/.local/deno/bin";
+        in
+        {
+          NPM_CONFIG_USERCONFIG = "\${XDG_CONFIG_HOME}/npm/npmrc";
+
+          DENO_DIR = "\${XDG_CACHE_HOME}/deno";
+          inherit DENO_INSTALL_ROOT;
+
+          PATH = [ DENO_INSTALL_ROOT ];
+        };
 
       xdg.config.files = {
         "npm/npmrc".source = pkgs.writeText "npm-config" ''

@@ -14,7 +14,7 @@ in
 
   options.mymod = {
     dev.rust = {
-      enable = lib.mkEnableOption "Rust dev" // {
+      enable = lib.mkEnableOption "Rust environment" // {
         default = true;
       };
     };

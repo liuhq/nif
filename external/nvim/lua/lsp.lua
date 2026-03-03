@@ -179,6 +179,7 @@ vim.lsp.enable({
     'lua_ls',
     'nixd',
     'rust_analyzer',
+    'steel',
     'tailwindcss',
     'taplo',
     'ts_ls',

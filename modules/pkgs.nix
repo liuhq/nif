@@ -23,16 +23,6 @@
     ripgrep
     strace
 
-    libnotify
     trash-cli
-
-    aseprite
-    eyedropper
-    game-devices-udev-rules
-    gnome-calculator
-    gnome-characters
-    helvum
-    minder
-    papers
   ];
 }

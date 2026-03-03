@@ -14,7 +14,7 @@ in
 
   options.mymod = {
     dev.go = {
-      enable = lib.mkEnableOption "GO dev" // {
+      enable = lib.mkEnableOption "GO environment" // {
         default = true;
       };
     };

@@ -131,7 +131,6 @@ window-rule {
 // open with 3/4 screen
 window-rule {
     match app-id="spotify"
-    match app-id="com.github.phase1geo.minder"
     default-column-width { proportion 0.75; }
     default-window-height { proportion 1.0; }
 }

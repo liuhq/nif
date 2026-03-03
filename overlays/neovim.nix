@@ -6,13 +6,15 @@ final: prev: {
           bash-language-server
           shfmt
 
+          clang-tools
+
           dot-language-server
 
           lua-language-server
 
           nixd
+          steel-language-server
 
-          rust-analyzer
           taplo
 
           vscode-langservers-extracted

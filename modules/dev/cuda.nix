@@ -14,7 +14,7 @@ in
 
   options.mymod = {
     dev.cuda = {
-      enable = lib.mkEnableOption "CUDA dev" // {
+      enable = lib.mkEnableOption "CUDA environment" // {
         default = true;
       };
     };
