@@ -139,78 +139,106 @@ proxy-groups:
     type: select
     <<: *health_check
     proxies:
-      - FI
-      - JP
-      - SG
-      - HK
-      - US
-      - FR
-      - GB
-      - IT
-      - DE
+      - FI-Filter
+      - JP-Filter
+      - SG-Filter
+      - HK-Filter
+      - US-Filter
+      - FR-Filter
+      - GB-Filter
       - DIRECT
   - name: Games
     type: select
     <<: *health_check
     proxies:
       - DIRECT
-      - JP
-      - HK
-      - US
+      - JP-Filter
+      - HK-Filter
+      - US-Filter
+  - name: FI
+    type: select
+    <<: *health_check
+    proxies:
+      - FI-Filter
+      - Proxy
   - name: JP
     type: select
     <<: *health_check
-    use:
-      - TAG_NET
-    filter: "(?i)jp"
+    proxies:
+      - JP-Filter
+      - Proxy
   - name: SG
     type: select
     <<: *health_check
-    use:
-      - TAG_NET
-    filter: "(?i)sg"
+    proxies:
+      - SG-Filter
+      - Proxy
   - name: HK
     type: select
     <<: *health_check
-    use:
-      - TAG_NET
-    filter: "(?i)hk"
+    proxies:
+      - HK-Filter
+      - Proxy
   - name: US
     type: select
     <<: *health_check
-    use:
-      - TAG_NET
-    filter: "(?i)us"
+    proxies:
+      - US-Filter
+      - Proxy
   - name: FR
     type: select
     <<: *health_check
-    use:
-      - TAG_NET
-    filter: "(?i)fr"
+    proxies:
+      - FR-Filter
+      - Proxy
   - name: GB
     type: select
     <<: *health_check
-    use:
-      - TAG_NET
-    filter: "(?i)gb"
-  - name: FI
+    proxies:
+      - GB-Filter
+      - Proxy
+  - name: FI-Filter
     type: select
     <<: *health_check
     use:
       - TAG_NET
     filter: "(?i)fi"
-  - name: IT
+  - name: JP-Filter
     type: select
     <<: *health_check
     use:
       - TAG_NET
-    filter: "(?i)it"
-  - name: DE
+    filter: "(?i)jp"
+  - name: SG-Filter
     type: select
     <<: *health_check
     use:
       - TAG_NET
-    filter: "(?i)de"
+    filter: "(?i)sg"
+  - name: HK-Filter
+    type: select
+    <<: *health_check
+    use:
+      - TAG_NET
+    filter: "(?i)hk"
+  - name: US-Filter
+    type: select
+    <<: *health_check
+    use:
+      - TAG_NET
+    filter: "(?i)us"
+  - name: FR-Filter
+    type: select
+    <<: *health_check
+    use:
+      - TAG_NET
+    filter: "(?i)fr"
+  - name: GB-Filter
+    type: select
+    <<: *health_check
+    use:
+      - TAG_NET
+    filter: "(?i)gb"
 
 
 #================================
