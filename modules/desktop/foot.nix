@@ -2,10 +2,12 @@
   config,
   pkgs,
   lib,
+  myvar,
   ...
 }:
 let
   cfg = config.mymod.desktop;
+  inherit (myvar) userName;
   colors = {
     background = "242933";
     cursor = "242933 D8DEE9";
@@ -145,6 +147,10 @@ in
           select-row = "BTN_LEFT-4";
         };
       };
+    };
+
+    hjem.users.${userName}.environment.sessionVariables = {
+      TERMINAL = "${lib.getExe pkgs.foot}";
     };
   };
 }

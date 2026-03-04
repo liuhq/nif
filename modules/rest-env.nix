@@ -15,7 +15,5 @@ in
   };
 
   hjem.users.${userName}.environment.sessionVariables = {
-    BROWSER = "${lib.getExe pkgs.chromium}";
-    TERMINAL = "${lib.getExe pkgs.foot}";
   };
 }

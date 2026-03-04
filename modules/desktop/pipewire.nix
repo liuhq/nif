@@ -5,13 +5,9 @@
   ...
 }:
 let
-  cfg = config.mymod.pipewire;
+  cfg = config.mymod.desktop;
 in
 {
-  options.mymod.pipewire = {
-    enable = lib.mkEnableOption "Pipewire";
-  };
-
   config = lib.mkIf cfg.enable {
     security.rtkit.enable = true;
 

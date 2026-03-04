@@ -2,10 +2,12 @@
   config,
   pkgs,
   lib,
+  myvar,
   ...
 }:
 let
   cfg = config.mymod.desktop;
+  inherit (myvar) userName;
 in
 {
   config = lib.mkIf cfg.enable {
@@ -32,5 +34,9 @@ in
         ];
       })
     ];
+
+    hjem.users.${userName}.environment.sessionVariables = {
+      BROWSER = "${lib.getExe pkgs.chromium}";
+    };
   };
 }

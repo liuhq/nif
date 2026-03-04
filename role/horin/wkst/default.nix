@@ -21,8 +21,6 @@ in
   mymod.network.networkmanager.enable = true;
   mymod.network.mihomo.enable = true;
 
-  mymod.pipewire.enable = true;
-
   mymod.desktop.enable = true;
 
   mymod.zsh.enable = true;

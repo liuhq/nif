@@ -3,22 +3,45 @@
   pkgs,
   lib,
   myvar,
+  paths,
   ...
 }:
 let
   cfg = config.mymod.desktop;
   inherit (myvar) userName;
+  inherit (paths) external;
 in
 {
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
+      gtk4
+      gtk3
+
       colloid-icon-theme
     ];
 
+    qt = {
+      enable = true;
+      platformTheme = "qt5ct";
+      style = "kvantum";
+    };
+
     hjem.users.${userName} = {
+      xdg.config.files = {
+        "gtk-4.0".source = "${external}/gtk/gtk-4.0";
+        "gtk-3.0".source = "${external}/gtk/gtk-3.0";
+
+        "Kvantum/Nordic".source = "${pkgs.nordic}/share/Kvantum/Nordic";
+        "Kvantum/kvantum.kvconfig".text = ''
+          [General]
+          theme=Nordic
+        '';
+      };
+
       xdg.data.files = {
-        "icons/default".source = pkgs.bocchi-dyn-cursor;
-        "icons/Bocchi".source = pkgs.bocchi-dyn-cursor;
+        # "icons/default".source = "${pkgs.bocchi-dyn-cursor}/share/icons/Bocchi";
+        # "icons/Bocchi".source = "${pkgs.bocchi-dyn-cursor}/share/icons/Bocchi";
+        "themes/wallpaper".source = pkgs.my-wallpaper;
       };
     };
 
