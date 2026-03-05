@@ -6,20 +6,16 @@ final: prev: {
           bash-language-server
           shfmt
 
-          clang-tools
-
           dot-language-server
+
+          haskell-language-server
+          ormolu
 
           lua-language-server
 
           nixd
-          steel-language-server
 
           taplo
-
-          vscode-langservers-extracted
-          typescript-language-server
-          tailwindcss-language-server
 
           yaml-language-server
           yamlfmt

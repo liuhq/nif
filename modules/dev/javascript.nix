@@ -10,8 +10,6 @@ let
   inherit (myvar) userName;
 in
 {
-  imports = [ ];
-
   options.mymod = {
     dev.javascript = {
       enable = lib.mkEnableOption "use deno-ts as one of system scripts" // {
