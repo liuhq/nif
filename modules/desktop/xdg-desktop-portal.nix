@@ -14,5 +14,8 @@ in
       xdg-desktop-portal-gnome
       xdg-desktop-portal-gtk
     ];
+
+    services.gnome.gnome-keyring.enable = true;
+    environment.systemPackages = [ pkgs.seahorse ];
   };
 }
