@@ -44,7 +44,6 @@ in
       host,
       userName,
       nixosVersion ? "25.11",
-      system ? "x86_64-linux",
       overlays ? [ ],
     }:
     let
@@ -60,8 +59,6 @@ in
       };
     in
     inputs.nixpkgs.lib.nixosSystem {
-      # DEBUG in non-NixOS
-      inherit system;
       inherit specialArgs;
       modules = [
         {
@@ -81,18 +78,6 @@ in
         )
 
         (addDir "role/${userName}/${host}")
-
-        (
-          { config, ... }:
-          {
-            users.users.${userName} = {
-              isNormalUser = true;
-              description = userName;
-              extraGroups = [ "wheel" ];
-              hashedPasswordFile = config.age.secrets."passwd-${userName}".path;
-            };
-          }
-        )
 
         inputs.hjem.nixosModules.default
         (

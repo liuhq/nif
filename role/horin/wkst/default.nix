@@ -20,6 +20,19 @@ in
 
   mymod.network.networkmanager.enable = true;
   mymod.network.mihomo.enable = true;
+  mymod.network.ssh.config = ''
+    Host gh github.com
+        Hostname ssh.github.com
+        Port 443
+        User git
+        IdentitiesOnly yes
+        IdentityFile ~/.ssh/keys/github_auth
+
+    Host aur aur.archlinux.org
+        User aur
+        IdentitiesOnly yes
+        IdentityFile ~/.ssh/keys/aur
+  '';
 
   mymod.desktop.enable = true;
 

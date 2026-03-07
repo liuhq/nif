@@ -17,7 +17,6 @@
     };
 
     hardware.nvidia = {
-      # enabled = true;
       open = true;
 
       # for Wayland

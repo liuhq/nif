@@ -26,6 +26,13 @@ in
       style = "kvantum";
     };
 
+    environment.sessionVariables = {
+      GTK_THEME = "Adwaita:dark";
+      ICON_THEME = "Colloid-Dark";
+      XCURSOR_THEME = "Bocchi";
+      XCURSOR_SIZE = 36;
+    };
+
     hjem.users.${userName} = {
       xdg.config.files = {
         "gtk-4.0".source = "${external}/gtk/gtk-4.0";

@@ -7,7 +7,6 @@
 }:
 let
   cfg = config.mymod.desktop;
-  inherit (myvar) userName;
 in
 {
   config = lib.mkIf cfg.enable {
@@ -28,12 +27,13 @@ in
             "~/.local/share/icons"
             "~/.config/fontconfig"
             "/run/current-system/sw/bin:ro" # Expose NixOS managed software
+            "/nix/store:ro" # https://wiki.nixos.org/wiki/Cursor_Themes#Giving_flatpaks_permission_to_/nix/store
           ];
         };
 
         Environment = {
           ICON_THEME = "Colloid-Dark";
-          XCURSOR_PATH = "~/.local/share/icons:/run/host/user-share/icons:/run/host/share/icons";
+          XCURSOR_PATH = "~/.local/share/icons:/usr/share/icons:/run/host/user-share/icons:/run/host/share/icons";
           XCURSOR_THEME = "Bocchi";
           XCURSOR_SIZE = 36;
 
@@ -55,7 +55,7 @@ in
           ];
         };
         Environment = {
-          GTK_IM_MODULE = "fcitx5";
+          # GTK_IM_MODULE = "fcitx5";
           LANG = "zh_CN.UTF-8";
           LC_ALL = "zh_CN.UTF-8";
           DISPLAY = ":0";
