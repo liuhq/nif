@@ -20,9 +20,7 @@ in
     environment.systemPackages = [
       (
         (pkgs.ghc.withPackages.override {
-          haskellPackages = pkgs.haskellPackages.override {
-            ghc = pkgs.haskell.compiler.ghc9122;
-          };
+          haskellPackages = pkgs.haskell.packages.ghc9122;
         })
         (
           hsPkgs: with hsPkgs; [

@@ -1,5 +1,5 @@
 // noctalia-shell
-// hotkey-overlay-title="" { spawn-sh "qs -c noctalia-shell "; }
+// hotkey-overlay-title="" { spawn-sh "noctalia-shell "; }
 
 binds {
     Mod+Escape repeat=false hotkey-overlay-title=null { close-window; }
@@ -66,15 +66,15 @@ binds {
     Mod+Shift+M repeat=false hotkey-overlay-title="Windowed Fullscreen" { toggle-windowed-fullscreen; }
 
     // #"Notification"
-    Mod+Slash hotkey-overlay-title="Dismiss Active Notifications" { spawn-sh "qs -c noctalia-shell ipc call notifications dismissAll"; }
-    Mod+Shift+Slash hotkey-overlay-title="Notification History" { spawn-sh "qs -c noctalia-shell ipc call notifications toggleHistory"; }
-    Mod+Ctrl+Slash hotkey-overlay-title="Clear Notification History" { spawn-sh "qs -c noctalia-shell ipc call notifications clear"; }
+    Mod+Slash hotkey-overlay-title="Dismiss Active Notifications" { spawn-sh "noctalia-shell ipc call notifications dismissAll"; }
+    Mod+Shift+Slash hotkey-overlay-title="Notification History" { spawn-sh "noctalia-shell ipc call notifications toggleHistory"; }
+    Mod+Ctrl+Slash hotkey-overlay-title="Clear Notification History" { spawn-sh "noctalia-shell ipc call notifications clear"; }
 
     // #"Desktop"
-    Mod+B hotkey-overlay-title="Toggle Desktop Widgets" { spawn-sh "qs -c noctalia-shell ipc call desktopWidgets toggle"; }
-    Mod+Ctrl+B hotkey-overlay-title="Edit Desktop Widgets" { spawn-sh "qs -c noctalia-shell ipc call desktopWidgets edit"; }
+    Mod+B hotkey-overlay-title="Toggle Desktop Widgets" { spawn-sh "noctalia-shell ipc call desktopWidgets toggle"; }
+    Mod+Ctrl+B hotkey-overlay-title="Edit Desktop Widgets" { spawn-sh "noctalia-shell ipc call desktopWidgets edit"; }
 
-    Mod+R hotkey-overlay-title="Random Wallpaper" { spawn-sh "qs -c noctalia-shell ipc call wallpaper random"; }
+    Mod+R hotkey-overlay-title="Random Wallpaper" { spawn-sh "noctalia-shell ipc call wallpaper random"; }
 
     Mod+Backspace hotkey-overlay-title=null repeat=false { toggle-overview; }
 
@@ -84,22 +84,22 @@ binds {
     Mod+W repeat=false hotkey-overlay-title=null { spawn "google-chrome-stable"; }
 
     // #"Panel"
-    Mod+Delete hotkey-overlay-title="Session Menu" { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
-    Mod+Comma hotkey-overlay-title="Settings" { spawn-sh "qs -c noctalia-shell ipc call settings toggle"; }
-    Mod+S hotkey-overlay-title="Control Center" { spawn-sh "qs -c noctalia-shell ipc call controlCenter toggle"; }
-    Mod+D hotkey-overlay-title="Launcher" { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
-    Mod+V hotkey-overlay-title="Clipboard Pick" { spawn-sh "qs -c noctalia-shell ipc call launcher clipboard"; }
-    Mod+X hotkey-overlay-title="System Monitor" { spawn-sh "qs -c noctalia-shell ipc call systemMonitor toggle"; }
-    Mod+Shift+X hotkey-overlay-title="Calendar" { spawn-sh "qs -c noctalia-shell ipc call calendar toggle"; }
+    Mod+Delete hotkey-overlay-title="Session Menu" { spawn-sh "noctalia-shell ipc call sessionMenu toggle"; }
+    Mod+Comma hotkey-overlay-title="Settings" { spawn-sh "noctalia-shell ipc call settings toggle"; }
+    Mod+S hotkey-overlay-title="Control Center" { spawn-sh "noctalia-shell ipc call controlCenter toggle"; }
+    Mod+D hotkey-overlay-title="Launcher" { spawn-sh "noctalia-shell ipc call launcher toggle"; }
+    Mod+V hotkey-overlay-title="Clipboard Pick" { spawn-sh "noctalia-shell ipc call launcher clipboard"; }
+    Mod+X hotkey-overlay-title="System Monitor" { spawn-sh "noctalia-shell ipc call systemMonitor toggle"; }
+    Mod+Shift+X hotkey-overlay-title="Calendar" { spawn-sh "noctalia-shell ipc call calendar toggle"; }
 
     // #"Audio"
-    Mod+Up hotkey-overlay-title="Increase output volume" { spawn-sh "qs -c noctalia-shell ipc call volume increase"; }
-    Mod+Down hotkey-overlay-title="Decrease output volume" { spawn-sh "qs -c noctalia-shell ipc call volume decrease"; }
-    Mod+A hotkey-overlay-title="Audio Panel" { spawn-sh "qs -c noctalia-shell ipc call volume togglePanel"; }
-    Mod+F9 hotkey-overlay-title="Media Panel" { spawn-sh "qs -c noctalia-shell ipc call media toggle"; }
-    Mod+F10 hotkey-overlay-title="Previous Track" { spawn-sh "qs -c noctalia-shell ipc call media previous"; }
-    Mod+F11 hotkey-overlay-title="Toggle Playback" { spawn-sh "qs -c noctalia-shell ipc call media playPause"; }
-    Mod+F12 hotkey-overlay-title="Next Track" { spawn-sh "qs -c noctalia-shell ipc call media next"; }
+    Mod+Up hotkey-overlay-title="Increase output volume" { spawn-sh "noctalia-shell ipc call volume increase"; }
+    Mod+Down hotkey-overlay-title="Decrease output volume" { spawn-sh "noctalia-shell ipc call volume decrease"; }
+    Mod+A hotkey-overlay-title="Audio Panel" { spawn-sh "noctalia-shell ipc call volume togglePanel"; }
+    Mod+F9 hotkey-overlay-title="Media Panel" { spawn-sh "noctalia-shell ipc call media toggle"; }
+    Mod+F10 hotkey-overlay-title="Previous Track" { spawn-sh "noctalia-shell ipc call media previous"; }
+    Mod+F11 hotkey-overlay-title="Toggle Playback" { spawn-sh "noctalia-shell ipc call media playPause"; }
+    Mod+F12 hotkey-overlay-title="Next Track" { spawn-sh "noctalia-shell ipc call media next"; }
 
     // #"Screenshots"
     Print repeat=false hotkey-overlay-title="Screenshot Region" { screenshot; }
@@ -107,14 +107,14 @@ binds {
     Shift+Print repeat=false hotkey-overlay-title="Screenshot Output (Save)" { screenshot-screen; }
 
     // #"Screencast"
-    Mod+Insert repeat=false hotkey-overlay-title="Screencast On/Off" { spawn-sh "qs -c noctalia-shell ipc call plugin:screen-recorder toggle"; }
-    Mod+Ctrl+Insert repeat=false hotkey-overlay-title="Screencast Settingsf" { spawn-sh "qs -c noctalia-shell ipc call plugin openSettings screen-recorder"; }
+    Mod+Insert repeat=false hotkey-overlay-title="Screencast On/Off" { spawn-sh "noctalia-shell ipc call plugin:screen-recorder toggle"; }
+    Mod+Ctrl+Insert repeat=false hotkey-overlay-title="Screencast Settingsf" { spawn-sh "noctalia-shell ipc call plugin openSettings screen-recorder"; }
     Mod+F4 repeat=false hotkey-overlay-title="Set Dynamic Cast Window" { spawn-sh "niri msg action set-dynamic-cast-window --id $(niri msg --json pick-window | jq .id)"; }
     Mod+Shift+F4 repeat=false hotkey-overlay-title="Clear Dynamic Cast Target" { spawn-sh "niri msg action clear-dynamic-cast-target"; }
 
     // #"Misc"
-    Mod+F1 hotkey-overlay-title="Keybind Cheatsheet" { spawn-sh "qs -c noctalia-shell ipc call plugin togglePanel keybind-cheatsheet"; }
+    Mod+F1 hotkey-overlay-title="Keybind Cheatsheet" { spawn-sh "noctalia-shell ipc call plugin togglePanel keybind-cheatsheet"; }
     Mod+F2 repeat=false hotkey-overlay-title="Focus Window Info" { spawn "foot" "--hold" "zsh" "-c" "niri msg focused-window"; }
-    Mod+Shift+I hotkey-overlay-title="Toggle Idle Inhibitor" { spawn-sh "qs -c noctalia-shell ipc call idleInhibitor toggle"; }
+    Mod+Shift+I hotkey-overlay-title="Toggle Idle Inhibitor" { spawn-sh "noctalia-shell ipc call idleInhibitor toggle"; }
 }
 

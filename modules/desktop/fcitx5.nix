@@ -8,8 +8,8 @@
 let
   cfg = config.mymod.desktop;
   inherit (paths) external;
-  mkAttrTrue = lst: lib.genAttrs lst (n: true);
-  mkAttrFalse = lst: lib.genAttrs lst (n: false);
+  mkAttrTrue = lst: lib.genAttrs lst (n: "True");
+  mkAttrFalse = lst: lib.genAttrs lst (n: "False");
 in
 {
   config = lib.mkIf cfg.enable {
@@ -49,8 +49,8 @@ in
 
       fcitx5.settings.globalOptions = {
         Hotkey = {
-          EnumerateWithTriggerKeys = true; # "True"
-          EnumerateSkipFirst = false; # "False"
+          EnumerateWithTriggerKeys = "True";
+          EnumerateSkipFirst = "False";
           ModifierOnlyKeyTimeout = 250;
         };
 
@@ -96,7 +96,7 @@ in
             LongWordLengthLimit = 4;
           }
           // mkAttrTrue [
-            "EmojiEnabled" # "True"
+            "EmojiEnabled"
             "SpellEnabled"
             "SymbolsEnabled"
             "ChaiziEnabled"

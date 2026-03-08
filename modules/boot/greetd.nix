@@ -18,7 +18,7 @@ in
       enable = true;
       settings = {
         default_session = {
-          command = "${pkgs.tuigreet}/bin/tuigreet --cmd ${lib.getExe' pkgs.niri "niri-session"} --greeting 'NixOS' --time --remember --asterisks";
+          command = "${pkgs.tuigreet}/bin/tuigreet --cmd '${lib.getExe pkgs.niri} --session' --greeting 'NixOS' --time --remember --asterisks";
           user = myvar.userName;
         };
       };

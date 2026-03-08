@@ -30,6 +30,7 @@ in
     };
 
     programs.zsh.interactiveShellInit = lib.readFile "${external}/zsh/zshrc";
+    environment.etc."zsh/zsh.d".source = "${external}/zsh/zsh.d";
 
     programs.zsh.shellAliases = {
       sudo = "sudo ";
@@ -63,6 +64,7 @@ in
         KEYTIMEOUT = 5;
         ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE = "fg=#616E88";
       };
+
       files =
         let
           check = {

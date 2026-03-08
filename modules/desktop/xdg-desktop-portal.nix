@@ -16,6 +16,7 @@ in
     ];
 
     services.gnome.gnome-keyring.enable = true;
+    services.gnome.gcr-ssh-agent.enable = false; # conflict with ssh-agent
     environment.systemPackages = [ pkgs.seahorse ];
   };
 }
