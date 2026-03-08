@@ -28,7 +28,7 @@ in
 
     environment.sessionVariables = {
       GTK_THEME = "Adwaita:dark";
-      ICON_THEME = "Colloid-Dark";
+      ICON_THEME = "Colloid-Nord-Dark";
       XCURSOR_THEME = "Bocchi";
       XCURSOR_SIZE = 36;
     };
@@ -74,7 +74,7 @@ in
               document-font-name = "Sans 11";
               font-name = "Sans 11";
               gtk-theme = "Adwaita";
-              icon-theme = "Colloid-Dark";
+              icon-theme = "Colloid-Nord-Dark";
               monospace-font-name = "Monospace 11";
               toolbar-icons-size = "small";
               toolbar-style = "icons";

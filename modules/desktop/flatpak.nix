@@ -32,7 +32,7 @@ in
         };
 
         Environment = {
-          ICON_THEME = "Colloid-Dark";
+          ICON_THEME = "Colloid-Nord-Dark";
           XCURSOR_PATH = "~/.local/share/icons:/usr/share/icons:/run/host/user-share/icons:/run/host/share/icons";
           XCURSOR_THEME = "Bocchi";
           XCURSOR_SIZE = "36";

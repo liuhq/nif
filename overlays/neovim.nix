@@ -30,7 +30,6 @@ final: prev: {
     configure = {
       customLuaRC = ''
         vim.opt.runtimepath:prepend "${../external/nvim}"
-        require "entry"
       '';
       packages.bynix = with final.vimPlugins; {
         ## Get LSP completions

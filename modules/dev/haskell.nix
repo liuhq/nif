@@ -18,18 +18,13 @@ in
 
   config = lib.mkIf cfg.enable {
     environment.systemPackages = [
-      (
-        (pkgs.ghc.withPackages.override {
-          haskellPackages = pkgs.haskell.packages.ghc9122;
-        })
-        (
-          hsPkgs: with hsPkgs; [
-            turtle
-            shh
-            shh-extras
-          ]
-        )
-      )
+      (pkgs.ghc.withPackages (
+        hsPkgs: with hsPkgs; [
+          turtle
+          shh
+          shh-extras
+        ]
+      ))
     ];
   };
 }

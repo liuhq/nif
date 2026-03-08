@@ -22,7 +22,7 @@ in
     };
 
     environment.sessionVariables = {
-      QS_ICON_THEME = "Colloid-Dark";
+      QS_ICON_THEME = "Colloid-Nord-Dark";
     };
   };
 }

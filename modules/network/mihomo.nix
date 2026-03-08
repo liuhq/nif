@@ -43,11 +43,36 @@ in
       webui = pkgs.metacubexd;
     };
 
-    # /etc/mihomo/config.yaml
+    systemd.services.mihomo.serviceConfig =
+      let
+        cap = [
+          ## tun mode
+          "CAP_NET_ADMIN"
+          ## necessary capabilities for rules about process information such as `process-name`
+          "CAP_DAC_READ_SEARCH"
+          "CAP_SYS_PTRACE"
+          ## 127.0.0.1:53 DNS port binding
+          "CAP_NET_BIND_SERVICE"
+        ];
+      in
+      {
+        ## Fix: unable to read files other than config.yaml
+        ExecStartPre = pkgs.writeShellScript "mihomo-start-pre" ''
+          install ''${CREDENTIALS_DIRECTORY}/config.yaml ''${STATE_DIRECTORY}/config.yaml
+          install ''${CREDENTIALS_DIRECTORY}/proxies.yaml ''${STATE_DIRECTORY}/proxies.yaml
+          install ${geosite} ''${STATE_DIRECTORY}/GeoSite.dat
+          install ${geoip} ''${STATE_DIRECTORY}/GeolP.dat
+          install ${country} ''${STATE_DIRECTORY}/Country.mmdb
+        '';
+
+        LoadCredential = [
+          "proxies.yaml:${config.age.secrets.proxies.path}"
+        ];
+
+        AmbientCapabilities = lib.mkForce cap;
+        CapabilityBoundingSet = lib.mkForce cap;
+      };
+
     environment.etc."mihomo/config.yaml".source = "${external}/mihomo/config.yaml";
-    environment.etc."mihomo/proxies/tag.yaml".source = config.age.secrets.proxies.path;
-    environment.etc."mihomo/GeoSite.dat".source = geosite;
-    environment.etc."mihomo/GeolP.dat".source = geoip;
-    environment.etc."mihomo/Country.mmdb".source = country;
   };
 }

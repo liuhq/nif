@@ -23,6 +23,7 @@ function osc7-pwd() {
 function chpwd-osc7-pwd() {
     (( ZSH_SUBSHELL )) || osc7-pwd
 }
+autoload -Uz add-zsh-hook
 add-zsh-hook -Uz chpwd chpwd-osc7-pwd
 
 ### support the OSC-133;A sequence

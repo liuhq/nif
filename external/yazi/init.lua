@@ -12,7 +12,14 @@ require("mime-ext.local"):setup {
     },
 }
 
-require("folder-rules"):setup()
+ps.sub("cd", function()
+    local cwd = cx.active.current.cwd
+    if cwd:ends_with("downloads") then
+        ya.manager_emit("sort", { "mtime", reverse = true })
+    else
+        ya.manager_emit("sort", { "alphabetical", reverse = false })
+    end
+end)
 
 
 ---{{ Show symlink in status bar

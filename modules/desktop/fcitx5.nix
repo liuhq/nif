@@ -63,24 +63,24 @@ in
         Behavior = {
           DefaultPageSize = 7;
           AutoSavePeriod = 30;
-        };
-      }
-      // mkAttrTrue [
-        "ShowInputMethodInformation"
-        "CompactInputMethodInformation"
-        "ShowFirstInputMethodInformation"
-        "PreloadInputMethod"
-      ]
-      // mkAttrFalse [
-        "ActiveByDefault"
-        "resetStateWhenFocusIn"
-        "ShareInputState"
-        "PreeditEnabledByDefault"
-        "showInputMethodInformationWhenFocusIn"
-        "OverrideXkbOption"
-        "AllowInputMethodForPassword"
-        "ShowPreeditForPassword"
-      ];
+        }
+        // mkAttrTrue [
+          "ShowInputMethodInformation"
+          "CompactInputMethodInformation"
+          "ShowFirstInputMethodInformation"
+          "PreloadInputMethod"
+        ]
+        // mkAttrFalse [
+          "ActiveByDefault"
+          "resetStateWhenFocusIn"
+          "ShareInputState"
+          "PreeditEnabledByDefault"
+          "showInputMethodInformationWhenFocusIn"
+          "OverrideXkbOption"
+          "AllowInputMethodForPassword"
+          "ShowPreeditForPassword"
+        ];
+      };
 
       fcitx5.settings.addons = {
         pinyin = {
@@ -117,46 +117,48 @@ in
             "FirstRun"
           ];
 
-          ForgetWord."0" = "Control+7";
-          "PrevPage"."0" = "Control+P";
-          "NextPage"."0" = "Control+N";
-          "PrevCandidate"."0" = "Control+K";
-          "NextCandidate"."0" = "Control+J";
-          "CurrentCandidate"."0" = "space";
-          "CommitRawInput"."0" = "Return";
-          "ChooseCharFromPhrase"."0" = "Control+F";
-          "ChooseCharFromPhrase"."1" = "Control+B";
-          "FilterByStroke"."0" = "grave";
-          "QuickPhraseTriggerRegex"."0" = ".(/|@)$";
-          "QuickPhraseTriggerRegex"."1" = "^(www|bbs|forum|mail|bbs)\\.";
-          "QuickPhraseTriggerRegex"."2" = "^(http|https|ftp|telnet|mailto):";
+          sections = {
+            ForgetWord."0" = "Control+7";
+            "PrevPage"."0" = "Control+P";
+            "NextPage"."0" = "Control+N";
+            "PrevCandidate"."0" = "Control+K";
+            "NextCandidate"."0" = "Control+J";
+            "CurrentCandidate"."0" = "space";
+            "CommitRawInput"."0" = "Return";
+            "ChooseCharFromPhrase"."0" = "Control+F";
+            "ChooseCharFromPhrase"."1" = "Control+B";
+            "FilterByStroke"."0" = "grave";
+            "QuickPhraseTriggerRegex"."0" = ".(/|@)$";
+            "QuickPhraseTriggerRegex"."1" = "^(www|bbs|forum|mail|bbs)\\.";
+            "QuickPhraseTriggerRegex"."2" = "^(http|https|ftp|telnet|mailto):";
 
-          Fuzzy = {
-            Correction = "None";
-          }
-          // mkAttrTrue [
-            "VE_UE"
-          ]
-          // mkAttrFalse [
-            "NG_GN"
-            "Inner"
-            "InnerShort"
-            "PartialFinal"
-            "PartialSp"
-            "V_U"
-            "AN_ANG"
-            "EN_ENG"
-            "IAN_IANG"
-            "IN_ING"
-            "U_OU"
-            "UAN_UANG"
-            "C_CH"
-            "F_H"
-            "L_N"
-            "L_R"
-            "S_SH"
-            "Z_ZH"
-          ];
+            Fuzzy = {
+              Correction = "None";
+            }
+            // mkAttrTrue [
+              "VE_UE"
+            ]
+            // mkAttrFalse [
+              "NG_GN"
+              "Inner"
+              "InnerShort"
+              "PartialFinal"
+              "PartialSp"
+              "V_U"
+              "AN_ANG"
+              "EN_ENG"
+              "IAN_IANG"
+              "IN_ING"
+              "U_OU"
+              "UAN_UANG"
+              "C_CH"
+              "F_H"
+              "L_N"
+              "L_R"
+              "S_SH"
+              "Z_ZH"
+            ];
+          };
         };
       };
     };

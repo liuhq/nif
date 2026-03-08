@@ -20,7 +20,7 @@ __mrs_rule_config: &mrs_rule_config
 proxy-providers:
   TAG_NET:
     type: file
-    path: ./proxies/tag.yaml
+    path: ./proxies.yaml
     proxy: DIRECT
     size-limit: 0
     health-check:
