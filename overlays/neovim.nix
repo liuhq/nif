@@ -28,9 +28,6 @@ final: prev: {
     vimAlias = false;
     viAlias = true;
     configure = {
-      customLuaRC = ''
-        vim.opt.runtimepath:prepend "${../external/nvim}"
-      '';
       packages.bynix = with final.vimPlugins; {
         ## Get LSP completions
         # packages.bynix = with pkgs.vimPlugins; {

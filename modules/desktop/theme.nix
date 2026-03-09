@@ -46,8 +46,8 @@ in
       };
 
       xdg.data.files = {
-        # "icons/default".source = "${pkgs.bocchi-dyn-cursor}/share/icons/Bocchi";
-        # "icons/Bocchi".source = "${pkgs.bocchi-dyn-cursor}/share/icons/Bocchi";
+        "icons/default".source = "${pkgs.bocchi-dyn-cursor}/share/icons/Bocchi";
+        "icons/Bocchi".source = "${pkgs.bocchi-dyn-cursor}/share/icons/Bocchi";
         "themes/wallpaper".source = pkgs.my-wallpaper;
       };
     };

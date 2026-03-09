@@ -373,7 +373,7 @@
         "animationDisabled": false,
         "animationSpeed": 1,
         "autoStartAuth": false,
-        "avatarImage": "~/media/pictures/avatars",
+        "avatarImage": "~/.local/share/themes/avatar",
         "boxRadiusRatio": 1,
         "clockFormat": "HH\\nmm\\nddd, MMM ddh",
         "clockStyle": "custom",
@@ -631,7 +631,7 @@
     },
     "wallpaper": {
         "automationEnabled": false,
-        "directory": "~/media/pictures/wallpapers",
+        "directory": "~/.local/share/themes",
         "enableMultiMonitorDirectories": false,
         "enabled": true,
         "favorites": [
