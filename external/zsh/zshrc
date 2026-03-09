@@ -31,8 +31,6 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' rehash true
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS} "ma=48;2;59;66;82;38;2;136;192;208"
 
-eval "$(fnm env --use-on-cd --shell zsh)"
-
 ### source completions
 compdef _gdb rust-gdb
 
