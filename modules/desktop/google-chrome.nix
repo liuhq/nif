@@ -14,7 +14,7 @@ in
     environment.systemPackages = [
       (pkgs.google-chrome.override {
         commandLineArgs = lib.concatStringsSep " " [
-          "--enable-features=Vulkan,AcceleratedVideoDecodeLinuxGL,AcceleratedVideoDecodeLinuxZeroCopyGL,AcceleratedVideoEncoder,VaapiVideoDecoder,VaapiIgnoreDriverChecks,WaylandLinuxDrmSyncobj"
+          "--enable-features=AcceleratedVideoDecodeLinuxGL,AcceleratedVideoDecodeLinuxZeroCopyGL,AcceleratedVideoEncoder,VaapiVideoDecoder,VaapiIgnoreDriverChecks,WaylandLinuxDrmSyncobj"
           "--ignore-gpu-blocklist"
           "--enable-zero-copy"
 

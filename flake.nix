@@ -72,7 +72,7 @@
 
         (final: prev: { ttf-misans = final.callPackage ./pkgs/ttf-misans.nix { }; })
         (final: prev: { bocchi-dyn-cursor = final.callPackage ./pkgs/bocchi-dyn-cursor.nix { }; })
-        (final: prev: { my-wallpaper = final.callPackage ./pkgs/bocchi-dyn-cursor.nix { }; })
+        (final: prev: { my-wallpaper = final.callPackage ./pkgs/my-wallpaper.nix { }; })
       ];
 
       nixosConfigurations.wkst = mkSystem {

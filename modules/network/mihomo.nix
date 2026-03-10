@@ -10,19 +10,19 @@ let
   inherit (paths) external;
   geosite = pkgs.fetchurl {
     url = "https://raw.githubusercontent.com/liuhq/meta-rules-dat/release/geosite.dat";
-    hash = "";
+    hash = "sha256-MUro/5BakNpuKMN+QOj/sT1DBTvMQ000FH2nddP5r5U=";
     pname = "geosite";
     version = "20260308";
   };
   geoip = pkgs.fetchurl {
     url = "https://raw.githubusercontent.com/liuhq/meta-rules-dat/release/geoip.dat";
-    hash = "";
+    hash = "sha256-V8ktJgXDHQwwPwoaCAGxKkwQAOPKSeWjb+ocAV4d2k8=";
     pname = "geoip";
     version = "20260308";
   };
   country = pkgs.fetchurl {
     url = "https://raw.githubusercontent.com/liuhq/meta-rules-dat/release/country.mmdb";
-    hash = "";
+    hash = "sha256-BPR1Bjl/WWtGX/Fpz9YMQI2+B6Pl/bcgLtWwkGzofBU=";
     pname = "country";
     version = "20260308";
   };

@@ -3,12 +3,12 @@
   just --list
 
 [group('Nix')]
-rebuild-switch:
-  nixos-rebuild switch --flake .
+rebuild-switch-wkst:
+  sudo nixos-rebuild switch --flake .#wkst
 
 [group('Nix')]
-rebuild-boot:
-  nixos-rebuild boot --flake .
+rebuild-boot-wkst:
+  sudo nixos-rebuild boot --flake .#wkst
 
 [group('Nix')]
 update:

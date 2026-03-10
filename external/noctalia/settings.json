@@ -631,7 +631,7 @@
     },
     "wallpaper": {
         "automationEnabled": false,
-        "directory": "~/.local/share/themes",
+        "directory": "~/.local/share/themes/wallpaper",
         "enableMultiMonitorDirectories": false,
         "enabled": true,
         "favorites": [
