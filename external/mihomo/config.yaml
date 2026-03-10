@@ -60,7 +60,7 @@ secret: "404@mihomo"
 #================================
 #  GEO
 #================================
-geodata-mode: true
+geodata-mode: false
 geodata-loader: standard
 geo-auto-update: false
 

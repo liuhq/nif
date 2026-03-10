@@ -3,7 +3,7 @@ local M = {}
 local get_modules = require('nordust.utils').get_modules
 
 M.get = function ()
-    local higroups = vim.fn.stdpath('config_dirs') .. '/lua/nordust/higroups/lsp'
+    local higroups = vim.fn.stdpath('config_dirs')[1] .. '/lua/nordust/higroups/lsp'
     local ts_files = get_modules(higroups)
     for _, group in ipairs(ts_files) do
         --- disable a highlight by add a prefix '_' for file name

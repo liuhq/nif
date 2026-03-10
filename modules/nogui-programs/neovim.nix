@@ -2,12 +2,10 @@
   config,
   pkgs,
   lib,
-  myvar,
   paths,
   ...
 }:
 let
-  inherit (myvar) userName;
   inherit (paths) external;
 in
 {
@@ -24,5 +22,5 @@ in
   # from other packages will be used by neovim.
   environment.pathsToLink = [ "/share/nvim" ];
 
-  environment.etc."xdg/nvim/config-in-nixos".source = "${external}/nvim";
+  environment.etc."xdg/nvim".source = "${external}/nvim";
 }
