@@ -12,19 +12,17 @@ in
 {
   config = lib.mkIf cfg.enable {
     environment.systemPackages = [
-      (final: prev: {
-        google-chrome = prev.google-chrome.override {
-          commandLineArgs = lib.concatStringsSep " " [
-            "--enable-features=Vulkan,AcceleratedVideoDecodeLinuxGL,AcceleratedVideoDecodeLinuxZeroCopyGL,AcceleratedVideoEncoder,VaapiVideoDecoder,VaapiIgnoreDriverChecks,WaylandLinuxDrmSyncobj"
-            "--ignore-gpu-blocklist"
-            "--enable-zero-copy"
+      (pkgs.google-chrome.override {
+        commandLineArgs = lib.concatStringsSep " " [
+          "--enable-features=Vulkan,AcceleratedVideoDecodeLinuxGL,AcceleratedVideoDecodeLinuxZeroCopyGL,AcceleratedVideoEncoder,VaapiVideoDecoder,VaapiIgnoreDriverChecks,WaylandLinuxDrmSyncobj"
+          "--ignore-gpu-blocklist"
+          "--enable-zero-copy"
 
-            "--wayland-text-input-version=3"
-            "--wayland-linux-drm-syncobj"
+          "--wayland-text-input-version=3"
+          "--wayland-linux-drm-syncobj"
 
-            "--enable-parallel-downloading"
-          ];
-        };
+          "--enable-parallel-downloading"
+        ];
       })
     ];
 

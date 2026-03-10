@@ -28,6 +28,7 @@ final: prev: {
     vimAlias = false;
     viAlias = true;
     configure = {
+      customLuaRC = "vim.cmd [[runtime init.lua]]";
       packages.bynix = with final.vimPlugins; {
         ## Get LSP completions
         # packages.bynix = with pkgs.vimPlugins; {
@@ -45,12 +46,12 @@ final: prev: {
           nui-nvim
           nvim-autopairs
           nvim-lspconfig
-          nvim-treesitter.withAllGrammars
-          nvim-treesitter-textobjects
+          nvim-surround
+          nvim-treesitter-legacy.withAllGrammars
+          nvim-treesitter-textobjects-legacy
           nvim-ts-autotag
           nvim-web-devicons
           plenary-nvim
-          surround-nvim
           which-key-nvim
           yazi-nvim
         ];

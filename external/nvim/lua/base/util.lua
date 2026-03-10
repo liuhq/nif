@@ -27,11 +27,3 @@ ConfigUtil.icons = {
         newfile = '󰈔',
     },
 }
-
----Get Mason Packages Command Path from bin
----@param target string command name
----@return string - command path
-ConfigUtil.get_cmd_path = function (target)
-    local root = vim.fn.stdpath('data') .. '/mason/bin/'
-    return root .. target
-end

@@ -1,5 +1,4 @@
 require 'plug-deps.blink-cmp'
-require 'plug-deps.lspconfig'
 require 'plug-deps.fidget'
 require 'plug-deps.yazi'
 require 'plug-deps.treesitter'
