@@ -18,13 +18,7 @@ in
 
   config = lib.mkIf cfg.enable {
     environment.systemPackages = [
-      (pkgs.ghc.withPackages (
-        hsPkgs: with hsPkgs; [
-          turtle
-          shh
-          shh-extras
-        ]
-      ))
+      (pkgs.ghc.withPackages (hsPkgs: with hsPkgs; [ shh ]))
     ];
   };
 }

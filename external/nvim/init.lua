@@ -8,8 +8,8 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 require 'base'
-require 'plug-deps'
-require 'lsp'
-require 'plug-local'
+-- require 'plug-deps'
+-- require 'lsp'
+-- require 'plug-local'
 
 vim.cmd.colorscheme 'nordust'
