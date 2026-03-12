@@ -35,25 +35,16 @@ M.hl = function (group, fg_or_link, bg, style)
 end
 
 ---Get module files in target directory
----@param target string target directory path
+---@param target string target directory name
 ---@return table modules name
 M.get_modules = function (target)
     local files = {}
-
-    ---@diagnostic disable-next-line: undefined-field
-    if (not vim.uv.fs_stat(target)) or vim.uv.fs_stat(target).type ~= 'directory' then
-        print('Invalid directory: ' .. target)
-        return files
-    end
-
-    for name, type in vim.fs.dir(target) do
-        if type == 'file' or type == 'directory' then
-            local fname = name:gsub('%.lua$', '')
-            if fname == 'init' then
-                goto continue
-            end
-            table.insert(files, fname)
+    for _, file in ipairs(vim.api.nvim_get_runtime_file('lua/nordust/' .. target .. '/*.lua', true)) do
+        local fname = vim.fs.basename(file):match('(.+)%.lua$')
+        if fname == 'init' then
+            goto continue
         end
+        table.insert(files, fname)
         ::continue::
     end
 

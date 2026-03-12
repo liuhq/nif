@@ -1,4 +1,4 @@
-local icons = _G.ConfigUtil.icons
+local icons = ConfigUtil.icons
 local lsp_config_group = vim.api.nvim_create_augroup('LspConfig', { clear = true })
 local borders = {
     { ' ', 'NormalFloat' },
