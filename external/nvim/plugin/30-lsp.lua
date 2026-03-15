@@ -23,7 +23,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
 
         if client:supports_method('textDocument/codeAction') then
-            vim.keymap.set({ 'n', 'v' }, 'ga', vim.lsp.buf.code_action,
+            vim.keymap.set({ 'n', 'v' }, 'g.', vim.lsp.buf.code_action,
                 { desc = 'Code Action', buffer = args.buf })
         end
         --- source action that apply to the whole file
@@ -83,7 +83,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
             vim.keymap.set('n', 'gr', vim.lsp.buf.references, { desc = 'References', buffer = args.buf })
         end
         if client:supports_method('textDocument/rename') then
-            vim.keymap.set('n', 'gn', vim.lsp.buf.rename, { desc = 'Rename', buffer = args.buf })
+            vim.keymap.set('n', 'cn', vim.lsp.buf.rename, { desc = 'Rename', buffer = args.buf })
         end
         if client:supports_method('textDocument/signatureHelp') then
             -- <C-S> is also mapped in insert mode to vim.lsp.buf.signature_help()

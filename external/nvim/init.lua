@@ -217,12 +217,16 @@ keymap.set('n', '<C-Right>', '<cmd>vertical resize +2<cr>', { desc = 'Increase W
 
 --- handled by mini.bufremove
 -- keymap.set('n', '<leader>x', '<cmd>bdelete<cr>', { desc = 'Delete Buffer' })
+keymap.set('n', 'gn', '<cmd>bnext<cr>', { desc = 'Next Buffer' })
+keymap.set('n', 'gp', '<cmd>bprevious<cr>', { desc = 'Prev Buffer' })
 
-keymap.set('n', 'g.', 'gi', { desc = 'Jump to Last Insert' })
+keymap.set('n', 'g[i', 'gi', { desc = 'Jump to Last Insert' })
 
 keymap.set({ 'n', 'x' }, 'K', 'i<cr><esc>', { remap = false, silent = true })
 
 -- mock emacs in insert and cmdline
+keymap.set('i', '<C-j>', '<Down>', { remap = false, silent = true })
+keymap.set('i', '<C-k>', '<Up>', { remap = false, silent = true })
 keymap.set('i', '<C-f>', '<Right>', { remap = false, silent = true })
 keymap.set('i', '<C-b>', '<Left>', { remap = false, silent = true })
 keymap.set('i', '<C-a>', '<Home>', { remap = false, silent = true })
