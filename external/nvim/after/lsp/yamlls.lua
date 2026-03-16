@@ -1,5 +1,5 @@
 return {
-    single_file_support = true,
+    ---@type lspconfig.settings.yamlls
     settings = {
         yaml = {
             hover = true,
@@ -12,6 +12,11 @@ return {
             schemaStore = { enable = true },
             schemas = {
                 ['https://json.schemastore.org/github-workflow.json'] = '/.github/workflows/*',
+            },
+        },
+        redhat = {
+            telemetry = {
+                enabled = false,
             },
         },
     },

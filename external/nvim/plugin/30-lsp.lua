@@ -161,7 +161,6 @@ vim.api.nvim_create_autocmd('VimLeave', {
 
 ---@type vim.lsp.Config
 local base_config = {
-    root_markers = { '.git' },
     capabilities = require('blink.cmp').get_lsp_capabilities(),
 }
 

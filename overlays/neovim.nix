@@ -5,11 +5,9 @@ final: prev: {
         extraPackages = with final; [
           bash-language-server
           shfmt
+          shellcheck
 
           dot-language-server
-
-          haskell-language-server
-          ormolu
 
           lua-language-server
 

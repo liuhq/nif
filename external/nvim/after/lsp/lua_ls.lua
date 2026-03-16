@@ -32,26 +32,28 @@ return {
             },
         })
     end,
+    ---@type lspconfig.settings.lua_ls
     settings = {
-        format = {
-            enable = true,
-            defaultConfig = {
-                indent_style = 'space',
-                indent_size = '4',
-                quote_style = 'single',
-                call_arg_parentheses = 'keep',
-                continuation_indent = '4',
-                max_line_length = '120',
-                end_of_line = 'lf',
-                trailing_table_separator = 'smart',
-                space_around_table_field_list = 'true',
-                align_call_args = 'false',
-                align_function_params = 'false',
-                align_continuous_assign_statement = 'false',
-                align_continuous_rect_table_field = 'false',
-                align_array_table = 'false',
+        Lua = {
+            format = {
+                enable = true,
+                defaultConfig = {
+                    indent_style = 'space',
+                    indent_size = '4',
+                    quote_style = 'single',
+                    call_arg_parentheses = 'keep',
+                    continuation_indent = '4',
+                    max_line_length = '120',
+                    end_of_line = 'lf',
+                    trailing_table_separator = 'smart',
+                    space_around_table_field_list = 'true',
+                    align_call_args = 'false',
+                    align_function_params = 'false',
+                    align_continuous_assign_statement = 'false',
+                    align_continuous_rect_table_field = 'false',
+                    align_array_table = 'false',
+                },
             },
         },
-        Lua = {},
     },
 }

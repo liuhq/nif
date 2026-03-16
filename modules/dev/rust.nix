@@ -22,10 +22,17 @@ in
 
   config = lib.mkIf cfg.enable {
     hjem.users.${userName} = {
-      environment.sessionVariables = {
-        CARGO_HOME = "\${HOME}/.config/cargo";
-        RUSTUP_HOME = "\${HOME}/.config/rustup";
-      };
+      environment.sessionVariables =
+        let
+          CARGO_INSTALL_ROOT = "\${HOME}/.local/cargo";
+        in
+        {
+          CARGO_HOME = "\${HOME}/.config/cargo";
+          inherit CARGO_INSTALL_ROOT;
+          RUSTUP_HOME = "\${HOME}/.config/rustup";
+
+          PATH = [ CARGO_INSTALL_ROOT ];
+        };
     };
   };
 }
