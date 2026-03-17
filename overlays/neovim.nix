@@ -50,9 +50,9 @@ final: prev: {
           nvim-treesitter-textobjects-legacy
           nvim-ts-autotag
           nvim-web-devicons
+          oil-nvim
           plenary-nvim
           which-key-nvim
-          yazi-nvim
         ];
         opt = [ ];
       };
