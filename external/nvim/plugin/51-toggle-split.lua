@@ -1,4 +1,4 @@
-vim.keymap.set('n', '<C-W>t', function ()
+vim.keymap.set('n', '<C-W><C-T>', function ()
     local wins = vim.api.nvim_tabpage_list_wins(0)
     if #wins < 2 then
         vim.notify('Toggle only works with exactly 2 windows', vim.log.levels.INFO)
@@ -15,4 +15,4 @@ vim.keymap.set('n', '<C-W>t', function ()
     else
         vim.notify('Cannot determine layout', vim.log.levels.WARN)
     end
-end, { desc = 'Toggle Split Orientation' })
+end, { desc = 'Toggle split orientation' })

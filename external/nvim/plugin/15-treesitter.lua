@@ -1,46 +1,3 @@
--- local ts_lang = {
---     'astro',
---     'bash',
---     'c',
---     'caddy',
---     'commonlisp',
---     'corn',
---     'cpp',
---     'css',
---     'diff',
---     'dockerfile',
---     'dot',
---     'git_rebase',
---     'gitcommit',
---     'glsl',
---     'go',
---     'graphql',
---     'html',
---     'ini',
---     'javascript',
---     'jsdoc',
---     'json',
---     'json5',
---     'jsonc',
---     'just',
---     'lua',
---     'markdown',
---     'markdown_inline',
---     'nix',
---     'python',
---     'regex',
---     'rust',
---     'sql',
---     'toml',
---     'tsx',
---     'typescript',
---     'wgsl',
---     'xml',
---     'yaml',
--- }
-
--- require('nvim-treesitter.install').prefer_git = false
--- require('nvim-treesitter.install').compilers = { 'gcc', 'zig' }
 ---@diagnostic disable-next-line: missing-fields
 require('nvim-treesitter.configs').setup({
     -- ensure_installed = ts_lang,
@@ -88,5 +45,5 @@ require('nvim-ts-autotag').setup({
     },
 })
 
-vim.keymap.set('n', '<leader>ci', '<cmd>Inspect<cr>', { desc = 'Inspect Token' })
-vim.keymap.set('n', '<leader>ct', '<cmd>InspectTree<cr>', { desc = 'Inspect Token' })
+vim.keymap.set('n', '<leader>ai', '<cmd>Inspect<cr>', { desc = 'Inspect token' })
+vim.keymap.set('n', '<leader>at', '<cmd>InspectTree<cr>', { desc = 'Inspect token tree' })

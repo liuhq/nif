@@ -163,35 +163,35 @@ end, { silent = true, desc = 'Clear hlsearch' })
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
 keymap.set('n', 'n', function ()
     vim.api.nvim_feedkeys(vim.v.searchforward == 1 and 'n' or 'N' .. 'zv', 'n', false)
-end, { silent = true, desc = 'Better Next Search' })
+end, { silent = true, desc = 'Better next search' })
 keymap.set({ 'x', 'o' }, 'n', function ()
     vim.api.nvim_feedkeys(vim.v.searchforward == 1 and 'n' or 'N', 'n', false)
-end, { silent = true, desc = 'Better Next Search' })
+end, { silent = true, desc = 'Better next search' })
 keymap.set('n', 'N', function ()
     vim.api.nvim_feedkeys(vim.v.searchforward == 1 and 'N' or 'n' .. 'zv', 'n', false)
-end, { silent = true, desc = 'Better Prev Search' })
+end, { silent = true, desc = 'Better prev search' })
 keymap.set({ 'x', 'o' }, 'N', function ()
     vim.api.nvim_feedkeys(vim.v.searchforward == 1 and 'N' or 'n', 'n', false)
-end, { silent = true, desc = 'Better Prev Search' })
+end, { silent = true, desc = 'Better prev search' })
 
 -- without yank --
 keymap.set('x', 'd', '"_d', { remap = false, silent = true })
-keymap.set({ 'n', 'x' }, '<leader>p', '"0p', { desc = 'Paste Reg 0', remap = false, silent = true })
+keymap.set({ 'n', 'x' }, '<leader>p', '"0p', { desc = 'Paste reg 0', remap = false, silent = true })
 keymap.set({ 'n', 'x' }, 'c', '"_c', { remap = false, silent = true })
 
 -- better up/down
-keymap.set({ 'n', 'x' }, 'j', "v:count == 0 ? 'gj' : 'j'", { desc = 'Cursor Down', expr = true, silent = true })
-keymap.set({ 'n', 'x' }, 'k', "v:count == 0 ? 'gk' : 'k'", { desc = 'Cursor Up', expr = true, silent = true })
+keymap.set({ 'n', 'x' }, 'j', "v:count == 0 ? 'gj' : 'j'", { desc = 'Cursor down', expr = true, silent = true })
+keymap.set({ 'n', 'x' }, 'k', "v:count == 0 ? 'gk' : 'k'", { desc = 'Cursor up', expr = true, silent = true })
 
 -- better jump to line start/end
 -- "jump to start" handled by local-linestart-jump in normal mode
--- keymap.set('n', 'H', '^', { desc = 'Cursor Start', remap = true, silent = true })
-keymap.set('n', 'gl', '$', { desc = 'Cursor End', remap = true, silent = true })
-keymap.set('x', 'gh', '^', { desc = 'Cursor Start', remap = true, silent = true })
-keymap.set('x', 'gl', '$h', { desc = 'Cursor End', remap = true, silent = true })
+-- keymap.set('n', 'H', '^', { desc = 'Cursor start', remap = true, silent = true })
+keymap.set('n', 'gl', '$', { desc = 'Cursor end', remap = true, silent = true })
+keymap.set('x', 'gh', '^', { desc = 'Cursor start', remap = true, silent = true })
+keymap.set('x', 'gl', '$h', { desc = 'Cursor end', remap = true, silent = true })
 
 -- save file
-keymap.set('n', '<leader><cr>', '<cmd>w<cr><esc>', { desc = 'Save File' })
+keymap.set('n', '<leader><cr>', '<cmd>w<cr><esc>', { desc = 'Save file' })
 
 -- better indenting
 keymap.set('x', '<', '<gv')

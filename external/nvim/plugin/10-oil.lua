@@ -20,9 +20,9 @@ oil.setup({
     watch_for_changes = true,
     use_default_keymaps = false,
     keymaps = {
-        ['\\?'] = { 'actions.show_help', mode = 'n', desc = 'Help' },
-        ['<C-CR>'] = { 'actions.select', mode = 'n' },
-        ['\\v'] = {
+        ['g?'] = { 'actions.show_help', mode = 'n', desc = 'Help' },
+        ['L'] = { 'actions.select', mode = 'n' },
+        ['<C-W><C-V>'] = {
             function ()
                 oil.select({ vertical = true })
                 oil.close()
@@ -30,8 +30,7 @@ oil.setup({
             mode = 'n',
             desc = 'Vertical split',
         },
-        ['\\V'] = { 'actions.select', opts = { vertical = true }, mode = 'n', desc = 'Vertical split (Keep oil)' },
-        ['\\s'] = {
+        ['<C-W><C-S>'] = {
             function ()
                 oil.select({ horizontal = true })
                 oil.close()
@@ -39,19 +38,18 @@ oil.setup({
             mode = 'n',
             desc = 'Horizontal split',
         },
-        ['\\S'] = { 'actions.select', opts = { horizontal = true }, mode = 'n', desc = 'Horizontal split (Keep oil)' },
-        ['\\t'] = { 'actions.select', opts = { tab = true }, mode = 'n', desc = 'Open in new tabpage' },
-        ['\\\\'] = { 'actions.preview', mode = 'n', desc = 'Toggle Preview' },
-        ['<C-c>'] = { 'actions.close', mode = 'n', desc = 'Close oil' },
-        ['\\r'] = { 'actions.refresh', mode = 'n', desc = 'Refresh' },
-        ['<backspace>'] = { 'actions.parent', mode = 'n', desc = 'Back to parent' },
-        ['\\w'] = { 'actions.open_cwd', mode = 'n', desc = 'Open in CWD' },
-        ['\\i'] = { 'actions.cd', mode = 'n', desc = 'Change CWD' },
-        ['\\c'] = { 'actions.cd', opts = { scope = 'tab' }, mode = 'n', desc = 'Change CWD in tabpage scope' },
-        ['\\m'] = { 'actions.change_sort', mode = 'n', desc = 'Change sort mode' },
+        ['<C-T>'] = { 'actions.select', opts = { tab = true }, mode = 'n', desc = 'Open in new tabpage' },
+        ['<tab>'] = { 'actions.preview', mode = 'n', desc = 'Toggle Preview' },
+        ['<C-C>'] = { 'actions.close', mode = 'n', desc = 'Close oil' },
+        ['<\\r>'] = { 'actions.refresh', mode = 'n', desc = 'Refresh' },
+        ['H'] = { 'actions.parent', mode = 'n', desc = 'Back to parent' },
+        ['<backspace>'] = { 'actions.open_cwd', mode = 'n', desc = 'Open in CWD' },
+        ['\\\\'] = { 'actions.cd', mode = 'n', desc = 'Change CWD' },
+        ['\\='] = { 'actions.cd', opts = { scope = 'tab' }, mode = 'n', desc = 'Change CWD in tabpage scope' },
+        ['gm'] = { 'actions.change_sort', mode = 'n', desc = 'Change sort mode' },
         ['gx'] = { 'actions.open_external', mode = 'n', desc = 'Open via external' },
-        ['\\.'] = { 'actions.toggle_hidden', mode = 'n', desc = 'Toggle hidden' },
-        ['\\h'] = { 'actions.toggle_trash', mode = 'n', desc = 'Toggle trash' },
+        ['g.'] = { 'actions.toggle_hidden', mode = 'n', desc = 'Toggle hidden' },
+        ['\\d'] = { 'actions.toggle_trash', mode = 'n', desc = 'Toggle trash' },
 
         ['<leader><cr>'] = {
             function ()
@@ -67,12 +65,12 @@ oil.setup({
             mode = 'n',
             desc = 'Discard all oil changes',
         },
-        ['\\y'] = { 'actions.copy_to_system_clipboard', mode = 'n' },
-        ['\\Y'] = { 'actions.yank_entry', mode = 'n' },
-        ['\\p'] = { 'actions.paste_from_system_clipboard', opts = { delete_original = false }, mode = 'n' },
+        ['gc'] = { 'actions.copy_to_system_clipboard', mode = 'n' },
+        ['gy'] = { 'actions.yank_entry', mode = 'n' },
+        ['gp'] = { 'actions.paste_from_system_clipboard', opts = { delete_original = false }, mode = 'n' },
         ['J'] = { 'actions.preview_scroll_down', mode = 'n', desc = 'Preview scroll down' },
         ['K'] = { 'actions.preview_scroll_up', mode = 'n', desc = 'Preview scroll up' },
-        ['\\d'] = {
+        ['gd'] = {
             function ()
                 vim.g.oil_detail = not vim.g.oil_detail
                 if vim.g.oil_detail then
@@ -114,24 +112,15 @@ vim.keymap.set('n', '<leader>o', function ()
     if is_oil then
         oil.close({ exit_if_last_buf = true })
     else
-        oil.open(vim.uv.cwd())
+        oil.open(oil.get_current_dir(0), { preview = { vertical = true } })
     end
-end, { desc = 'Oil (CWD)' })
-
-vim.keymap.set('n', '<leader>e', function ()
+end, { desc = 'Oil' })
+vim.keymap.set('n', '<leader>O', function ()
     local buf_name = vim.api.nvim_buf_get_name(0)
     local is_oil = vim.startswith(buf_name, 'oil')
     if is_oil then
         oil.close({ exit_if_last_buf = true })
     else
-        oil.open(oil.get_current_dir(0))
+        oil.open(vim.uv.cwd(), { preview = { vertical = true } })
     end
-end, { desc = 'Oil' })
-
-vim.keymap.set('n', '<leader>O', function ()
-    oil.toggle_float(vim.uv.cwd(), { preview = { vertical = true } })
-end, { desc = 'Oil float (CWD)' })
-
-vim.keymap.set('n', '<leader>E', function ()
-    oil.toggle_float(oil.get_current_dir(0), { preview = { vertical = true } })
-end, { desc = 'Oil float' })
+end, { desc = 'Oil (CWD)' })

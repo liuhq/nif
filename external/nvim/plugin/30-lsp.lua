@@ -24,7 +24,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
         if client:supports_method('textDocument/codeAction') then
             vim.keymap.set({ 'n', 'v' }, 'g.', vim.lsp.buf.code_action,
-                { desc = 'Code Action', buffer = args.buf })
+                { desc = 'Code action', buffer = args.buf })
         end
         --- source action that apply to the whole file
         if client.server_capabilities.codeActionProvider ~= nil
@@ -42,7 +42,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
                             only = source_actions,
                         },
                     })
-                end, { desc = 'Source Action', buffer = args.buf })
+                end, { desc = 'Source action', buffer = args.buf })
             end
         end
         if client:supports_method('textDocument/declaration') then
@@ -58,7 +58,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
             vim.keymap.set('n', '<leader>fz', function ()
                 vim.lsp.foldclose('imports', vim.fn.bufwinid(0))
-            end, { desc = 'Fold Imports Quickly', buffer = args.buf })
+            end, { desc = 'Fold imports quickly', buffer = args.buf })
         end
         if client:supports_method('textDocument/formatting') then
             vim.bo[args.buf].formatexpr = 'v:lua.vim.lsp.formatexpr(#{timeout_ms:250})'
@@ -69,7 +69,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         if client:supports_method('textDocument/hover') then
             vim.keymap.set('n', '<leader>k', function ()
                 vim.lsp.buf.hover({ border = borders })
-            end, { desc = 'LSP Help', buffer = args.buf })
+            end, { desc = 'LSP help', buffer = args.buf })
         end
         if client:supports_method('textDocument/implementation') then
             vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { desc = 'Implementation', buffer = args.buf })
@@ -77,7 +77,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         if client:supports_method('textDocument/inlayHint') then
             vim.keymap.set('n', '<leader>ch', function ()
                 vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = args.buf }), { bufnr = args.buf })
-            end, { desc = 'Toggle InlayHint', buffer = args.buf })
+            end, { desc = 'Toggle inlayHint', buffer = args.buf })
         end
         if client:supports_method('textDocument/references') then
             vim.keymap.set('n', 'gr', vim.lsp.buf.references, { desc = 'References', buffer = args.buf })
@@ -92,20 +92,20 @@ vim.api.nvim_create_autocmd('LspAttach', {
                     border = borders,
                     title_pos = 'left',
                 })
-            end, { desc = 'Signature Help', buffer = args.buf })
+            end, { desc = 'Signature help', buffer = args.buf })
         end
         if client:supports_method('textDocument/typeDefinition*') then
-            vim.keymap.set('n', 'gy', vim.lsp.buf.type_definition, { desc = 'Type Definition', buffer = args.buf })
+            vim.keymap.set('n', 'gy', vim.lsp.buf.type_definition, { desc = 'Type definition', buffer = args.buf })
         end
 
         if client:supports_method('workspace/workspaceFolders') then
             vim.keymap.set('n', '<leader>fa', vim.lsp.buf.add_workspace_folder,
-                { desc = 'Add Workspace Folder', buffer = args.buf })
+                { desc = 'Add workspace folder', buffer = args.buf })
             vim.keymap.set('n', '<leader>fr', vim.lsp.buf.remove_workspace_folder,
-                { desc = 'Remove Workspace Folder', buffer = args.buf })
+                { desc = 'Remove workspace folder', buffer = args.buf })
             vim.keymap.set('n', '<leader>fl', function ()
                 print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-            end, { desc = 'List Workspace Folders', buffer = args.buf })
+            end, { desc = 'List workspace folders', buffer = args.buf })
         end
 
         if client:supports_method('textDocument/publishDiagnostics') then
@@ -135,7 +135,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
                 severity_sort = true,
             }, vim.lsp.diagnostic.get_namespace(args.data.client_id))
 
-            vim.keymap.set('n', '<leader>dd', vim.diagnostic.open_float, { desc = 'Diagnostic Info', buffer = args.buf })
+            vim.keymap.set('n', '<leader>dd', vim.diagnostic.open_float, { desc = 'Diagnostic info', buffer = args.buf })
             vim.keymap.set('n', '<leader>dh', function ()
                 vim.notify(vim.diagnostic.is_enabled({ bufnr = args.buf })
                     and 'Diagnostic: disabled'
@@ -143,7 +143,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
                     vim.log.levels.INFO,
                     { group = 'Diagnostic Show', skip_history = true })
                 vim.diagnostic.enable(not vim.diagnostic.is_enabled({ bufnr = args.buf }), { bufnr = args.buf })
-            end, { desc = 'Toggle Diagnostic', buffer = args.buf })
+            end, { desc = 'Toggle diagnostic', buffer = args.buf })
         end
 
         vim.bo[args.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
@@ -173,12 +173,10 @@ vim.lsp.enable({
     'denols',
     'dotls',
     'eslint',
-    'hls',
     'html',
     'jsonls',
     'lua_ls',
     'nixd',
-    'rust_analyzer',
     'tailwindcss',
     'taplo',
     'ts_ls',
