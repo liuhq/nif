@@ -16,7 +16,12 @@ in
   config = lib.mkIf cfg.enable {
     environment.systemPackages = [
       inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
+      # For show-keys plugin
+      pkgs.evtest
     ];
+
+    # For show-keys plugin
+    users.users.${userName}.extraGroups = [ "input" ];
 
     hjem.users.${userName}.xdg.config.files = {
       "noctalia/colors.json" = {

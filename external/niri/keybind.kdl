@@ -70,10 +70,6 @@ binds {
     Mod+Shift+Slash hotkey-overlay-title="Notification History" { spawn-sh "noctalia-shell ipc call notifications toggleHistory"; }
     Mod+Ctrl+Slash hotkey-overlay-title="Clear Notification History" { spawn-sh "noctalia-shell ipc call notifications clear"; }
 
-    // #"Desktop"
-    Mod+B hotkey-overlay-title="Toggle Desktop Widgets" { spawn-sh "noctalia-shell ipc call desktopWidgets toggle"; }
-    Mod+Ctrl+B hotkey-overlay-title="Edit Desktop Widgets" { spawn-sh "noctalia-shell ipc call desktopWidgets edit"; }
-
     Mod+R hotkey-overlay-title="Random Wallpaper" { spawn-sh "noctalia-shell ipc call wallpaper random"; }
 
     Mod+Backspace hotkey-overlay-title=null repeat=false { toggle-overview; }
@@ -108,7 +104,7 @@ binds {
 
     // #"Screencast"
     Mod+Insert repeat=false hotkey-overlay-title="Screencast On/Off" { spawn-sh "noctalia-shell ipc call plugin:screen-recorder toggle"; }
-    Mod+Ctrl+Insert repeat=false hotkey-overlay-title="Screencast Settingsf" { spawn-sh "noctalia-shell ipc call plugin openSettings screen-recorder"; }
+    Mod+Ctrl+Insert repeat=false hotkey-overlay-title="Screencast Settings" { spawn-sh "noctalia-shell ipc call plugin openSettings screen-recorder"; }
     Mod+F4 repeat=false hotkey-overlay-title="Set Dynamic Cast Window" { spawn-sh "niri msg action set-dynamic-cast-window --id $(niri msg --json pick-window | jq .id)"; }
     Mod+Shift+F4 repeat=false hotkey-overlay-title="Clear Dynamic Cast Target" { spawn-sh "niri msg action clear-dynamic-cast-target"; }
 
@@ -116,5 +112,6 @@ binds {
     Mod+F1 hotkey-overlay-title="Keybind Cheatsheet" { spawn-sh "noctalia-shell ipc call plugin togglePanel keybind-cheatsheet"; }
     Mod+F2 repeat=false hotkey-overlay-title="Focus Window Info" { spawn "foot" "--hold" "zsh" "-c" "niri msg focused-window"; }
     Mod+Shift+I hotkey-overlay-title="Toggle Idle Inhibitor" { spawn-sh "noctalia-shell ipc call idleInhibitor toggle"; }
+    Mod+Y { spawn-sh "noctalia-shell ipc call plugin:show-keys toggle"; }
 }
 

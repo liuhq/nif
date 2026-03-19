@@ -8,7 +8,7 @@
 let
   cfg = config.mymod.desktop;
   inherit (myvar) userName;
-  colors = {
+  colors-dark = {
     background = "242933";
     cursor = "242933 D8DEE9";
 
@@ -47,7 +47,7 @@ in
           hide-when-typing = "yes";
         };
 
-        inherit colors;
+        inherit colors-dark;
 
         key-bindings = {
           scrollback-up-page = "Shift+Page_Up Shift+KP_Page_Up";
