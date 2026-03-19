@@ -52,6 +52,7 @@ final: prev: {
           nvim-web-devicons
           oil-nvim
           plenary-nvim
+          rustaceanvim
           which-key-nvim
         ];
         opt = [ ];

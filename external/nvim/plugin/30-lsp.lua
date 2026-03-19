@@ -173,6 +173,7 @@ vim.lsp.enable({
     'denols',
     'dotls',
     'eslint',
+    'gdscript',
     'html',
     'jsonls',
     'lua_ls',
