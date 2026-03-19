@@ -4,6 +4,7 @@ environment {
     CLUTTER_BACKEND "wayland"
 }
 
+spawn-at-startup "noctalia-shell"
 spawn-sh-at-startup "sleep 2s; setxkbmap -option caps:swapescape"
 
 prefer-no-csd
@@ -39,6 +40,9 @@ input {
     mouse { accel-speed 0.0; }
     touchpad { off; }
     trackpoint { off; }
+    trackball { off; }
+    tablet { off; }
+    touch { off; }
 
     warp-mouse-to-focus mode="center-xy"
 }
@@ -113,6 +117,8 @@ animations {
     // Slow down all animations by this factor. Values below 1 speed them up instead.
     // slowdown 3.0
 }
+
+recent-windows { off; }
 
 debug {
     // Noctalia: Allows notification actions and window activation from Noctalia.
