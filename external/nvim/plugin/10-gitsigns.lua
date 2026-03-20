@@ -58,5 +58,3 @@ require('gitsigns').setup({
         vim.keymap.set('n', '<leader>gs', gs.stage_hunk, { buffer = bufnr, desc = 'Toggle staged hunk' })
     end,
 })
-
-vim.keymap.set('n', '<leader>gh', '<cmd>Gitsigns toggle_signs<cr>', { desc = 'Toggle git signs' })

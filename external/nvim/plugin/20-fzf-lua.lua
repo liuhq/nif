@@ -1,6 +1,15 @@
 local icons = ConfigUtil.icons
 
-require('fzf-lua').setup({
+local fzf = require('fzf-lua')
+
+---@param key string
+---@param action string|function
+---@param desc string
+local keyset = function (key, action, desc)
+    vim.keymap.set('n', key, action, { desc })
+end
+
+fzf.setup({
     winopts = {
         row = 0.50,
         col = 0.50,
@@ -25,45 +34,55 @@ require('fzf-lua').setup({
             ['Info'] = { text = icons.diagnostics.Info },
         },
     },
+    ui_select = true,
 })
 
-vim.keymap.set('n', '<leader><space>', function ()
-    require('fzf-lua').files()
-end, { desc = 'Files' })
-vim.keymap.set('n', '<leader>b', function ()
-    require('fzf-lua').buffers()
-end, { desc = 'Buffers' })
-vim.keymap.set('n', '<leader>fs', function ()
-    require('fzf-lua').treesitter()
-end, { desc = 'Treesitter symbols' })
-vim.keymap.set('n', '<leader>ft', function ()
-    require('fzf-lua').filetypes()
-end, { desc = 'Filetypes' })
-vim.keymap.set('n', '<leader>ss', function ()
-    require('fzf-lua').grep()
-end, { desc = 'Grep' })
-vim.keymap.set('n', '<leader>sS', function ()
-    require('fzf-lua').live_grep()
-end, { desc = 'Live grep current project' })
-vim.keymap.set('n', '<leader>sc', function ()
-    require('fzf-lua').grep_cword()
-end, { desc = 'Search word under cursor' })
-vim.keymap.set('n', '<leader>cr', function ()
-    require('fzf-lua').lsp_references({ ignore_current_line = true })
-end, { desc = 'LSP references' })
-vim.keymap.set('n', '<leader>cd', function ()
-    require('fzf-lua').lsp_document_symbols()
-end, { desc = 'LSP document symbols' })
-vim.keymap.set('n', '<leader>df', function ()
-    require('fzf-lua').diagnostics_document()
-end, { desc = 'Current file diagnostics' })
-vim.keymap.set('n', '<leader>dw', function ()
-    require('fzf-lua').diagnostics_workspace()
-end, { desc = 'Workspace diagnostics' })
+--- Buffers and Files
+keyset('<leader><space>', fzf.files, '[FZF] Files')
+keyset('<leader>b', fzf.buffers, '[FZF] Buffers')
+keyset('<leader>tt', fzf.tabs, '[FZF] Tabs')
+keyset('<leader>fq', fzf.quickfix, '[FZF] Quickfix list')
+--- Search
+keyset('<leader>ss', fzf.grep, '[FZF] Grep')
+keyset('<leader>sS', fzf.live_grep, '[FZF] Live grep current project')
+keyset('<leader>sg', fzf.live_grep_glob, '[FZF] Live grep with glob')
+keyset('<leader>sb', fzf.grep_curbuf, '[FZF] Search current buffer')
+keyset('<leader>sB', fzf.lgrep_curbuf, '[FZF] Live grep current buffer')
+keyset('<leader>sc', fzf.grep_cword, '[FZF] Search word under cursor')
+keyset('<leader>sv', fzf.grep_visual, '[FZF] Search visual selection')
+--- tags
+keyset('<leader>ct', fzf.tags, '[FZF] Search project tags')
+keyset('<leader>cT', fzf.btags, '[FZF] Search buffer tags')
+--- git
+keyset('<leader>gg', fzf.git_status, '[FZF] git status')
+keyset('<leader>gw', fzf.git_worktrees, '[FZF] git worktrees')
+keyset('<leader>gh', fzf.git_stash, '[FZF] git stash')
+--- LSP
+keyset('<leader>cr', function ()
+    fzf.lsp_references({ ignore_current_line = true })
+end, '[FZF] LSP references')
+keyset('<leader>cd', fzf.lsp_document_symbols, '[FZF] LSP document symbols')
+keyset('<leader>df', fzf.diagnostics_document, '[FZF] Current file diagnostics')
+keyset('<leader>dw', fzf.diagnostics_workspace, '[FZF] Workspace diagnostics')
+--- Misc
+keyset('<leader>ah', fzf.highlights, '[FZF] Highlight groups')
+keyset('<leader>ac', fzf.commands, '[FZF] Commands')
+keyset('<leader>ao', fzf.nvim_options, '[FZF] Options')
+keyset('<leader>ak', fzf.keymaps, '[FZF] Key mappings')
+keyset('<leader>ft', fzf.filetypes, '[FZF] Filetypes')
+keyset('<leader>cp', fzf.spellcheck, '[FZF] Spellcheck')
+keyset('<leader>cP', fzf.spell_suggest, '[FZF] Spell suggest')
+--- nvim-dap
+keyset('<leader>v<cr>', fzf.dap_commands, '[FZF] Dap commands')
+keyset('<leader>vq', fzf.dap_configurations, '[FZF] Dap configurations')
+keyset('<leader>vo', fzf.dap_breakpoints, '[FZF] Dap breakpoints')
+keyset('<leader>va', fzf.dap_variables, '[FZF] Dap variables')
+keyset('<leader>vs', fzf.dap_frames, '[FZF] Dap frames')
+--- Completion Functions
 vim.keymap.set({ 'x', 'i' }, '<C-p>', function ()
     local save_dir = vim.fn.chdir(vim.fn.expand('%:p:h'))
     if save_dir ~= '' then
-        require('fzf-lua').complete_path()
+        fzf.complete_path()
         vim.fn.chdir(save_dir)
     end
-end, { desc = 'Fuzzy complete path' })
+end, { desc = '[FZF] Fuzzy complete path' })

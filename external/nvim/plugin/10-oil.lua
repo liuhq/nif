@@ -14,6 +14,7 @@ local oil = require('oil')
 
 oil.setup({
     delete_to_trash = true,
+    columns = {},
     lsp_file_methods = {
         autosave_changes = 'unmodified',
     },
@@ -74,9 +75,9 @@ oil.setup({
             function ()
                 vim.g.oil_detail = not vim.g.oil_detail
                 if vim.g.oil_detail then
-                    oil.set_columns({ 'icon', 'permissions', 'size', 'mtime' })
+                    oil.set_columns({ 'permissions', 'size', 'mtime' })
                 else
-                    oil.set_columns({ 'icon' })
+                    oil.set_columns({})
                 end
             end,
             mode = 'n',

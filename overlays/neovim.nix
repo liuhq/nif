@@ -44,6 +44,8 @@ final: prev: {
           mini-indentscope
           nui-nvim
           nvim-autopairs
+          nvim-dap
+          nvim-dap-view
           nvim-lspconfig
           nvim-surround
           nvim-treesitter-legacy.withAllGrammars
