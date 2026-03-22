@@ -4,8 +4,7 @@
 
   environment.systemPackages = with pkgs; [
     parted
-    btrfs-progs
-    compsize
+    xfsprogs
 
     iwd
     dig
