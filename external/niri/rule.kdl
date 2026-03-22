@@ -68,7 +68,7 @@ window-rule {
 
 window-rule {
     match app-id="com.saivert.pwvucontrol"
-    match app-id="org.pipewire.Helvum"
+    match app-id="io.github.dp0sk.Crosspipe"
     match app-id="org.telegram.desktop" title="Media viewer"
     match app-id="QQ" title="图片查看器"
     match app-id="QQ" title=r#"群公告*"#

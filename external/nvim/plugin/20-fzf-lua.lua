@@ -1,13 +1,7 @@
 local icons = ConfigUtil.icons
+local set = vim.keymap.set
 
 local fzf = require('fzf-lua')
-
----@param key string
----@param action string|function
----@param desc string
-local keyset = function (key, action, desc)
-    vim.keymap.set('n', key, action, { desc })
-end
 
 fzf.setup({
     winopts = {
@@ -38,48 +32,48 @@ fzf.setup({
 })
 
 --- Buffers and Files
-keyset('<leader><space>', fzf.files, '[FZF] Files')
-keyset('<leader>b', fzf.buffers, '[FZF] Buffers')
-keyset('<leader>tt', fzf.tabs, '[FZF] Tabs')
-keyset('<leader>fq', fzf.quickfix, '[FZF] Quickfix list')
+set('n', '<leader><space>', fzf.files, { desc = '[FZF] Files' })
+set('n', '<leader>b', fzf.buffers, { desc = '[FZF] Buffers' })
+set('n', '<leader>tt', fzf.tabs, { desc = '[FZF] Tabs' })
+set('n', '<leader>fq', fzf.quickfix, { desc = '[FZF] Quickfix list' })
 --- Search
-keyset('<leader>ss', fzf.grep, '[FZF] Grep')
-keyset('<leader>sS', fzf.live_grep, '[FZF] Live grep current project')
-keyset('<leader>sg', fzf.live_grep_glob, '[FZF] Live grep with glob')
-keyset('<leader>sb', fzf.grep_curbuf, '[FZF] Search current buffer')
-keyset('<leader>sB', fzf.lgrep_curbuf, '[FZF] Live grep current buffer')
-keyset('<leader>sc', fzf.grep_cword, '[FZF] Search word under cursor')
-keyset('<leader>sv', fzf.grep_visual, '[FZF] Search visual selection')
+set('n', '<leader>ss', fzf.grep, { desc = '[FZF] Grep' })
+set('n', '<leader>sS', fzf.live_grep, { desc = '[FZF] Live grep current project' })
+set('n', '<leader>sg', fzf.live_grep_glob, { desc = '[FZF] Live grep with glob' })
+set('n', '<leader>sb', fzf.grep_curbuf, { desc = '[FZF] Search current buffer' })
+set('n', '<leader>sB', fzf.lgrep_curbuf, { desc = '[FZF] Live grep current buffer' })
+set('n', '<leader>sc', fzf.grep_cword, { desc = '[FZF] Search word under cursor' })
+set('n', '<leader>sv', fzf.grep_visual, { desc = '[FZF] Search visual selection' })
 --- tags
-keyset('<leader>ct', fzf.tags, '[FZF] Search project tags')
-keyset('<leader>cT', fzf.btags, '[FZF] Search buffer tags')
+set('n', '<leader>ct', fzf.tags, { desc = '[FZF] Search project tags' })
+set('n', '<leader>cT', fzf.btags, { desc = '[FZF] Search buffer tags' })
 --- git
-keyset('<leader>gg', fzf.git_status, '[FZF] git status')
-keyset('<leader>gw', fzf.git_worktrees, '[FZF] git worktrees')
-keyset('<leader>gh', fzf.git_stash, '[FZF] git stash')
+set('n', '<leader>gg', fzf.git_status, { desc = '[FZF] git status' })
+set('n', '<leader>gw', fzf.git_worktrees, { desc = '[FZF] git worktrees' })
+set('n', '<leader>gh', fzf.git_stash, { desc = '[FZF] git stash' })
 --- LSP
-keyset('<leader>cr', function ()
+set('n', '<leader>cr', function ()
     fzf.lsp_references({ ignore_current_line = true })
-end, '[FZF] LSP references')
-keyset('<leader>cd', fzf.lsp_document_symbols, '[FZF] LSP document symbols')
-keyset('<leader>df', fzf.diagnostics_document, '[FZF] Current file diagnostics')
-keyset('<leader>dw', fzf.diagnostics_workspace, '[FZF] Workspace diagnostics')
+end, { desc = '[FZF] LSP references' })
+set('n', '<leader>cd', fzf.lsp_document_symbols, { desc = '[FZF] LSP document symbols' })
+set('n', '<leader>df', fzf.diagnostics_document, { desc = '[FZF] Current file diagnostics' })
+set('n', '<leader>dw', fzf.diagnostics_workspace, { desc = '[FZF] Workspace diagnostics' })
 --- Misc
-keyset('<leader>ah', fzf.highlights, '[FZF] Highlight groups')
-keyset('<leader>ac', fzf.commands, '[FZF] Commands')
-keyset('<leader>ao', fzf.nvim_options, '[FZF] Options')
-keyset('<leader>ak', fzf.keymaps, '[FZF] Key mappings')
-keyset('<leader>ft', fzf.filetypes, '[FZF] Filetypes')
-keyset('<leader>cp', fzf.spellcheck, '[FZF] Spellcheck')
-keyset('<leader>cP', fzf.spell_suggest, '[FZF] Spell suggest')
+set('n', '<leader>ah', fzf.highlights, { desc = '[FZF] Highlight groups' })
+set('n', '<leader>ac', fzf.commands, { desc = '[FZF] Commands' })
+set('n', '<leader>ao', fzf.nvim_options, { desc = '[FZF] Options' })
+set('n', '<leader>ak', fzf.keymaps, { desc = '[FZF] Key mappings' })
+set('n', '<leader>ft', fzf.filetypes, { desc = '[FZF] Filetypes' })
+set('n', '<leader>cp', fzf.spellcheck, { desc = '[FZF] Spellcheck' })
+set('n', '<leader>cP', fzf.spell_suggest, { desc = '[FZF] Spell suggest' })
 --- nvim-dap
-keyset('<leader>v<cr>', fzf.dap_commands, '[FZF] Dap commands')
-keyset('<leader>vq', fzf.dap_configurations, '[FZF] Dap configurations')
-keyset('<leader>vo', fzf.dap_breakpoints, '[FZF] Dap breakpoints')
-keyset('<leader>va', fzf.dap_variables, '[FZF] Dap variables')
-keyset('<leader>vs', fzf.dap_frames, '[FZF] Dap frames')
+set('n', '<leader>v<cr>', fzf.dap_commands, { desc = '[FZF] Dap commands' })
+set('n', '<leader>vq', fzf.dap_configurations, { desc = '[FZF] Dap configurations' })
+set('n', '<leader>vo', fzf.dap_breakpoints, { desc = '[FZF] Dap breakpoints' })
+set('n', '<leader>va', fzf.dap_variables, { desc = '[FZF] Dap variables' })
+set('n', '<leader>vs', fzf.dap_frames, { desc = '[FZF] Dap frames' })
 --- Completion Functions
-vim.keymap.set({ 'x', 'i' }, '<C-p>', function ()
+set({ 'x', 'i' }, '<C-p>', function ()
     local save_dir = vim.fn.chdir(vim.fn.expand('%:p:h'))
     if save_dir ~= '' then
         fzf.complete_path()

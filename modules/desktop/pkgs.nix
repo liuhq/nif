@@ -17,7 +17,7 @@ in
       game-devices-udev-rules
       gnome-calculator
       gnome-characters
-      helvum
+      crosspipe
       papers
       spotify
     ];
