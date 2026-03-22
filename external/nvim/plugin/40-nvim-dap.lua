@@ -37,7 +37,9 @@ vim.keymap.set('n', '<leader>vC', dap.run_to_cursor, { desc = 'Run to cursor' })
 
 --- nvim-dap-view
 dap_view.setup({
-    controls = { enabled = true },
+    winbar = {
+        controls = { enabled = true },
+    },
 })
 
 vim.keymap.set('n', '<leader>vv', dap_view.toggle, { desc = 'Toggle dap view' })
