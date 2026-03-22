@@ -26,22 +26,27 @@ in
     hjem.users.${userName}.xdg.config.files = {
       "noctalia/colors.json" = {
         source = "${external}/noctalia/colors.json";
+        type = "copy";
         permissions = "440";
       };
       "noctalia/plugins.json" = {
         source = "${external}/noctalia/plugins.json";
+        type = "copy";
         permissions = "440";
       };
       "noctalia/settings.json" = {
         source = "${external}/noctalia/settings.json";
+        type = "copy";
         permissions = "440";
       };
       "noctalia/plugins/privacy-indicator/settings.json" = {
         source = "${external}/noctalia/plugins/privacy-indicator/settings.json";
+        type = "copy";
         permissions = "440";
       };
       "noctalia/plugins/screen-recorder/settings.json" = {
         source = "${external}/noctalia/plugins/screen-recorder/settings.json";
+        type = "copy";
         permissions = "440";
       };
     };
