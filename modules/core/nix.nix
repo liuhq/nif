@@ -18,7 +18,7 @@ in
 
   nix.gc = {
     automatic = true;
-    dates = "weekly";
+    dates = "14d";
     options = "--delete-older-than 7d";
   };
 

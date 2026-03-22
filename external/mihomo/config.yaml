@@ -240,6 +240,9 @@ proxy-groups:
 #  Rules
 #================================
 rules:
+  - DOMAIN,ad.qq.com,DIRECT
+  - DOMAIN,sso.e.qq.com,DIRECT
+
   - GEOSITE,category-ads-all,REJECT
   - GEOSITE,private,DIRECT
   - GEOIP,private,DIRECT,no-resolve
