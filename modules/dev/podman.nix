@@ -27,7 +27,10 @@ in
           # Required for containers under podman-compose to be able to talk to each other.
           dns_enabled = true;
         };
-        autoPrune = true;
+        autoPrune = {
+          enable = true;
+          dates = "14d";
+        };
 
         networkSocket.openFirewall = true;
       };
