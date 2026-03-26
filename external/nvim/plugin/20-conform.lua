@@ -14,6 +14,7 @@ require('conform').setup({
         json = js_fmt_config,
         jsonc = js_fmt_config,
         yaml = { 'dprint', 'yamlfmt', stop_after_first = true },
+        markdown = js_fmt_config,
     },
     default_format_opts = {
         lsp_format = 'fallback',
