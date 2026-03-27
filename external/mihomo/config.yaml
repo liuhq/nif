@@ -266,6 +266,7 @@ rules:
   - GEOSITE,twitch,JP
   - GEOSITE,github,JP
   - GEOSITE,mozilla,JP
+  - GEOSITE,patreon,HK
   - GEOSITE,telegram,HK
   - GEOSITE,flatpak,HK
   - GEOSITE,dlsite,HK
