@@ -11,15 +11,15 @@ binds {
     Mod+Ctrl+K repeat=false { move-window-up; }
     Mod+Ctrl+J repeat=false { move-window-down; }
 
-    Mod+BracketLeft repeat=false hotkey-overlay-title=null { consume-or-expel-window-left; }
-    Mod+BracketRight repeat=false hotkey-overlay-title=null { consume-or-expel-window-right; }
+    Mod+BracketLeft repeat=false { consume-or-expel-window-left; }
+    Mod+BracketRight repeat=false { consume-or-expel-window-right; }
     Mod+I repeat=false  { consume-window-into-column; }
     Mod+O repeat=false { expel-window-from-column; }
 
     Mod+Shift+C { center-window; }
 
-    Mod+Shift+Grave hotkey-overlay-title=null { toggle-window-floating; }
-    Mod+Grave hotkey-overlay-title=null { switch-focus-between-floating-and-tiling; }
+    Mod+Shift+Grave { toggle-window-floating; }
+    Mod+Grave { switch-focus-between-floating-and-tiling; }
 
     // #"Column"
     Mod+H { focus-column-left-or-last; }
@@ -27,8 +27,8 @@ binds {
     Mod+Ctrl+H repeat=false { move-column-left; }
     Mod+Ctrl+L repeat=false { move-column-right; }
 
-    Mod+Shift+WheelScrollUp hotkey-overlay-title=null cooldown-ms=250 { focus-column-left; }
-    Mod+Shift+WheelScrollDown hotkey-overlay-title=null cooldown-ms=250 { focus-column-right; }
+    Mod+Shift+WheelScrollUp cooldown-ms=250 { focus-column-left; }
+    Mod+Shift+WheelScrollDown cooldown-ms=250 { focus-column-right; }
     Mod+Ctrl+Shift+WheelScrollUp cooldown-ms=250 { move-column-left; }
     Mod+Ctrl+Shift+WheelScrollDown cooldown-ms=250 { move-column-right; }
 
@@ -50,7 +50,7 @@ binds {
     Mod+Ctrl+WheelScrollDown cooldown-ms=250 { move-column-to-workspace-down; }
 
     // #"Size"
-    Mod+Tab repeat=false hotkey-overlay-title=null { switch-preset-column-width; }
+    Mod+Tab repeat=false { switch-preset-column-width; }
     Mod+Shift+Tab repeat=false { switch-preset-window-height; }
     Mod+0 { reset-window-height; }
     Mod+Minus { set-column-width "-10%"; }
@@ -72,12 +72,12 @@ binds {
 
     Mod+R hotkey-overlay-title="Random Wallpaper" { spawn-sh "noctalia-shell ipc call wallpaper random"; }
 
-    Mod+Backspace hotkey-overlay-title=null repeat=false { toggle-overview; }
+    Mod+Backspace repeat=false { toggle-overview; }
 
     // #"Run"
-    Mod+Return hotkey-overlay-title=null { spawn "foot"; }
-    Mod+Q repeat=false hotkey-overlay-title=null { spawn "gnome-calculator" "-m" "basic"; }
-    Mod+W repeat=false hotkey-overlay-title=null { spawn "google-chrome-stable"; }
+    Mod+Return hotkey-overlay-title="Terminal" { spawn "foot"; }
+    Mod+Q repeat=false hotkey-overlay-title="Calculator" { spawn "gnome-calculator" "-m" "basic"; }
+    Mod+W repeat=false hotkey-overlay-title="Browser" { spawn "google-chrome-stable"; }
 
     // #"Panel"
     Mod+Delete hotkey-overlay-title="Session Menu" { spawn-sh "noctalia-shell ipc call sessionMenu toggle"; }
@@ -112,6 +112,6 @@ binds {
     Mod+F1 hotkey-overlay-title="Keybind Cheatsheet" { spawn-sh "noctalia-shell ipc call plugin togglePanel keybind-cheatsheet"; }
     Mod+F2 repeat=false hotkey-overlay-title="Focus Window Info" { spawn "foot" "--hold" "zsh" "-c" "niri msg focused-window"; }
     Mod+Shift+I hotkey-overlay-title="Toggle Idle Inhibitor" { spawn-sh "noctalia-shell ipc call idleInhibitor toggle"; }
-    Mod+Y { spawn-sh "noctalia-shell ipc call plugin:show-keys toggle"; }
+    Mod+Y hotkey-overlay-title="Show Pressed Keys" { spawn-sh "noctalia-shell ipc call plugin:show-keys toggle"; }
 }
 
