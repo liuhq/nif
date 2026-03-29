@@ -15,6 +15,7 @@ require('conform').setup({
         jsonc = js_fmt_config,
         yaml = { 'dprint', 'yamlfmt', stop_after_first = true },
         markdown = js_fmt_config,
+        sql = { 'dprint', 'deno_fmt', stop_after_first = true },
     },
     default_format_opts = {
         lsp_format = 'fallback',
@@ -61,7 +62,7 @@ require('conform').setup({
             end,
         },
         deno_fmt = {
-            append_args = { '--indent-width', '2', '--no-semicolons', '--single-quote' },
+            append_args = { '--no-semicolons', '--unstable-component', '--unstable-sql' },
         },
     },
 })
