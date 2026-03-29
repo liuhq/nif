@@ -42,15 +42,15 @@ oil.setup({
         ['<C-T>'] = { 'actions.select', opts = { tab = true }, mode = 'n', desc = 'Open in new tabpage' },
         ['<tab>'] = { 'actions.preview', mode = 'n', desc = 'Toggle Preview' },
         ['<C-C>'] = { 'actions.close', mode = 'n', desc = 'Close oil' },
-        ['<\\r>'] = { 'actions.refresh', mode = 'n', desc = 'Refresh' },
+        ['gr'] = { 'actions.refresh', mode = 'n', desc = 'Refresh' },
         ['H'] = { 'actions.parent', mode = 'n', desc = 'Back to parent' },
         ['<backspace>'] = { 'actions.open_cwd', mode = 'n', desc = 'Open in CWD' },
-        ['\\\\'] = { 'actions.cd', mode = 'n', desc = 'Change CWD' },
-        ['\\='] = { 'actions.cd', opts = { scope = 'tab' }, mode = 'n', desc = 'Change CWD in tabpage scope' },
+        ['gc'] = { 'actions.cd', mode = 'n', desc = 'Change CWD' },
+        ['gt'] = { 'actions.cd', opts = { scope = 'tab' }, mode = 'n', desc = 'Change CWD in tabpage scope' },
         ['gm'] = { 'actions.change_sort', mode = 'n', desc = 'Change sort mode' },
         ['gx'] = { 'actions.open_external', mode = 'n', desc = 'Open via external' },
         ['g.'] = { 'actions.toggle_hidden', mode = 'n', desc = 'Toggle hidden' },
-        ['\\d'] = { 'actions.toggle_trash', mode = 'n', desc = 'Toggle trash' },
+        ['\\\\'] = { 'actions.toggle_trash', mode = 'n', desc = 'Toggle trash' },
 
         ['<leader><cr>'] = {
             function ()
@@ -66,9 +66,7 @@ oil.setup({
             mode = 'n',
             desc = 'Discard all oil changes',
         },
-        ['gc'] = { 'actions.copy_to_system_clipboard', mode = 'n' },
         ['gy'] = { 'actions.yank_entry', mode = 'n' },
-        ['gp'] = { 'actions.paste_from_system_clipboard', opts = { delete_original = false }, mode = 'n' },
         ['J'] = { 'actions.preview_scroll_down', mode = 'n', desc = 'Preview scroll down' },
         ['K'] = { 'actions.preview_scroll_up', mode = 'n', desc = 'Preview scroll up' },
         ['gd'] = {
