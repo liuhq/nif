@@ -12,6 +12,7 @@ final: prev: {
           lua-language-server
 
           nixd
+          nixfmt
 
           taplo
 

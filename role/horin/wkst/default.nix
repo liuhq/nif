@@ -9,7 +9,7 @@ let
 in
 {
   imports = [
-    # ./hardware-configuration.nix
+    ./hardware-configuration.nix
   ];
 
   mymod.cpu.intel.enable = true;

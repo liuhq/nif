@@ -4,6 +4,18 @@ local set = vim.keymap.set
 local fzf = require('fzf-lua')
 
 fzf.setup({
+    fzf_opts = {
+        ['--marker'] = '+',
+        ['--marker-multi-line'] = '+│└',
+        ['--pointer'] = '▌',
+        ['--separator'] = '─',
+        ['--scrollbar'] = '│',
+        ['--info'] = 'right',
+        ['--multi'] = true,
+    },
+    fzf_colors = {
+        true,
+    },
     winopts = {
         row = 0.50,
         col = 0.50,

@@ -51,7 +51,7 @@ in
       };
     };
 
-    environment.sessionVariables = {
+    environment.variables = {
       QS_ICON_THEME = "Colloid-Nord-Dark";
     };
   };
