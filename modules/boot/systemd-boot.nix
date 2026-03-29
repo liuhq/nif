@@ -15,7 +15,7 @@ in
   config = lib.mkIf cfg.enable {
     boot.loader.systemd-boot = {
       enable = true;
-      configurationLimit = 5;
+      configurationLimit = 10;
     };
 
     boot.loader.efi.canTouchEfiVariables = true;

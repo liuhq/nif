@@ -7,13 +7,14 @@
 }:
 let
   inherit (myvar) userName;
+  hjemCfg = config.hjem.users.${userName};
 in
 {
-  environment.systemPackages = [ pkgs.gnupg ];
+  programs.gnupg.agent.enable = true;
 
   hjem.users.${userName} = {
     environment.sessionVariables = {
-      GNUPGHOME = "\${XDG_CONFIG_HOME}/gnupg";
+      GNUPGHOME = "${hjemCfg.xdg.config.directory}/gnupg";
       GPG_TTY = "\$(tty)";
     };
   };

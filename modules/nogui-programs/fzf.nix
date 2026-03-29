@@ -7,6 +7,7 @@
 }:
 let
   inherit (myvar) userName;
+  hjemCfg = config.hjem.users.${userName};
 in
 {
   programs.fzf = {
@@ -17,7 +18,7 @@ in
   hjem.users.${userName} = {
     environment.sessionVariables = {
       FZF_DEFAULT_COMMAND = ''${lib.getExe pkgs.fd} --type f --hidden --exclude ".git" --exclude "node_modules" --exclude ".cache"'';
-      FZF_DEFAULT_OPTS_FILE = "\${XDG_CONFIG_HOME}/fzf/fzfrc";
+      FZF_DEFAULT_OPTS_FILE = "${hjemCfg.xdg.config.directory}/fzf/fzfrc";
     };
 
     xdg.config.files = {

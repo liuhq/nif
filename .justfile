@@ -33,4 +33,7 @@ agenix-edit file key:
 agenix-rekey:
   nix run github:ryantm/agenix -- --rekey --verbose
 
+search file:
+  nix run github:nix-community/nix-index-database {{file}}
+
 # vim: set ts=2 sw=2 sts=2 et:

@@ -1,11 +1,3 @@
-# Fixed: niri-session caused $SHLVL offset
-if [[ -z "$_WAYLAND_SHLVL_FIXED" ]]; then
-    # set state lock
-    export _WAYLAND_SHLVL_FIXED=1
-    # reset to 1
-    export SHLVL=1
-fi
-
 bindkey -v
 
 ########################
@@ -43,5 +35,6 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS} "ma=48;2;59;66;82;38;2;136
 compdef _gdb rust-gdb
 
 ### source scripts
-source /etc/zsh/zsh.d/nordust-zsh-syntax-highlighting.zsh
-source /etc/zsh/zsh.d/func.zsh
+source ${ZDOTDIR}/zsh.d/nordust-zsh-syntax-highlighting.zsh
+source ${ZDOTDIR}/zsh.d/func.zsh
+source ${ZDOTDIR}/zsh.d/keyboard.zsh

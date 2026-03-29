@@ -78,6 +78,7 @@ binds {
     Mod+Return hotkey-overlay-title="Terminal" { spawn "foot"; }
     Mod+Q repeat=false hotkey-overlay-title="Calculator" { spawn "gnome-calculator" "-m" "basic"; }
     Mod+W repeat=false hotkey-overlay-title="Browser" { spawn "google-chrome-stable"; }
+    Mod+E repeat=false hotkey-overlay-title="Files" { spawn "nautilus"; }
 
     // #"Panel"
     Mod+Delete hotkey-overlay-title="Session Menu" { spawn-sh "noctalia-shell ipc call sessionMenu toggle"; }

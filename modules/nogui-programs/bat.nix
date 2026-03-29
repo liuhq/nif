@@ -12,7 +12,7 @@
       style = "plain";
       wrap = "auto";
       tabs = "2";
-      map-syntax = [ ".ignore:Git Ignore" ];
+      map-syntax = [ "\".ignore:Git Ignore\"" ];
     };
   };
 

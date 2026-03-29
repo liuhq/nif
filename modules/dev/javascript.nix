@@ -8,6 +8,7 @@
 let
   cfg = config.mymod.dev.javascript;
   inherit (myvar) userName;
+  hjemCfg = config.hjem.users.${userName};
 in
 {
   options.mymod = {
@@ -27,9 +28,9 @@ in
           DENO_INSTALL_ROOT = "\${HOME}/.local/deno/bin";
         in
         {
-          NPM_CONFIG_USERCONFIG = "\${XDG_CONFIG_HOME}/npm/npmrc";
+          NPM_CONFIG_USERCONFIG = "${hjemCfg.xdg.config.directory}/npm/npmrc";
 
-          DENO_DIR = "\${XDG_CACHE_HOME}/deno";
+          DENO_DIR = "${hjemCfg.xdg.cache.directory}/deno";
           inherit DENO_INSTALL_ROOT;
 
           PATH = [ DENO_INSTALL_ROOT ];

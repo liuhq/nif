@@ -8,6 +8,7 @@
 let
   cfg = config.mymod.dev.cuda;
   inherit (myvar) userName;
+  hjemCfg = config.hjem.users.${userName};
 in
 {
   imports = [ ];
@@ -23,7 +24,7 @@ in
   config = lib.mkIf cfg.enable {
     hjem.users.${userName} = {
       environment.sessionVariables = {
-        CUDA_CACHE_PATH = "\${XDG_CACHE_HOME}/nv";
+        CUDA_CACHE_PATH = "${hjemCfg.xdg.cache.directory}/nv";
       };
     };
   };

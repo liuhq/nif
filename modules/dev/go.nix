@@ -8,6 +8,7 @@
 let
   cfg = config.mymod.dev.go;
   inherit (myvar) userName;
+  hjemCfg = config.hjem.users.${userName};
 in
 {
   imports = [ ];
@@ -23,8 +24,8 @@ in
   config = lib.mkIf cfg.enable {
     hjem.users.${userName} = {
       environment.sessionVariables = {
-        GOPATH = "\${XDG_DATA_HOME}/go";
-        GOMODCACHE = "\${XDG_CACHE_HOME}/go/mod";
+        GOPATH = "${hjemCfg.xdg.data.directory}/go";
+        GOMODCACHE = "${hjemCfg.xdg.cache.directory}/go/mod";
       };
     };
   };

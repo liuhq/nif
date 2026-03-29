@@ -29,8 +29,7 @@ in
       syntaxHighlighting.enable = true;
     };
 
-    programs.zsh.interactiveShellInit = lib.readFile "${external}/zsh/zshrc";
-    environment.etc."zsh/zsh.d".source = "${external}/zsh/zsh.d";
+    programs.zsh.interactiveShellInit = lib.readFile "${external}/zsh/init_zshrc";
 
     programs.zsh.shellAliases = {
       sudo = "sudo ";
@@ -58,23 +57,24 @@ in
         ZDOTDIR = "${hjemCfg.xdg.config.directory}/zsh";
         PATH = [
           "\${HOME}/.local/bin"
-          "\${XDG_CONFIG_HOME}/cargo/bin"
-          "\${XDG_DATA_HOME}/pnpm"
+          "$PATH"
         ];
         KEYTIMEOUT = 5;
         ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE = "fg=#616E88";
       };
 
-      files =
+      xdg.config.files =
         let
           check = {
             environment = hjemCfg.environment.sessionVariables != { };
           };
         in
         {
-          ".zshenv" = lib.mkIf check.environment {
+          "zsh/.zshenv" = lib.mkIf check.environment {
             source = hjemCfg.environment.loadEnv;
           };
+          "zsh/.zshrc".source = "${external}/zsh/zshrc";
+          "zsh/zsh.d".source = "${external}/zsh/zsh.d";
         };
     };
   };
