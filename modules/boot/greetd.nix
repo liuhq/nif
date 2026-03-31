@@ -10,7 +10,9 @@ let
 in
 {
   options.mymod.displayManager.greetd = {
-    enable = lib.mkEnableOption "greetd + tuigreet";
+    enable = lib.mkEnableOption "greetd + tuigreet" // {
+      default = true;
+    };
   };
 
   config = lib.mkIf cfg.enable {

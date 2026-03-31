@@ -11,6 +11,10 @@ let
 in
 {
   programs.gnupg.agent.enable = true;
+  programs.gnupg.agent.settings = {
+    default-cache-ttl = 14400;
+    max-cache-ttl = 14400;
+  };
 
   hjem.users.${userName} = {
     environment.sessionVariables = {

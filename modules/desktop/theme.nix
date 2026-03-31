@@ -3,13 +3,35 @@
   pkgs,
   lib,
   myvar,
-  paths,
   ...
 }:
 let
   cfg = config.mymod.desktop;
   inherit (myvar) userName;
-  inherit (paths) external;
+  toIni = lib.generators.toINI {
+    mkKeyValue =
+      key: value:
+      let
+        value' = if lib.isBool value then lib.boolToString value else toString value;
+      in
+      "${lib.escape [ "=" ] key}=${value'}";
+  };
+  mkGtkSettings =
+    gtkVersion:
+    let
+      common = {
+        gtk-font-name = "Sans 11";
+        gtk-theme-name = "Nordic";
+        gtk-icon-theme-name = "Colloid-Nord-Dark";
+        gtk-cursor-theme-name = "Bocchi";
+        gtk-cursor-theme-size = 36;
+        gtk-application-prefer-dark-theme = true;
+      };
+      gtk4Only = lib.optionalAttrs (gtkVersion == 4) {
+        gtk-interface-color-scheme = 2;
+      };
+    in
+    common // gtk4Only;
 in
 {
   config = lib.mkIf cfg.enable {
@@ -17,6 +39,7 @@ in
       gtk4
       gtk3
 
+      nordic
       colloid-icon-theme
     ];
 
@@ -35,8 +58,20 @@ in
 
     hjem.users.${userName} = {
       xdg.config.files = {
-        "gtk-4.0".source = "${external}/gtk/gtk-4.0";
-        "gtk-3.0".source = "${external}/gtk/gtk-3.0";
+        "gtk-4.0/settings.ini".text = toIni {
+          Settings = mkGtkSettings 4;
+        };
+        "gtk-4.0/gtk.css".text = ''
+          /**
+           * GTK 4 reads the theme configured by gtk-theme-name, but ignores it.
+           * It does however respect user CSS, so import the theme from here.
+          **/
+          @import url("file://${pkgs.nordic}/share/themes/Nordic/gtk-4.0/gtk.css");
+        '';
+
+        "gtk-3.0/settings.ini".text = toIni {
+          Settings = mkGtkSettings 3;
+        };
 
         "Kvantum/Nordic".source = "${pkgs.nordic}/share/Kvantum/Nordic";
         "Kvantum/kvantum.kvconfig".text = ''
@@ -64,33 +99,32 @@ in
               xkb-options = gvariant.mkArray [ "caps:swapescape" ];
             };
 
-            "org/gnome/desktop/interface" = {
-              accent-color = "blue";
-              clock-format = "24h";
-              clock-show-seconds = gvariant.mkBoolean true;
-              color-scheme = "prefer-dark";
-              cursor-size = gvariant.mkInt32 36;
-              cursor-theme = "Bocchi";
-              document-font-name = "Sans 11";
-              font-name = "Sans 11";
-              gtk-theme = "Adwaita";
-              icon-theme = "Colloid-Nord-Dark";
-              monospace-font-name = "Monospace 11";
-              toolbar-icons-size = "small";
-              toolbar-style = "icons";
-            };
+            "org/gnome/desktop/interface" =
+              let
+                settings = mkGtkSettings 3;
+              in
+              {
+                accent-color = "blue";
+                clock-format = "24h";
+                clock-show-seconds = gvariant.mkBoolean true;
+                color-scheme = "prefer-dark";
+                cursor-size = gvariant.mkInt32 settings.gtk-cursor-theme-size;
+                cursor-theme = settings.gtk-cursor-theme-name;
+                document-font-name = settings.gtk-font-name;
+                font-name = settings.gtk-font-name;
+                gtk-theme = settings.gtk-theme-name;
+                icon-theme = settings.gtk-icon-theme-name;
+                monospace-font-name = "Monospace 11";
+                toolbar-icons-size = "small";
+                toolbar-style = "icons";
+              };
 
             "org/gnome/desktop/wm/preferences" = {
               button-layout = "appmenu:";
               titlebar-font = "Sans Bold 11";
             };
 
-            "org/gnome/nautilus/list-view" = {
-              use-tree-view = gvariant.mkBoolean true;
-            };
-
             "org/gnome/nautilus/preferences" = {
-              click-policy = "single";
               date-time-format = "detailed";
               default-folder-viewer = "list-view";
               show-delete-permanently = gvariant.mkBoolean false;

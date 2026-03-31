@@ -13,8 +13,8 @@ in
     services.flatpak.enable = true;
 
     services.flatpak.packages = [
-      "com.valvesoftware.Steam"
-      "com.vysp3r.ProtonPlus"
+      # "com.valvesoftware.Steam"
+      # "com.vysp3r.ProtonPlus"
     ];
 
     services.flatpak.overrides = {

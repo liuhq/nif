@@ -1,8 +1,6 @@
 local npairs = require('nvim-autopairs')
 local npairs_rule = require('nvim-autopairs.rule')
 local npairs_cond = require('nvim-autopairs.conds')
-local npairs_utils = require('nvim-autopairs.utils')
-local npairs_log = require('nvim-autopairs._log')
 
 npairs.setup({
     disable_filetype = { 'FZF' },
@@ -52,89 +50,6 @@ for _, bracket in pairs(brackets) do
             :replace_map_cr(function (_) return '<C-c>2xi<CR><C-c>O' end),
     }
 end
--- }}}
-
--- {{{ https://github.com/windwp/nvim-autopairs/wiki/Custom-rules#auto-addspace-on-
-npairs.add_rule(
-    npairs_rule('=', '', { '-sh', '-nix' })
-    :with_pair(npairs_cond.not_inside_quote())
-    :with_pair(function (opts)
-        local last_char = opts.line:sub(opts.col - 1, opts.col - 1)
-        if last_char:match('[%w%=%s]') then
-            return true
-        end
-        return false
-    end)
-    :replace_endpair(function (opts)
-        local prev_2char = opts.line:sub(opts.col - 2, opts.col - 1)
-        local next_char = opts.line:sub(opts.col, opts.col)
-        next_char = next_char == ' ' and '' or ' '
-        if prev_2char:match('%w$') then
-            return '<bs> =' .. next_char
-        end
-        if prev_2char:match('%=$') then
-            return next_char
-        end
-        if prev_2char:match('=') then
-            return '<bs><bs>=' .. next_char
-        end
-        return ''
-    end)
-    :set_end_pair_length(0)
-    :with_move(npairs_cond.none())
-    :with_del(npairs_cond.none())
-)
--- }}}
-
--- {{{ https://github.com/windwp/nvim-autopairs/wiki/Custom-rules#when-typing-space-equals-for-assignment-in-nix-add-the-final-semicolon-to-the-line
--- Note that when the cursor is at the end of a comment line,
--- treesitter thinks we are in attrset_expression
--- because the cursor is "after" the comment, even though it is on the same line.
-local is_not_ts_node_comment_one_back = function ()
-    return function (info)
-        npairs_log.debug('not_in_ts_node_comment_one_back')
-
-        local p = vim.api.nvim_win_get_cursor(0)
-        -- Subtract one to account for 1-based row indexing in nvim_win_get_cursor
-        -- Also subtract one from the position of the column to see if we are at the end of a comment.
-        local pos_adjusted = { p[1] - 1, p[2] - 1 }
-
-        vim.treesitter.get_parser():parse()
-        local target = vim.treesitter.get_node({ pos = pos_adjusted, ignore_injections = false })
-        npairs_log.debug(target:type())
-        if target ~= nil and npairs_utils.is_in_table({ 'comment' }, target:type()) then
-            return false
-        end
-
-        local rest_of_line = info.line:sub(info.col)
-        return rest_of_line:match('^%s*$') ~= nil
-    end
-end
-
-npairs.add_rule(
-    npairs_rule('=', ';', 'nix')
-    :with_pair(is_not_ts_node_comment_one_back())
-    :replace_endpair(function (opts)
-        if opts.line:match(';$') then
-            return ''
-        end
-
-        local prev_2char = opts.line:sub(opts.col - 2, opts.col - 1)
-        if prev_2char:match('%w$') then
-            return '<bs> = ' .. opts.rule.end_pair
-        end
-
-        local spaces = opts.line:match('=(%s*)$')
-        if #spaces > 0 then
-            return string.rep('<bs>', #spaces) .. opts.rule.end_pair
-        elseif #spaces == 0 then
-            return '<bs> ' .. opts.rule.end_pair
-        end
-
-        return ' ;'
-    end)
-    :set_end_pair_length(1)
-)
 -- }}}
 
 -- remove add single quote on filetype scheme, lisp and rust lifetime annotations

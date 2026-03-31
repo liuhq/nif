@@ -15,9 +15,6 @@ in
   mymod.cpu.intel.enable = true;
   mymod.gpu.nvidia.enable = true;
 
-  mymod.boot.systemd-boot.enable = true;
-  mymod.displayManager.greetd.enable = true;
-
   mymod.network.networkmanager.enable = true;
   mymod.network.mihomo.enable = true;
   mymod.network.ssh.config = ''
@@ -46,10 +43,7 @@ in
     user = {
       name = "Horace Liu";
       email = "im.liuhq@gmail.com";
-      signingkey = "/home/${userName}/.ssh/keys/git_sign.pub";
-    };
-    gpg = {
-      format = "ssh";
+      signingkey = "3E29776F2D413DCC";
     };
     sendemail = {
       smtpserver = "smtp.gmail.com";
