@@ -1,3 +1,14 @@
+local snippets_dirs = function ()
+    local dirs = {}
+    local lookup_dirs = vim.fn.stdpath('config_dirs')
+
+    for _, dir in ipairs(lookup_dirs) do
+        table.insert(dirs, dir .. '/snippets')
+    end
+
+    return dirs
+end
+
 require('blink.cmp').setup({
     completion = {
         menu = {
@@ -11,6 +22,15 @@ require('blink.cmp').setup({
             auto_show_delay_ms = 50,
         },
 
+    },
+    sources = {
+        providers = {
+            snippets = {
+                opts = {
+                    search_paths = snippets_dirs(),
+                },
+            },
+        },
     },
     signature = {
         enabled = false,

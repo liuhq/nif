@@ -25,6 +25,8 @@ in
 
         XDG_SCRIPTS_DIR="$HOME/scripts"
         XDG_WORKSPACES_DIR="$HOME/workspaces"
+
+        XDG_HOME_BIN="$HOME/bin"
       '';
     };
 
@@ -42,6 +44,8 @@ in
 
       XDG_SCRIPTS_DIR = "\${HOME}/scripts";
       XDG_WORKSPACES_DIR = "\${HOME}/workspaces";
+
+      XDG_HOME_BIN = "\${HOME}/bin";
     };
   };
 
@@ -62,5 +66,7 @@ in
 
     "d %h/scripts 0755 - - - -"
     "d %h/workspaces 0755 - - - -"
+
+    "d %h/bin 0755 - - - -"
   ];
 }

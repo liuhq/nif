@@ -261,6 +261,7 @@ rules:
   - DOMAIN-SUFFIX,cachix.org,HK
 
   - GEOSITE,google-gemini,US
+  - GEOSITE,google-play,JP
   - GEOSITE,spotify,JP
   - GEOSITE,youtube,JP
   - GEOSITE,twitch,JP

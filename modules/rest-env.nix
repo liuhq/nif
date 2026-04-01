@@ -9,6 +9,8 @@ let
   inherit (myvar) userName;
 in
 {
+  environment.homeBinInPath = true;
+
   environment.sessionVariables = {
     MANPAGER = "nvim +Man!";
     MANROFFOPT = "-c";

@@ -56,7 +56,6 @@ in
       environment.sessionVariables = {
         ZDOTDIR = "${hjemCfg.xdg.config.directory}/zsh";
         PATH = [
-          "\${HOME}/.local/bin"
           "$PATH"
         ];
         KEYTIMEOUT = 5;
