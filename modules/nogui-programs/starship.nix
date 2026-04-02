@@ -54,10 +54,11 @@
         read_only = " 󰌾";
       };
       git_metrics = {
-
         disabled = false;
       };
       nix_shell = {
+        # format = "via [$symbol$state(\($name\))]($style)";
+        symbol = "󱄅 ";
         heuristic = true;
       };
       package = {
