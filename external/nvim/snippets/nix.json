@@ -172,5 +172,19 @@
       "inherit $1;"
     ],
     "description": "inherit expression"
+  },
+  "flake": {
+    "prefix": "flake",
+    "body": [
+      "{",
+      "  description = \"\";",
+      "",
+      "  inputs = {",
+      "    nixpkgs.url = \"github:nixos/nixpkgs/nixos-unstable\";",
+      "  };",
+      "",
+      "  outputs = { self, nixpkgs, ... }@inputs: { };",
+      "}"
+    ]
   }
 }
