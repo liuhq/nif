@@ -8,6 +8,7 @@
 
     iwd
     dig
+    xh
 
     zstd
     zip
@@ -17,6 +18,9 @@
     age
     gopass
 
+    procs
+    duf
+    dust
     fd
     jq
     ripgrep

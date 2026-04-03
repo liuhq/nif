@@ -18,11 +18,28 @@ in
   };
 
   config = lib.mkIf cfg.zsh.enable {
+    environment.systemPackages = with pkgs; [
+      zsh-completions
+    ];
+
     programs.zsh = {
       enable = true;
       histSize = 128000;
-      histFile = "\${ZDOTDIR}/.zsh_history";
+      histFile = "${hjemCfg.xdg.cache.directory}/.zsh_history";
+      setOptions = [
+        "HIST_IGNORE_DUPS"
+        "HIST_EXPIRE_DUPS_FIRST"
+        "APPEND_HISTORY"
+        "AUTO_CD"
+        "AUTO_PUSHD"
+        "PUSHD_IGNORE_DUPS"
+        "PUSHD_SILENT"
+        "NULL_GLOB"
+        "EXTENDED_GLOB"
+      ];
       enableCompletion = true;
+      enableBashCompletion = true;
+      enableGlobalCompInit = false; # use custom fpath
       enableLsColors = true;
       autosuggestions.enable = true;
       autosuggestions.async = true;
@@ -34,12 +51,13 @@ in
     programs.zsh.shellAliases = {
       sudo = "sudo ";
       clr = "clear";
-      ".." = "cd ..";
+      # ".." = "cd ..";
 
-      ls = "ls --color=auto --human-readable --classify";
-      lv = "ls --format=single-column";
-      ll = "ls -l";
-      la = "ls -lA";
+      ## use eza instead of ls
+      # ls = "ls --color=auto --human-readable --classify";
+      # lv = "ls --format=single-column";
+      # ll = "ls -l";
+      # la = "ls -lA";
 
       cp = "cp --verbose";
       mv = "mv --verbose";
@@ -72,9 +90,45 @@ in
           "zsh/.zshenv" = lib.mkIf check.environment {
             source = hjemCfg.environment.loadEnv;
           };
-          "zsh/.zshrc".source = "${external}/zsh/zshrc";
-          "zsh/zsh.d".source = "${external}/zsh/zsh.d";
-        };
+          "zsh/.zshrc".text = ''
+            bindkey -v
+
+            #############################
+            ### Enable autocompletion ###
+            #############################
+            fpath=($ZDOTDIR/completions $fpath)
+
+            autoload -U compinit && compinit
+
+            #######################
+            ### Plugins & Tools ###
+            #######################
+            zstyle ':completion:*' menu select
+            zstyle ':completion:*' use-cache true
+            zstyle ':completion:*' cache-path "${hjemCfg.xdg.cache.directory}/.zcompcache"
+            zstyle ':completion:*' rehash true
+            zstyle ':completion:*' list-colors ''${(s.:.)LS_COLORS} "ma=48;2;59;66;82;38;2;136;192;208"
+
+            compdef _gdb rust-gdb
+
+            SCRIPT_DIR="$ZDOTDIR/zsh.d"
+            if [[ -d "$SCRIPT_DIR" ]]; then
+              for script in "$SCRIPT_DIR"/*.{zsh,sh}; do
+                if [[ -r "$script" ]]; then
+                  source "$script"
+                fi
+              done
+            fi
+
+            ${lib.readFile "${external}/zsh/post_zshrc"}
+          '';
+        }
+        // lib.mapAttrs' (
+          k: _:
+          lib.nameValuePair "zsh/zsh.d/${k}" {
+            source = "${external}/zsh/zsh.d/${k}";
+          }
+        ) (lib.readDir "${external}/zsh/zsh.d");
     };
   };
 }

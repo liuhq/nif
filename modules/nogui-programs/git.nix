@@ -40,6 +40,7 @@ in
       tag.gpgSign = lib.mkDefault true;
       init.defaultBranch = lib.mkDefault "main";
       credential.helper = lib.mkDefault "gopass";
+      diff.colorMoved = lib.mkDefault "default";
     };
 
     programs.git.enable = true;

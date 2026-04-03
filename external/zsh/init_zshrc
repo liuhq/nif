@@ -1,7 +1,7 @@
 # Fixed: niri-session caused $SHLVL offset
 if [[ -z "$_WAYLAND_SHLVL_FIXED" ]]; then
-    # set state lock
-    export _WAYLAND_SHLVL_FIXED=1
-    # reset to 1
-    export SHLVL=1
+  # set state lock
+  export _WAYLAND_SHLVL_FIXED=1
+  # reset to 1
+  export SHLVL=1
 fi

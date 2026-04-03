@@ -38,11 +38,13 @@ in
 
       xdg.config.files = {
         "npm/npmrc".source = pkgs.writeText "npm-config" ''
-          prefix=''${XDG_DATA_HOME}/npm
-          cache=''${XDG_CACHE_HOME}/npm
-          init-module=''${XDG_CONFIG_HOME}/npm/config/npm-init.js
-          logs-dir=''${XDG_STATE_HOME}/npm/logs
+          prefix=${hjemCfg.xdg.data.directory}/npm
+          cache=${hjemCfg.xdg.cache.directory}/npm
+          init-module=${hjemCfg.xdg.config.directory}/npm/config/npm-init.js
+          logs-dir=${hjemCfg.xdg.state.directory}/npm/logs
         '';
+        "zsh/completions/_pnpm".source = "${pkgs.pnpm}/share/zsh/site-functions/_pnpm";
+        "zsh/zsh.d/_npm".source = "${pkgs.nodejs}/lib/node_modules/npm/lib/utils/completion.sh";
       };
     };
   };

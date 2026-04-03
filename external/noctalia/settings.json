@@ -161,7 +161,8 @@
           "hidePassive": false,
           "id": "Tray",
           "pinned": [
-            "Fcitx"
+            "Fcitx",
+            "Keyboard - English (US)"
           ]
         }
       ],

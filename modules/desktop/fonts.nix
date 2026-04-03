@@ -24,10 +24,7 @@ in
     # https://wiki.nixos.org/wiki/Fonts#Solution_1:_Copy_fonts_to_$HOME/.local/share/fonts
     fonts.fontDir.enable = true;
     hjem.users.${userName}.xdg.data.files = {
-      "fonts" = {
-        type = "copy";
-        source = "/run/current-system/sw/share/X11/fonts";
-      };
+      "fonts".source = "/run/current-system/sw/share/X11/fonts";
     };
 
     fonts.fontconfig = {

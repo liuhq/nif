@@ -33,6 +33,15 @@ in
 
           PATH = [ CARGO_INSTALL_ROOT ];
         };
+
+      xdg.config.files = {
+        "zsh/completions/_cargo".text = ''
+          #compdef cargo
+          if command -v rustc >/dev/null 2>&1; then
+            source "$(rustc --print sysroot)"/share/zsh/site-functions/_cargo
+          fi
+        '';
+      };
     };
   };
 }
