@@ -248,7 +248,14 @@ rules:
   - GEOIP,private,DIRECT,no-resolve
   - DST-PORT,22,DIRECT # https://github.com/vernesong/OpenClash/issues/1960#issuecomment-1115732292
   - DST-PORT,587,DIRECT # Nodes ban this port
-  - PROCESS-PATH,/usr/bin/qbittorrent,DIRECT,no-resolve
+  - PROCESS-NAME,.qbittorrent-wrapped,DIRECT,no-resolve
+
+  ## Wuthering Wave
+  - GEOSITE,kurogames,Games
+  - DOMAIN-SUFFIX,aki-game.net,Games
+  - DOMAIN,pc.perfsight.wetest.net,Games
+  ## steam proton
+  - PROCESS-NAME,wineserver,Games,no-resolve
 
   - GEOSITE,cn,DIRECT
   - GEOIP,CN,DIRECT
@@ -260,18 +267,18 @@ rules:
   - DOMAIN-SUFFIX,nixos.org,HK
   - DOMAIN-SUFFIX,cachix.org,HK
 
+  - GEOSITE,category-porn,SG
+  - GEOSITE,dlsite,HK
+  - GEOSITE,flatpak,HK
+  - GEOSITE,github,JP
   - GEOSITE,google-gemini,US
   - GEOSITE,google-play,JP
-  - GEOSITE,spotify,JP
-  - GEOSITE,youtube,JP
-  - GEOSITE,twitch,JP
-  - GEOSITE,github,JP
   - GEOSITE,mozilla,JP
   - GEOSITE,patreon,HK
+  - GEOSITE,spotify,JP
   - GEOSITE,telegram,HK
-  - GEOSITE,flatpak,HK
-  - GEOSITE,dlsite,HK
-  - GEOSITE,category-porn,SG
+  - GEOSITE,twitch,JP
+  - GEOSITE,youtube,JP
 
   - GEOSITE,biliintl,DIRECT
   - GEOSITE,bilibili,DIRECT
