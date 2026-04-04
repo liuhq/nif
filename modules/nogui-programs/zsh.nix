@@ -51,7 +51,6 @@ in
     programs.zsh.shellAliases = {
       sudo = "sudo ";
       clr = "clear";
-      # ".." = "cd ..";
 
       ## use eza instead of ls
       # ls = "ls --color=auto --human-readable --classify";
@@ -113,14 +112,12 @@ in
 
             SCRIPT_DIR="$ZDOTDIR/zsh.d"
             if [[ -d "$SCRIPT_DIR" ]]; then
-              for script in "$SCRIPT_DIR"/*.{zsh,sh}; do
+              for script in "$SCRIPT_DIR"/*; do
                 if [[ -r "$script" ]]; then
                   source "$script"
                 fi
               done
             fi
-
-            ${lib.readFile "${external}/zsh/post_zshrc"}
           '';
         }
         // lib.mapAttrs' (
