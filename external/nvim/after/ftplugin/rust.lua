@@ -5,7 +5,8 @@ bo.shiftwidth = 4
 bo.tabstop = 4
 bo.softtabstop = 4
 bo.textwidth = 120
-bo.colorcolumn = '120'
+
+vim.wo.colorcolumn = '120'
 
 vim.keymap.set(
     'n',
