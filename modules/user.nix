@@ -19,4 +19,7 @@ in
     extraGroups = [ "wheel" ];
     hashedPasswordFile = config.age.secrets."passwd-${userName}".path;
   };
+
+  users.mutableUsers = false;
+  users.users.root.isSystemUser = true;
 }
