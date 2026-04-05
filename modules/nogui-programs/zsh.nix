@@ -84,6 +84,14 @@ in
           check = {
             environment = hjemCfg.environment.sessionVariables != { };
           };
+          collect =
+            dir:
+            lib.mapAttrs' (
+              k: _:
+              lib.nameValuePair "${dir}/${k}" {
+                source = "${external}/${dir}/${k}";
+              }
+            ) (lib.readDir "${external}/${dir}");
         in
         {
           "zsh/.zshenv" = lib.mkIf check.environment {
@@ -120,12 +128,8 @@ in
             fi
           '';
         }
-        // lib.mapAttrs' (
-          k: _:
-          lib.nameValuePair "zsh/zsh.d/${k}" {
-            source = "${external}/zsh/zsh.d/${k}";
-          }
-        ) (lib.readDir "${external}/zsh/zsh.d");
+        // collect "zsh/zsh.d";
+      # // collect "zsh/completions";
     };
   };
 }

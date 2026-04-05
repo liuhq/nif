@@ -26,6 +26,7 @@
     ripgrep
     strace
 
+    wl-clipboard
     trash-cli
   ];
 }

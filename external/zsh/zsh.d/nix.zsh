@@ -1,5 +1,5 @@
 function runix() {
-  PKG=$1
-  shift 1
+  local PKG=$1
+  shift
   nix run "nixpkgs#$PKG" -- "$@"
 }
