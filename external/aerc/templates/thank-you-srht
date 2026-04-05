@@ -1,5 +1,0 @@
-X-Sourcehut-Patchset-Update: APPLIED
-
-Thanks!
-
-{{exec `branch="$(git branch --show-current)"; { git remote get-url --push origin; git reflog -2 "origin/$branch" --pretty=format:%h | xargs printf '%s\n' | tac; } | xargs printf "To %s\n   %s..%s  $branch -> $branch"` ""}}
