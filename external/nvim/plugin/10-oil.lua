@@ -97,6 +97,11 @@ oil.setup({
             winblend = 10,
         },
     },
+    view_options = {
+        sort = {
+            { 'name', 'asc' },
+        },
+    },
     ssh = {
         border = 'solid',
     },
