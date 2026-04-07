@@ -27,7 +27,7 @@ final: prev: {
     vimAlias = false;
     viAlias = true;
     configure = {
-      ## TODO: next version will be fixed
+      ## TODO: wait to be fixed
       customLuaRC = "vim.cmd [[runtime init.lua]]";
       packages.bynix = with final.vimPlugins; {
         ## Get LSP completions

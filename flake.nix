@@ -23,6 +23,7 @@
 
     agenix = {
       url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
       # optionally choose not to download darwin deps (saves some resources on Linux)
       inputs.darwin.follows = "";
     };
@@ -46,7 +47,7 @@
       ...
     }@inputs:
     let
-      eachSystem = nixpkgs.lib.genAttrs nixpkgs.lib.platforms.linux;
+      eachSystem = nixpkgs.lib.genAttrs [ "x86_64-linux" ];
       paths = {
         root = ./.;
         modules = ./modules;
