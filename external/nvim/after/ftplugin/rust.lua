@@ -42,7 +42,7 @@ vim.keymap.set('n', '<leader>cM', function ()
 )
 
 vim.keymap.set('n', '<leader>de', function ()
-        vim.cmd.RustLsp('explainError')
+        vim.cmd.RustLsp({ 'explainError', 'current' })
     end,
     { silent = true, buffer = bufnr, desc = 'Explain error (Rust)' }
 )
@@ -50,7 +50,13 @@ vim.keymap.set('n', '<leader>de', function ()
 vim.keymap.set('n', '<leader>dc', function ()
         vim.cmd.RustLsp('renderDiagnostic')
     end,
-    { silent = true, buffer = bufnr, desc = 'Render diagnostic (Rust)' }
+    { silent = true, buffer = bufnr, desc = 'Render Next diagnostic (Rust)' }
+)
+
+vim.keymap.set('n', '<leader>dd', function ()
+        vim.cmd.RustLsp({ 'renderDiagnostic', 'current' })
+    end,
+    { silent = true, buffer = bufnr, desc = 'Render Current diagnostic (Rust)' }
 )
 
 vim.keymap.set('n', '<leader>dj', function ()
