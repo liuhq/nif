@@ -63,6 +63,9 @@ in
       rm = "rm --verbose";
       mkdir = "mkdir --verbose";
       rmdir = "rmdir --verbose";
+
+      ## disable `EXTENDED_GLOB` to allow `#` character
+      nix = "noglob nix";
     };
 
     environment.sessionVariables = {
