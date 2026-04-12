@@ -18,7 +18,6 @@
     age
     gopass
 
-    procs
     duf
     dust
     fd

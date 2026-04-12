@@ -21,6 +21,8 @@ function runspt() {
 }
 
 _scripts_files() {
+  setopt extendedglob
+
   local scripts_dir="$HOME/scripts"
 
   [[ -d "$scripts_dir" ]] || return 1

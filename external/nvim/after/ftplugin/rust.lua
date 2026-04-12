@@ -53,6 +53,7 @@ vim.keymap.set('n', '<leader>dc', function ()
     { silent = true, buffer = bufnr, desc = 'Render Next diagnostic (Rust)' }
 )
 
+vim.keymap.set('n', '<leader>da', vim.diagnostic.open_float, { silent = true, buffer = bufnr, desc = 'Current diagnostic' })
 vim.keymap.set('n', '<leader>dd', function ()
         vim.cmd.RustLsp({ 'renderDiagnostic', 'current' })
     end,

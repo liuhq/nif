@@ -31,7 +31,7 @@ in
           inherit CARGO_INSTALL_ROOT;
           RUSTUP_HOME = "\${HOME}/.config/rustup";
 
-          PATH = [ CARGO_INSTALL_ROOT ];
+          PATH = [ "${CARGO_INSTALL_ROOT}/bin" ];
         };
 
       xdg.config.files = {

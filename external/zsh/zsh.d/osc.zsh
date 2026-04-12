@@ -1,16 +1,24 @@
 ### support the OSC-7 escape sequence
-function osc7-pwd() {
-  emulate -L zsh # also sets localoptions for us
-  setopt extendedglob
-  local LC_ALL=C
-  printf '\e]7;file://%s%s\e\' $HOST ${PWD//(#m)([^@-Za-z&-;_~])/%${(l:2::0:)$( ([##16]#MATCH))}}
+osc7_cd() {
+  cd "$@" || return $?
+
+  local tmp="$PWD"
+  local enc
+  while [ -n "$tmp" ]; do
+    local cut="${tmp#?}"
+    local c="${tmp%"$cut"}"
+    case "$c" in
+    [-/:_.!\'\(\)~[:alnum:]]) enc="$enc$c" ;;
+    *) enc="$enc$(printf '%%%02X' """\"$c")" ;;
+    esac
+    tmp="$cut"
+  done
+
+  printf "\033]7;file://%s%s\033\\" "$(hostname)" "$enc"
 }
 
-function chpwd-osc7-pwd() {
-  ((ZSH_SUBSHELL)) || osc7-pwd
-}
-autoload -Uz add-zsh-hook
-add-zsh-hook -Uz chpwd chpwd-osc7-pwd
+osc7_cd "$PWD" # first-run
+alias cd=osc7_cd
 
 ### support the OSC-133;A sequence
 function precmd() {

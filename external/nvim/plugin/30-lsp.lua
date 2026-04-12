@@ -135,7 +135,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
                 severity_sort = true,
             }, vim.lsp.diagnostic.get_namespace(args.data.client_id))
 
-            vim.keymap.set('n', '<leader>dd', vim.diagnostic.open_float, { desc = 'Diagnostic info', buffer = args.buf })
+            vim.keymap.set('n', '<leader>dd', vim.diagnostic.open_float,
+                { desc = 'Current diagnostic', buffer = args.buf })
             vim.keymap.set('n', '<leader>dh', function ()
                 vim.notify(vim.diagnostic.is_enabled({ bufnr = args.buf })
                     and 'Diagnostic: disabled'
@@ -148,14 +149,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
         vim.bo[args.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
         -- vim.lsp.completion.enable(true, args.data.client_id, args.buf, { autotrigger = false })
-    end,
-})
-
--- Stop LSP client when leave nvim
-vim.api.nvim_create_autocmd('VimLeave', {
-    group = lsp_config_group,
-    callback = function ()
-        vim.lsp.stop_client(vim.lsp.get_clients())
     end,
 })
 

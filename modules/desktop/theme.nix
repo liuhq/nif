@@ -45,8 +45,10 @@ in
 {
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
+      gtk-engine-murrine
       gtk4
       gtk3
+      gtk2
 
       nordic
       colloid-icon-theme

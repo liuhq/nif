@@ -35,7 +35,6 @@ in
         "PUSHD_IGNORE_DUPS"
         "PUSHD_SILENT"
         "NULL_GLOB"
-        "EXTENDED_GLOB"
       ];
       enableCompletion = true;
       enableBashCompletion = true;
@@ -63,9 +62,6 @@ in
       rm = "rm --verbose";
       mkdir = "mkdir --verbose";
       rmdir = "rmdir --verbose";
-
-      ## disable `EXTENDED_GLOB` to allow `#` character
-      nix = "noglob nix";
     };
 
     environment.sessionVariables = {

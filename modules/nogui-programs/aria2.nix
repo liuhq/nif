@@ -22,6 +22,23 @@ in
       min-split-size=5M
     '';
 
+    xdg.config.files."aria2/aria2.bittorrent".source = pkgs.writeText "aria2-config" ''
+      continue
+      file-allocation=falloc
+      log-level=warn
+      split=64
+      min-split-size=5M
+      max-connection-per-server=16
+      bt-max-peers=500
+      bt-enable-lpd=true
+      enable-peer-exchange=true
+      enable-dht=true
+      disk-cache=128M
+      max-upload-limit=1M
+      seed-ratio=1.0
+      seed-time=30
+    '';
+
     files."scripts/aria2c.bt.ts" = {
       type = "copy";
       permissions = "0550";
@@ -36,21 +53,13 @@ in
         const trackers = await trackerlist.text()
 
         const aria2c_flags = [
-          "--split=64",
-          "--max-connection-per-server=16",
-          "--bt-max-peers=500",
-          "--bt-enable-lpd=true",
-          "--enable-peer-exchange=true",
-          "--enable-dht=true",
-          "--disk-cache=128M",
-          "--max-upload-limit=1M",
-          "--seed-ratio=1.0",
-          "--seed-time=30",
+          "--no-conf",
+          "--conf-path=/home/${userName}/.config/aria2/aria2.bittorrent"
         ]
 
         await $({
           stdio: "inherit",
-        })`aria2c ''${aria2c_flags} --bt-tracker=''${trackers} ''${args._}`
+        })`aria2c ''${aria2c_flags} --bt-tracker=''${trackers} --dir=''${args.dir} ''${args._}`
       '';
     };
   };
