@@ -19,7 +19,6 @@ in
           "--enable-features=AcceleratedVideoDecodeLinuxGL,AcceleratedVideoDecodeLinuxZeroCopyGL,AcceleratedVideoEncoder,VaapiVideoDecoder,VaapiIgnoreDriverChecks,WaylandLinuxDrmSyncobj"
           "--disable-features=WaylandWpColorManagerV1"
 
-          "--use-gl=egl"
           "--ignore-gpu-blocklist"
           "--enable-gpu-rasterization"
           "--enable-zero-copy"
