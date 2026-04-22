@@ -25,13 +25,17 @@ in
     services.openssh = {
       enable = true;
       ports = [ 6229 ];
-      banner = "Welcome to ${userName}'s Space! Ciallo～(∠·ω< )⌒★ ";
-      settings = {
-        PasswordAuthentication = false;
-        KbdInteractiveAuthentication = false;
-        PermitRootLogin = "no";
-        AllowUsers = [ "${userName}" ];
-      };
+      settings =
+        let
+          banner = pkgs.writeText "ssh-banner" "Welcome to ${userName}'s Space! Ciallo～(∠·ω< )⌒★ ";
+        in
+        {
+          Banner = "${banner}";
+          PasswordAuthentication = false;
+          KbdInteractiveAuthentication = false;
+          PermitRootLogin = "no";
+          AllowUsers = [ "${userName}" ];
+        };
     };
 
     programs.ssh = {
