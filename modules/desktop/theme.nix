@@ -145,10 +145,6 @@ in
                 show-delete-permanently = gvariant.mkBoolean false;
               };
 
-              "org/gnome/papers" = {
-                night-mode = gvariant.mkBoolean false;
-              };
-
               "org/gtk/gtk4/settings/file-chooser" = {
                 show-hidden = gvariant.mkBoolean true;
                 sort-directories-first = gvariant.mkBoolean false;
