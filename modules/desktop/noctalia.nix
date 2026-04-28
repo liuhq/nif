@@ -18,6 +18,8 @@ in
       inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
       # For show-keys plugin
       pkgs.evtest
+      # For screen-recorder plugin
+      pkgs.gpu-screen-recorder
     ];
 
     # For show-keys plugin

@@ -58,6 +58,25 @@ window-rule {
     default-floating-position x=0 y=128 relative-to="top"
 }
 
+// Indicate screencasted windows
+window-rule {
+    match is-window-cast-target=true
+
+    focus-ring {
+        active-color "#d08770"
+        inactive-color "#d08770"
+    }
+
+    border {
+        inactive-color "#d08770"
+    }
+
+    tab-indicator {
+        active-color "#81a1c1"
+        inactive-color "#d08770"
+    }
+}
+
 window-rule {
     match app-id=r#"Pinentry.*"#
     open-maximized false

@@ -106,7 +106,7 @@ binds {
     // #"Screencast"
     Mod+Insert repeat=false hotkey-overlay-title="Screencast On/Off" { spawn-sh "noctalia-shell ipc call plugin:screen-recorder toggle"; }
     Mod+Ctrl+Insert repeat=false hotkey-overlay-title="Screencast Settings" { spawn-sh "noctalia-shell ipc call plugin openSettings screen-recorder"; }
-    Mod+F4 repeat=false hotkey-overlay-title="Set Dynamic Cast Window" { spawn-sh "niri msg action set-dynamic-cast-window --id $(niri msg --json pick-window | jq .id)"; }
+    Mod+F4 repeat=false hotkey-overlay-title="Set Dynamic Cast Window for Focused" { spawn-sh "niri msg action set-dynamic-cast-window"; }
     Mod+Shift+F4 repeat=false hotkey-overlay-title="Clear Dynamic Cast Target" { spawn-sh "niri msg action clear-dynamic-cast-target"; }
 
     // #"Misc"
