@@ -41,6 +41,11 @@
       url = "github:noctalia-dev/noctalia-qs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    eza = {
+      url = "github:eza-community/eza";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
     {
