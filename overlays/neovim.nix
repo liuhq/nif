@@ -49,8 +49,10 @@ final: prev: {
           nvim-dap-view
           nvim-lspconfig
           nvim-surround
-          nvim-treesitter-legacy.withAllGrammars
-          nvim-treesitter-textobjects-legacy
+
+          nvim-treesitter.withAllGrammars
+          nvim-treesitter-textobjects
+
           nvim-ts-autotag
           nvim-web-devicons
           oil-nvim
@@ -58,6 +60,7 @@ final: prev: {
           rustaceanvim
           which-key-nvim
         ];
+        # ++ builtins.attrValues nvim-treesitter-parsers;
         opt = [ ];
       };
     };
