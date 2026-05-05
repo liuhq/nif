@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  ...
+}:
 {
   nixpkgs.config.allowUnfree = true;
 
@@ -27,5 +32,8 @@
 
     wl-clipboard
     trash-cli
+
+    inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.omp
+    inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.opencode
   ];
 }

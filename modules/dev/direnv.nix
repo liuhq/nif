@@ -2,10 +2,12 @@
   config,
   pkgs,
   lib,
+  myvar,
   ...
 }:
 let
   cfg = config.mymod.dev.direnv;
+  inherit (myvar) userName;
 in
 {
   options.mymod = {
@@ -54,6 +56,17 @@ in
         enable = true;
         dates = "14d";
       };
+    };
+
+    hjem.users.${userName}.files."scripts/use-flake.ts" = {
+      type = "copy";
+      permissions = "0550";
+      text = ''
+        #!/usr/bin/env -S deno run --allow-env --allow-read --allow-sys --allow-run
+        import { $ } from "npm:zx@8.8.5"
+
+        await $`echo "use flake" > .envrc`
+      '';
     };
   };
 }

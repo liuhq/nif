@@ -186,5 +186,49 @@
       "  outputs = { self, nixpkgs, ... }@inputs: { };",
       "}"
     ]
+  },
+  "flake-foreachsystem-let": {
+    "prefix": "flake-foreachsystem-let",
+    "body": [
+      "systems = [",
+      "  \"x86_64-linux\"",
+      "  \"aarch64-linux\"",
+      "  \"aarch64-darwin\"",
+      "];",
+      "forEachSystem =",
+      "  f:",
+      "  inputs.nixpkgs.lib.genAttrs systems (",
+      "    system:",
+      "    f {",
+      "      inherit system;",
+      "      pkgs = import inputs.nixpkgs {",
+      "        inherit system;",
+      "        overlays = [",
+      "          inputs.self.overlays.default",
+      "        ];",
+      "      };",
+      "    }",
+      "  );"
+    ]
+  },
+  "flake-foreachsystem-call": {
+    "prefix": "flake-foreachsystem-call",
+    "body": [
+      "forEachSystem (",
+      "  { pkgs, system }:",
+      "  { }"
+    ]
+  },
+  "flake-overlays-default": {
+    "prefix": "flake-overlays-default",
+    "body": [
+      "overlays.default = final: prev: { }"
+    ]
+  },
+  "flake-formatter": {
+    "prefix": "flake-formatter",
+    "body": [
+      "formatter = forEachSystem ({ pkgs, ... }: pkgs.nixfmt);"
+    ]
   }
 }
