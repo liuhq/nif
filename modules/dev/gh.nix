@@ -8,7 +8,6 @@
 let
   cfg = config.mymod.dev.gh;
   inherit (myvar) userName;
-  hjemCfg = config.hjem.users.${userName};
 in
 {
   imports = [ ];
