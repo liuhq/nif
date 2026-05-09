@@ -35,6 +35,8 @@ final: prev: {
         ## Get LSP completions
         # packages.bynix = with pkgs.vimPlugins; {
         start = [
+          catppuccin-nvim
+
           blink-cmp
           bufferline-nvim
           conform-nvim

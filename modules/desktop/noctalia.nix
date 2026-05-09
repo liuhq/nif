@@ -26,18 +26,18 @@ in
     users.users.${userName}.extraGroups = [ "input" ];
 
     hjem.users.${userName}.xdg.config.files = {
-      "noctalia/colors.json" = {
-        source = "${external}/noctalia/colors.json";
+      "noctalia/settings.json" = {
+        source = "${external}/noctalia/settings.json";
+        type = "copy";
+        permissions = "440";
+      };
+      "noctalia/colorschemes/CatppuccinMacchiatoLavender/CatppuccinMacchiatoLavender.json" = {
+        source = "${external}/noctalia/colorschemes/CatppuccinMacchiatoLavender/CatppuccinMacchiatoLavender.json";
         type = "copy";
         permissions = "440";
       };
       "noctalia/plugins.json" = {
         source = "${external}/noctalia/plugins.json";
-        type = "copy";
-        permissions = "440";
-      };
-      "noctalia/settings.json" = {
-        source = "${external}/noctalia/settings.json";
         type = "copy";
         permissions = "440";
       };
@@ -54,7 +54,7 @@ in
     };
 
     environment.variables = {
-      QS_ICON_THEME = "Colloid-Nord-Dark";
+      QS_ICON_THEME = "Colloid-Catppuccin-Dark";
     };
   };
 }

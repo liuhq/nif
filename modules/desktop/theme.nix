@@ -30,8 +30,8 @@ let
     let
       common = {
         gtk-font-name = fontSettings.sans;
-        gtk-theme-name = "Nordic";
-        gtk-icon-theme-name = "Colloid-Nord-Dark";
+        gtk-theme-name = "Colloid-Dark-Catppuccin";
+        gtk-icon-theme-name = "Colloid-Catppuccin-Dark";
         gtk-cursor-theme-name = "Bocchi";
         gtk-cursor-theme-size = 36;
         gtk-application-prefer-dark-theme = true;
@@ -45,12 +45,11 @@ in
 {
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      gtk-engine-murrine
       gtk4
       gtk3
       gtk2
 
-      nordic
+      colloid-gtk-theme
       colloid-icon-theme
     ];
 
@@ -61,36 +60,33 @@ in
     };
 
     environment.sessionVariables = {
-      GTK_THEME = "Nordic";
-      ICON_THEME = "Colloid-Nord-Dark";
+      GTK_THEME = "Colloid-Dark-Catppuccin";
+      ICON_THEME = "Colloid-Catppuccin-Dark";
       XCURSOR_THEME = "Bocchi";
       XCURSOR_SIZE = 36;
     };
 
     hjem.users.${userName} = {
       xdg.config.files = {
+        "assets".source = "${pkgs.colloid-gtk-theme}/share/themes/Colloid-Dark-Catppuccin/gtk-4.0/assets";
+
         "gtk-4.0/settings.ini".text = toIni {
           Settings = mkGtkSettings 4;
         };
-        "gtk-4.0/gtk.css".source = "${pkgs.nordic}/share/themes/Nordic/gtk-4.0/gtk.css";
-        "gtk-4.0/gtk-dark.css".source = "${pkgs.nordic}/share/themes/Nordic/gtk-4.0/gtk-dark.css";
-        "gtk-4.0/thumbnail.png".source = "${pkgs.nordic}/share/themes/Nordic/gtk-4.0/thumbnail.png";
-
-        "assets".source = "${pkgs.nordic}/share/themes/Nordic/assets";
+        "gtk-4.0".source = "${pkgs.colloid-gtk-theme}/share/themes/Colloid-Dark-Catppuccin/gtk-4.0";
 
         "gtk-3.0/settings.ini".text = toIni {
           Settings = mkGtkSettings 3;
         };
-        "gtk-3.0/gtk.css".source = "${pkgs.nordic}/share/themes/Nordic/gtk-3.0/gtk.css";
-        "gtk-3.0/gtk-dark.css".source = "${pkgs.nordic}/share/themes/Nordic/gtk-3.0/gtk-dark.css";
-        "gtk-3.0/thumbnail.png".source = "${pkgs.nordic}/share/themes/Nordic/gtk-3.0/thumbnail.png";
+        "gtk-3.0".source = "${pkgs.colloid-gtk-theme}/share/themes/Colloid-Dark-Catppuccin/gtk-3.0";
 
-        "gtk-2.0".source = "${pkgs.nordic}/share/themes/Nordic/gtk-2.0";
+        "gtk-2.0".source = "${pkgs.colloid-gtk-theme}/share/themes/Colloid-Dark-Catppuccin/gtk-2.0";
 
-        "Kvantum/Nordic".source = "${pkgs.nordic}/share/Kvantum/Nordic";
+        "Kvantum/catppuccin-macchiato-lavender".source =
+          "${pkgs.catppuccin-kvantum}/share/Kvantum/catppuccin-macchiato-lavender";
         "Kvantum/kvantum.kvconfig".text = ''
           [General]
-          theme=Nordic
+          theme=catppuccin-macchiato-lavender
         '';
       };
 
@@ -129,7 +125,6 @@ in
                 gtk-theme = gtkSettings.gtk-theme-name;
                 icon-theme = gtkSettings.gtk-icon-theme-name;
                 monospace-font-name = fontSettings.monospace;
-                toolbar-icons-size = "small";
                 toolbar-style = "icons";
               };
 

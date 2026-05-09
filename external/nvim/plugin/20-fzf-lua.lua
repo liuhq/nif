@@ -13,9 +13,6 @@ fzf.setup({
         ['--info'] = 'right',
         ['--multi'] = true,
     },
-    fzf_colors = {
-        true,
-    },
     winopts = {
         row = 0.50,
         col = 0.50,

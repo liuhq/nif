@@ -273,4 +273,4 @@ ConfigUtil.icons = {
 ----------------------------------------\\
 -- Colorscheme
 ----------------------------------------//
-vim.cmd.colorscheme 'nordust'
+-- vim.cmd.colorscheme 'nordust'

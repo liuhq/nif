@@ -41,6 +41,14 @@ return {
                     },
                     url = 'https://dprint.dev/schemas/v0.json',
                 },
+                {
+                    fileMatch = { 'opencode.json', 'opencode.jsonc' },
+                    url = 'https://opencode.ai/config.json',
+                },
+                {
+                    fileMatch = { 'tui.json' },
+                    url = 'https://opencode.ai/tui.json',
+                },
             },
         },
     },

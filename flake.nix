@@ -90,7 +90,9 @@
 
       overlays.default = nixpkgs.lib.composeManyExtensions [
         (import ./overlays/neovim.nix)
+        (import ./overlays/colloid-gtk-theme.nix)
         (import ./overlays/colloid-icon-theme.nix)
+        (import ./overlays/catppuccin-kvantum.nix)
 
         (final: prev: { ttf-misans = final.callPackage ./pkgs/ttf-misans.nix { }; })
         (final: prev: { bocchi-dyn-cursor = final.callPackage ./pkgs/bocchi-dyn-cursor.nix { }; })
