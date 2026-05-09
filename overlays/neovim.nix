@@ -9,6 +9,8 @@ final: prev: {
 
           dot-language-server
 
+          vscode-json-languageserver
+
           lua-language-server
 
           nixd
