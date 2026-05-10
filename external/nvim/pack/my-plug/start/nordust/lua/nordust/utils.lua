@@ -48,6 +48,11 @@ M.get_modules = function (target)
         ::continue::
     end
 
+    for _, file in ipairs(vim.api.nvim_get_runtime_file('lua/nordust/' .. target .. '/*/init.lua', true)) do
+        local dirname = vim.fs.basename(vim.fs.dirname(file))
+        table.insert(files, dirname)
+    end
+
     return files
 end
 

@@ -66,10 +66,10 @@ layout {
 
     default-column-width { proportion 1.0; }
     preset-column-widths {
-        proportion 0.33
         proportion 0.5
         proportion 0.75
         proportion 1.0
+        proportion 0.33
     }
 
     preset-window-heights {
@@ -130,3 +130,4 @@ include "./rule.kdl"
 include "./keybind.kdl"
 include "./theme.kdl"
 
+include optional=true "optional.kdl"
