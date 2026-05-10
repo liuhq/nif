@@ -48,7 +48,7 @@ in
   config = lib.mkIf cfg.enable {
     programs.foot = {
       enable = true;
-      theme = "catppuccin-macchiato";
+      theme = "nord";
       settings = {
         # inherit colors-dark;
         main = {

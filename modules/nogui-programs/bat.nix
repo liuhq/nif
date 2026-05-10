@@ -8,7 +8,7 @@
   programs.bat = {
     enable = true;
     settings = {
-      theme = "Catppuccin Macchiato";
+      theme = "Nord";
       style = "plain";
       wrap = "auto";
       tabs = "2";

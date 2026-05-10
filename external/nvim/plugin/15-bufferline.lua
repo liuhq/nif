@@ -37,6 +37,6 @@ bufferline.setup({
             bufferline.style_preset.no_italic,
         },
     },
-    -- highlights = require('nordust.higroups._bufferline').get(),
-    highlights = require('catppuccin.special.bufferline').get_theme(),
+    highlights = require('nordust.higroups._bufferline').get(),
+    -- highlights = require('catppuccin.special.bufferline').get_theme(),
 })

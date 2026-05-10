@@ -1,7 +1,7 @@
 final: prev: {
   colloid-gtk-theme = prev.colloid-gtk-theme.override {
     tweaks = [
-      "catppuccin"
+      "nord"
       "rimless"
       "float"
     ];

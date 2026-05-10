@@ -30,8 +30,8 @@ let
     let
       common = {
         gtk-font-name = fontSettings.sans;
-        gtk-theme-name = "Colloid-Dark-Catppuccin";
-        gtk-icon-theme-name = "Colloid-Catppuccin-Dark";
+        gtk-theme-name = "Colloid-Dark-Nord";
+        gtk-icon-theme-name = "Colloid-Nord-Dark";
         gtk-cursor-theme-name = "Bocchi";
         gtk-cursor-theme-size = 36;
         gtk-application-prefer-dark-theme = true;
@@ -60,27 +60,27 @@ in
     };
 
     environment.sessionVariables = {
-      GTK_THEME = "Colloid-Dark-Catppuccin";
-      ICON_THEME = "Colloid-Catppuccin-Dark";
+      GTK_THEME = "Colloid-Dark-Nord";
+      ICON_THEME = "Colloid-Nord-Dark";
       XCURSOR_THEME = "Bocchi";
       XCURSOR_SIZE = 36;
     };
 
     hjem.users.${userName} = {
       xdg.config.files = {
-        "assets".source = "${pkgs.colloid-gtk-theme}/share/themes/Colloid-Dark-Catppuccin/gtk-4.0/assets";
+        "assets".source = "${pkgs.colloid-gtk-theme}/share/themes/Colloid-Dark-Nord/gtk-4.0/assets";
 
         "gtk-4.0/settings.ini".text = toIni {
           Settings = mkGtkSettings 4;
         };
-        "gtk-4.0".source = "${pkgs.colloid-gtk-theme}/share/themes/Colloid-Dark-Catppuccin/gtk-4.0";
+        "gtk-4.0".source = "${pkgs.colloid-gtk-theme}/share/themes/Colloid-Dark-Nord/gtk-4.0";
 
         "gtk-3.0/settings.ini".text = toIni {
           Settings = mkGtkSettings 3;
         };
-        "gtk-3.0".source = "${pkgs.colloid-gtk-theme}/share/themes/Colloid-Dark-Catppuccin/gtk-3.0";
+        "gtk-3.0".source = "${pkgs.colloid-gtk-theme}/share/themes/Colloid-Dark-Nord/gtk-3.0";
 
-        "gtk-2.0".source = "${pkgs.colloid-gtk-theme}/share/themes/Colloid-Dark-Catppuccin/gtk-2.0";
+        "gtk-2.0".source = "${pkgs.colloid-gtk-theme}/share/themes/Colloid-Dark-Nord/gtk-2.0";
 
         "Kvantum/catppuccin-macchiato-lavender".source =
           "${pkgs.catppuccin-kvantum}/share/Kvantum/catppuccin-macchiato-lavender";
@@ -114,7 +114,7 @@ in
               };
 
               "org/gnome/desktop/interface" = {
-                accent-color = "blue";
+                accent-color = "teal";
                 clock-format = "24h";
                 clock-show-seconds = gvariant.mkBoolean true;
                 color-scheme = "prefer-dark";

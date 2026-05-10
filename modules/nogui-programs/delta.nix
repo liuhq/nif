@@ -25,26 +25,25 @@
         hyperlinks = true;
 
         dark = true;
-        blame-palette = "#24273a #1e2030 #181926 #363a4f #494d64";
-        commit-decoration-style = "\"#6e738d\" bold box ul";
-        file-decoration-style = "#6e738d";
-        file-style = "#cad3f5";
-        hunk-header-decoration-style = "\"#6e738d\" box ul";
+        blame-palette = "#2E3440 #3B4252 #434C5E #4C566A #3B4252";
+        commit-decoration-style = "\"#4C566A\" bold box ul";
+        file-decoration-style = "#4C566A";
+        file-style = "#D8DEE9";
+        hunk-header-decoration-style = "\"#4C566A\" box ul";
         hunk-header-file-style = "bold";
-        hunk-header-line-number-style = "bold \"#a5adcb\"";
+        hunk-header-line-number-style = "bold \"#E5E9F0\"";
         hunk-header-style = "file line-number syntax";
-        line-numbers-left-style = "#6e738d";
-        line-numbers-minus-style = "bold \"#ed8796\"";
-        line-numbers-plus-style = "bold \"#a6da95\"";
-        line-numbers-right-style = "#6e738d";
-        line-numbers-zero-style = "#6e738d";
-        minus-emph-style = "bold syntax \"#6a485a\"";
-        minus-style = "syntax \"#4c3a4c\"";
-        plus-emph-style = "bold syntax \"#51655a\"";
-        plus-style = "syntax \"#3e4b4c\"";
-        map-styles = ''bold purple => syntax "#5c517c", bold blue => syntax "#47557b", bold cyan => syntax "#4a6475", bold yellow => syntax "#6a635d"'';
-        syntax-theme = "Catppuccin Macchiato";
-
+        line-numbers-left-style = "#4C566A";
+        line-numbers-minus-style = "bold \"#BF616A\"";
+        line-numbers-plus-style = "bold \"#A3BE8C\"";
+        line-numbers-right-style = "#4C566A";
+        line-numbers-zero-style = "#4C566A";
+        minus-emph-style = "bold syntax \"#97555F\""; # blend nord11 and nord0
+        minus-style = "syntax \"#56404B\""; # blend nord11 and nord0
+        plus-emph-style = "bold syntax \"#788C70\""; # blend nord14 and nord0
+        plus-style = "syntax \"#434D4E\""; # blend nord14 and nord0
+        map-styles = ''bold purple => syntax "#4d4356", bold blue => syntax "#3a4555", bold cyan => syntax "#3a4d4f", bold yellow => syntax "#57524a"'';
+        syntax-theme = "Nord";
       };
       alias = {
         diff-side-by-side = "-c delta.features=side-by-side diff";

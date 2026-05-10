@@ -1,5 +1,5 @@
 final: prev: {
   colloid-icon-theme = prev.colloid-icon-theme.override {
-    schemeVariants = [ "catppuccin" ];
+    schemeVariants = [ "nord" ];
   };
 }

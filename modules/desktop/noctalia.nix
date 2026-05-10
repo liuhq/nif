@@ -54,7 +54,7 @@ in
     };
 
     environment.variables = {
-      QS_ICON_THEME = "Colloid-Catppuccin-Dark";
+      QS_ICON_THEME = "Colloid-Nord-Dark";
     };
   };
 }
