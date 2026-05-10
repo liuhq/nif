@@ -147,8 +147,16 @@ window-rule {
     default-window-height { proportion 1.0; }
 }
 
+// open with 2/4 screen
+// window-rule {
+//     default-column-width { proportion 0.5; }
+//     default-window-height { proportion 1.0; }
+// }
+
 // open with 3/4 screen
 window-rule {
+    match app-id="org.telegram.desktop"
+    match app-id="QQ"
     match app-id="spotify"
     default-column-width { proportion 0.75; }
     default-window-height { proportion 1.0; }
