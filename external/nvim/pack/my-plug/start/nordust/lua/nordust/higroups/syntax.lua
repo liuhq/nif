@@ -33,7 +33,7 @@ M.get = function ()
     hl('PreProc', C.frost_3, '')
     hl('Include', C.frost_3, '')
     hl('Define', C.frost_3, '')
-    hl('Macro', { link = 'Define' })
+    hl('Macro', C.aurora_purple, '')
     hl('PreCondit', C.frost_3, '', { bold = true })
 
     hl('Type', C.frost_0_secondary, '')

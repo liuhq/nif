@@ -29,7 +29,7 @@ vim.keymap.set('n', '<leader>cT', function ()
     { silent = true, buffer = bufnr, desc = 'Run related tests (Rust)' }
 )
 
-vim.keymap.set('n', '<leader>ce', function ()
+vim.keymap.set('n', '<leader>cm', function ()
         vim.cmd.RustLsp('expandMacro')
     end,
     { silent = true, buffer = bufnr, desc = 'Expand macro (Rust)' }
@@ -53,7 +53,6 @@ vim.keymap.set('n', '<leader>dc', function ()
     { silent = true, buffer = bufnr, desc = 'Render Next diagnostic (Rust)' }
 )
 
-vim.keymap.set('n', '<leader>da', vim.diagnostic.open_float, { silent = true, buffer = bufnr, desc = 'Current diagnostic' })
 vim.keymap.set('n', '<leader>dd', function ()
         vim.cmd.RustLsp({ 'renderDiagnostic', 'current' })
     end,

@@ -23,10 +23,11 @@ in
 
     xdg.config.files = {
       "fzf/fzfrc".source = pkgs.writeText "fzf-config" ''
-        --color=fg:-1,fg+:#D8DEE9,bg:-1,bg+:#434C5E
-        --color=hl:#88C0D0,hl+:#EBCB8B,info:#616E88,marker:#88C0D0
-        --color=prompt:#88C0D0,spinner:#616E88,pointer:#8FBCBB,header:#616E88
-        --color=border:#3B4252,label:#D8DEE9,query:#ECEFF4
+        --color=bg+:#363A4F,bg:#24273A,spinner:#F4DBD6,hl:#ED8796
+        --color=fg:#CAD3F5,header:#ED8796,info:#C6A0F6,pointer:#F4DBD6
+        --color=marker:#B7BDF8,fg+:#CAD3F5,prompt:#C6A0F6,hl+:#ED8796
+        --color=selected-bg:#494D64
+        --color=border:#6E738D,label:#CAD3F5
         --preview-window="border-block"
         --padding="0"
         --margin="0,1"

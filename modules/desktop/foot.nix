@@ -48,7 +48,9 @@ in
   config = lib.mkIf cfg.enable {
     programs.foot = {
       enable = true;
+      theme = "catppuccin-macchiato";
       settings = {
+        # inherit colors-dark;
         main = {
           font = "monospace:size=12";
           box-drawings-uses-font-glyphs = "yes";
@@ -73,9 +75,6 @@ in
         mouse = {
           hide-when-typing = "yes";
         };
-
-        inherit colors-dark;
-
         key-bindings = {
           scrollback-up-page = "Shift+Page_Up Shift+KP_Page_Up";
           scrollback-up-half-page = "Control+Shift+u";

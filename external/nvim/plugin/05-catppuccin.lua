@@ -4,7 +4,8 @@ require('catppuccin').setup({
         light = 'latte',
         dark = 'macchiato',
     },
-    transparent_background = false,
+    transparent_background = true,
+    term_colors = true,
     styles = {
         comments = {},
         conditionals = { 'italic' },
@@ -13,7 +14,7 @@ require('catppuccin').setup({
     },
     custom_highlights = function (colors)
         return {
-            -- FloatBorder = { fg = colors.overlay0 },
+            LineNr = { fg = colors.surface2 },
 
             FlashLabel = { fg = colors.red },
             FlashMatch = { fg = colors.text },
@@ -37,9 +38,6 @@ require('catppuccin').setup({
             StatusLineDiagHint = { fg = colors.teal, bg = colors.crust },
 
             Constant = { fg = colors.text, style = { 'bold' } },
-            -- Number = { fg = colors.subtext0 },
-            -- Boolean = { fg = colors.subtext0 },
-            -- Float = { fg = colors.subtext0 },
             Identifier = { fg = colors.text },
             Statement = { fg = colors.lavender },
             Conditional = { fg = colors.sky },
@@ -61,11 +59,6 @@ require('catppuccin').setup({
             ['@constant.builtin'] = { fg = colors.subtext0 },
             ['@constant.macro'] = { fg = colors.mauve, style = { 'bold' } },
             ['@module.builtin'] = { fg = colors.lavender },
-            -- ['@boolean'] = { fg = colors.subtext0 },
-            -- ['@number'] = { fg = colors.subtext0 },
-            -- ['@number.float'] = { fg = colors.subtext0 },
-            -- ['@function.builtin'] = { fg = colors.sapphire },
-            -- ['@function.method.call'] = { fg = colors.sapphire },
             ['@keyword'] = { fg = colors.teal },
             ['@keyword.coroutine'] = { fg = colors.sapphire },
             ['@keyword.function'] = { fg = colors.sky },
@@ -109,4 +102,4 @@ require('catppuccin').setup({
     },
 })
 
-vim.cmd.colorscheme 'catppuccin'
+-- vim.cmd.colorscheme 'catppuccin'

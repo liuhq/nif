@@ -1,8 +1,6 @@
 local icons = ConfigUtil.icons
 
 require('gitsigns').setup({
-    -- align with the catppuccin.transparent_background option
-    transparent = false,
     signs = {
         add = { text = '┃' },
         change = { text = '┃' },

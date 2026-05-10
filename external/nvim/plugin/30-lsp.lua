@@ -1,4 +1,3 @@
-local icons = ConfigUtil.icons
 local lsp_config_group = vim.api.nvim_create_augroup('LspConfig', { clear = true })
 local borders = {
     { ' ', 'NormalFloat' },
@@ -94,11 +93,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
                 })
             end, { desc = 'Signature help', buffer = args.buf })
         end
-        if client:supports_method('textDocument/typeDefinition*') then
+        if client:supports_method('textDocument/typeDefinition') then
             vim.keymap.set('n', 'gy', vim.lsp.buf.type_definition, { desc = 'Type definition', buffer = args.buf })
         end
 
-        if client:supports_method('workspace/workspaceFolders') then
+        if client:supports_method('workspace/didChangeWorkspaceFolders') then
             vim.keymap.set('n', '<leader>fa', vim.lsp.buf.add_workspace_folder,
                 { desc = 'Add workspace folder', buffer = args.buf })
             vim.keymap.set('n', '<leader>fr', vim.lsp.buf.remove_workspace_folder,
@@ -106,45 +105,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
             vim.keymap.set('n', '<leader>fl', function ()
                 print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
             end, { desc = 'List workspace folders', buffer = args.buf })
-        end
-
-        if client:supports_method('textDocument/publishDiagnostics') then
-            vim.diagnostic.config({
-                virtual_text = {
-                    prefix = icons.diagnostics.Sign,
-                    virt_text_pos = 'eol_right_align',
-                },
-                signs = {
-                    text = {
-                        [vim.diagnostic.severity.ERROR] = icons.diagnostics.Error,
-                        [vim.diagnostic.severity.WARN] = icons.diagnostics.Warn,
-                        [vim.diagnostic.severity.HINT] = icons.diagnostics.Hint,
-                        [vim.diagnostic.severity.INFO] = icons.diagnostics.Info,
-                    },
-                    numhl = {
-                        [vim.diagnostic.severity.ERROR] = 'ErrorMsg',
-                        [vim.diagnostic.severity.WARN] = 'WarningMsg',
-                    },
-                },
-                float = {
-                    scope = 'line',
-                    ---@diagnostic disable-next-line: assign-type-mismatch
-                    border = borders,
-                },
-                update_in_insert = true,
-                severity_sort = true,
-            }, vim.lsp.diagnostic.get_namespace(args.data.client_id))
-
-            vim.keymap.set('n', '<leader>dd', vim.diagnostic.open_float,
-                { desc = 'Current diagnostic', buffer = args.buf })
-            vim.keymap.set('n', '<leader>dh', function ()
-                vim.notify(vim.diagnostic.is_enabled({ bufnr = args.buf })
-                    and 'Diagnostic: disabled'
-                    or 'Diagnostic: enabled',
-                    vim.log.levels.INFO,
-                    { group = 'Diagnostic Show', skip_history = true })
-                vim.diagnostic.enable(not vim.diagnostic.is_enabled({ bufnr = args.buf }), { bufnr = args.buf })
-            end, { desc = 'Toggle diagnostic', buffer = args.buf })
         end
 
         vim.bo[args.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
