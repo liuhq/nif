@@ -37,7 +37,7 @@ in
           XCURSOR_THEME = "Bocchi";
           XCURSOR_SIZE = "36";
 
-          GTK_THEME = "Adwaita:dark";
+          GTK_THEME = "Colloid-Dark-Nord";
         };
       };
 
