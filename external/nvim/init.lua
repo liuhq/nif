@@ -20,7 +20,7 @@ o.exrc = true
 o.clipboard = 'unnamedplus'
 o.cursorline = true
 o.number = true
-o.relativenumber = false
+o.relativenumber = true
 o.numberwidth = 4
 
 o.autoindent = true
