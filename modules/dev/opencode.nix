@@ -32,6 +32,10 @@ in
       inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.opencode
     ];
 
+    environment.sessionVariables = {
+      OPENCODE_DISABLE_LSP_DOWNLOAD = "true";
+    };
+
     hjem.users.${userName}.xdg.config.files = {
       "zsh/completions/_opencode".source = "${completionRepo}/_opencode";
     };
