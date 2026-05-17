@@ -19,7 +19,11 @@ in
     };
 
     hjem.users.${userName}.xdg.config.files = {
-      "niri".source = "${external}/niri";
+      "niri/config.kdl".source = "${external}/niri/config.kdl";
+      "niri/keybind.kdl".source = "${external}/niri/keybind.kdl";
+      "niri/rule.kdl".source = "${external}/niri/rule.kdl";
+      "niri/theme.kdl".source = "${external}/niri/theme.kdl";
+
     };
 
     environment.systemPackages = with pkgs; [
