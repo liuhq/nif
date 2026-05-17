@@ -13,8 +13,8 @@ require('conform').setup({
         css = js_fmt_config,
         json = js_fmt_config,
         jsonc = js_fmt_config,
-        yaml = { 'dprint', 'yamlfmt', stop_after_first = true },
-        markdown = js_fmt_config,
+        yaml = { 'prettier', 'dprint', 'yamlfmt', stop_after_first = true },
+        markdown = { 'prettier', 'dprint', 'rumdl', 'deno_fmt', stop_after_first = true },
         sql = { 'dprint', 'deno_fmt', stop_after_first = true },
     },
     default_format_opts = {

@@ -131,6 +131,7 @@ vim.lsp.enable({
     'jsonls',
     'lua_ls',
     'nixd',
+    'rumdl',
     'tailwindcss',
     'taplo',
     'ts_ls',
