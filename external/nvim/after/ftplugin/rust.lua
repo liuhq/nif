@@ -4,7 +4,6 @@ local bufnr = vim.api.nvim_get_current_buf()
 bo.shiftwidth = 4
 bo.tabstop = 4
 bo.softtabstop = 4
-bo.textwidth = 120
 
 vim.wo.colorcolumn = '120'
 

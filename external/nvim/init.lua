@@ -30,8 +30,7 @@ o.shiftwidth = 2
 o.tabstop = 2
 o.softtabstop = 2
 
-o.textwidth = 80
-o.colorcolumn = '80'
+o.colorcolumn = '80,120'
 
 o.confirm = true
 o.mouse = 'a'
