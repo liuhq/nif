@@ -54,64 +54,68 @@ in
       ];
 
       localConf = ''
-        <!-- Replace monospace fonts -->
-        <match target="pattern">
-          <test name="family" compare="contains">
-            <string>Source Code</string>
-          </test>
-          <edit name="family" binding="strong">
-            <string>Maple Mono NF CN</string>
-          </edit>
-        </match>
+        <?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE fontconfig SYSTEM "urn:fontconfig:fonts.dtd">
+        <fontconfig>
+          <!-- Replace monospace fonts -->
+          <match target="pattern">
+            <test name="family" compare="contains">
+              <string>Source Code</string>
+            </test>
+            <edit name="family" binding="strong">
+              <string>Maple Mono NF CN</string>
+            </edit>
+          </match>
 
-        <!-- Replace serif fonts -->
-        <match target="pattern">
-          <test name="lang">
-            <string>zh-HK</string>
-          </test>
-          <test name="family">
-            <string>Noto Serif CJK SC</string>
-          </test>
-          <edit name="family" binding="strong">
-            <string>Noto Serif CJK TC</string>
-          </edit>
-        </match>
+          <!-- Replace serif fonts -->
+          <match target="pattern">
+            <test name="lang">
+              <string>zh-HK</string>
+            </test>
+            <test name="family">
+              <string>Noto Serif CJK SC</string>
+            </test>
+            <edit name="family" binding="strong">
+              <string>Noto Serif CJK TC</string>
+            </edit>
+          </match>
 
-        <match target="pattern">
-          <test name="lang">
-            <string>zh-TW</string>
-          </test>
-          <test name="family">
-            <string>Noto Serif CJK SC</string>
-          </test>
-          <edit name="family" binding="strong">
-            <string>Noto Serif CJK TC</string>
-          </edit>
-        </match>
+          <match target="pattern">
+            <test name="lang">
+              <string>zh-TW</string>
+            </test>
+            <test name="family">
+              <string>Noto Serif CJK SC</string>
+            </test>
+            <edit name="family" binding="strong">
+              <string>Noto Serif CJK TC</string>
+            </edit>
+          </match>
 
-        <match target="pattern">
-          <test name="lang">
-            <string>ja</string>
-          </test>
-          <test name="family">
-            <string>Noto Serif CJK SC</string>
-          </test>
-          <edit name="family" binding="strong">
-            <string>Noto Serif CJK JP</string>
-          </edit>
-        </match>
+          <match target="pattern">
+            <test name="lang">
+              <string>ja</string>
+            </test>
+            <test name="family">
+              <string>Noto Serif CJK SC</string>
+            </test>
+            <edit name="family" binding="strong">
+              <string>Noto Serif CJK JP</string>
+            </edit>
+          </match>
 
-        <match target="pattern">
-          <test name="lang">
-            <string>ko</string>
-          </test>
-          <test name="family">
-            <string>Noto Serif CJK SC</string>
-          </test>
-          <edit name="family" binding="strong">
-            <string>Noto Serif CJK KR</string>
-          </edit>
-        </match>
+          <match target="pattern">
+            <test name="lang">
+              <string>ko</string>
+            </test>
+            <test name="family">
+              <string>Noto Serif CJK SC</string>
+            </test>
+            <edit name="family" binding="strong">
+              <string>Noto Serif CJK KR</string>
+            </edit>
+          </match>
+        </fontconfig>
       '';
     };
   };
