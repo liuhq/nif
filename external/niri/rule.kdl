@@ -11,26 +11,19 @@ window-rule {
 
 // open on chat with no-focus
 window-rule {
-    match app-id="QQ" title="QQ"
-    match app-id="org.telegram.desktop"
+    match app-id="QQ" is-floating=false
+    match app-id="org.telegram.desktop" is-floating=false
     match app-id="spotify"
-    open-focused false
-    open-on-workspace "chat"
-}
-
-// open on chat with focus
-window-rule {
     match app-id="steam"
     match app-id="org.polymc.PolyMC"
-    open-focused true
+    open-focused false
     open-on-workspace "chat"
 }
 
 // open on game with focus
 window-rule {
-    match app-id=r#"Minecraft.*"#
-    match app-id="Tabletop Simulator.x86_64"
     match app-id=r#"^steam_app_[1-9]\d*$"#
+    match app-id=r#"Minecraft.*"#
     open-focused true
     open-fullscreen true
     open-on-workspace "game"
@@ -49,6 +42,43 @@ window-rule {
     open-floating false
 }
 
+// open with 1/4 screen
+window-rule {
+    match app-id="steam" title="Friends List" is-floating=false
+    default-column-width { proportion 0.25; }
+    default-window-height { proportion 1.0; }
+}
+
+// open with 2/4 screen
+// window-rule {
+//     default-column-width { proportion 0.5; }
+//     default-window-height { proportion 1.0; }
+// }
+
+// open with 3/4 screen
+window-rule {
+    match app-id="org.telegram.desktop" is-floating=false
+    match app-id="QQ" is-floating=false
+    match app-id="spotify" is-floating=false
+    default-column-width { proportion 0.75; }
+    default-window-height { proportion 1.0; }
+}
+
+// open with filled screen
+window-rule {
+    match app-id=r#"^mpv$"# is-floating=false
+    match app-id="google-chrome" is-floating=false
+    match app-id="gimp" is-floating=false
+    match app-id="Aseprite" is-floating=false
+    match app-id="com.obsproject.Studio" is-floating=false
+    match app-id="steam" title="Steam" is-floating=false
+    match app-id="UnrealEditor" is-floating=false
+    match app-id="dev.zed.Zed" is-floating=false
+    exclude app-id="dev.zed.Zed" title="Zed — Settings" is-floating=false
+    default-column-width { proportion 1.0; }
+    default-window-height { proportion 1.0; }
+}
+
 // open with floating
 window-rule {
     match app-id="imv"
@@ -56,25 +86,6 @@ window-rule {
     open-fullscreen false
     open-floating true
     default-floating-position x=0 y=128 relative-to="top"
-}
-
-// Indicate screencasted windows
-window-rule {
-    match is-window-cast-target=true
-
-    focus-ring {
-        active-color "#d08770"
-        inactive-color "#d08770"
-    }
-
-    border {
-        inactive-color "#d08770"
-    }
-
-    tab-indicator {
-        active-color "#81a1c1"
-        inactive-color "#d08770"
-    }
 }
 
 window-rule {
@@ -91,22 +102,13 @@ window-rule {
     match app-id="org.telegram.desktop" title="Media viewer"
     match app-id="QQ" title="图片查看器"
     match app-id="QQ" title=r#"群公告*"#
+    open-focused true
     open-maximized false
     open-fullscreen false
     open-floating true
     default-column-width { fixed 1024; }
     default-window-height { fixed 768; }
     default-floating-position x=0 y=128 relative-to="top"
-}
-
-window-rule {
-    match app-id="org.fcitx.fcitx5-config-qt"
-    open-maximized false
-    open-fullscreen false
-    open-floating true
-    max-width 800
-    max-height 600
-    default-floating-position x=0 y=180 relative-to="top"
 }
 
 window-rule {
@@ -133,6 +135,8 @@ window-rule {
     default-floating-position x=32 y=32 relative-to="bottom-right"
 }
 
+
+// Block out windows
 window-rule {
     match app-id="org.telegram.desktop"
     match app-id="QQ"
@@ -140,43 +144,23 @@ window-rule {
     block-out-from "screencast"
 }
 
-// open with 1/4 screen
+// Indicate screencasted windows
 window-rule {
-    match app-id="steam" title="Friends List"
-    default-column-width { proportion 0.25; }
-    default-window-height { proportion 1.0; }
-}
+    match is-window-cast-target=true
 
-// open with 2/4 screen
-// window-rule {
-//     default-column-width { proportion 0.5; }
-//     default-window-height { proportion 1.0; }
-// }
+    focus-ring {
+        active-color "#d08770"
+        inactive-color "#d08770"
+    }
 
-// open with 3/4 screen
-window-rule {
-    match app-id="org.telegram.desktop"
-    match app-id="QQ"
-    match app-id="spotify"
-    default-column-width { proportion 0.75; }
-    default-window-height { proportion 1.0; }
-}
+    border {
+        inactive-color "#d08770"
+    }
 
-// open with filled screen
-window-rule {
-    match app-id=r#"^mpv$"#
-    match app-id="google-chrome"
-    match app-id="gimp"
-    match app-id="Aseprite"
-    match app-id="com.obsproject.Studio"
-    match app-id="steam" title="Steam"
-    match app-id="UnrealEditor"
-    match app-id="dev.zed.Zed"
-
-    exclude app-id="dev.zed.Zed" title="Zed — Settings"
-
-    default-column-width { proportion 1.0; }
-    default-window-height { proportion 1.0; }
+    tab-indicator {
+        active-color "#81a1c1"
+        inactive-color "#d08770"
+    }
 }
 
 layer-rule {
