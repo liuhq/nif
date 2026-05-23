@@ -70,15 +70,37 @@ in
       xdg.config.files = {
         "assets".source = "${pkgs.colloid-gtk-theme}/share/themes/Colloid-Dark-Nord/gtk-4.0/assets";
 
-        "gtk-4.0/settings.ini".text = toIni {
-          Settings = mkGtkSettings 4;
+        "gtk-4.0".source = pkgs.symlinkJoin {
+          name = "gtk-4.0-config";
+          paths = [
+            (pkgs.writeTextFile {
+              name = "gtk-4.0-settings";
+              text = (
+                toIni {
+                  Settings = mkGtkSettings 4;
+                }
+              );
+              destination = "/settings.ini";
+            })
+            "${pkgs.colloid-gtk-theme}/share/themes/Colloid-Dark-Nord/gtk-4.0"
+          ];
         };
-        "gtk-4.0".source = "${pkgs.colloid-gtk-theme}/share/themes/Colloid-Dark-Nord/gtk-4.0";
 
-        "gtk-3.0/settings.ini".text = toIni {
-          Settings = mkGtkSettings 3;
+        "gtk-3.0".source = pkgs.symlinkJoin {
+          name = "gtk-3.0-config";
+          paths = [
+            (pkgs.writeTextFile {
+              name = "gtk-3.0-settings";
+              text = (
+                toIni {
+                  Settings = mkGtkSettings 3;
+                }
+              );
+              destination = "/settings.ini";
+            })
+            "${pkgs.colloid-gtk-theme}/share/themes/Colloid-Dark-Nord/gtk-3.0"
+          ];
         };
-        "gtk-3.0".source = "${pkgs.colloid-gtk-theme}/share/themes/Colloid-Dark-Nord/gtk-3.0";
 
         "gtk-2.0".source = "${pkgs.colloid-gtk-theme}/share/themes/Colloid-Dark-Nord/gtk-2.0";
 
