@@ -696,11 +696,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1779610425,
-        "narHash": "sha256-PtpZA1vZoZOOkUSs/fDzI3ccEnNp8QSAh0YDDzt+E+w=",
+        "lastModified": 1779621051,
+        "narHash": "sha256-10LvRn3k7C0d/vfGeZ+ua2l/bOTTGUXmyszWmwqavLw=",
         "owner": "liuhq",
         "repo": "which-key.wayland",
-        "rev": "8b2bfe56f9f016bee890b43a570d523ef8c961f3",
+        "rev": "f0abc78a7ed38b304ce94cd541ae377b42a20b28",
         "type": "github"
       },
       "original": {

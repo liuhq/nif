@@ -2,10 +2,12 @@
   config,
   pkgs,
   lib,
+  myvar,
   ...
 }:
 let
   cfg = config.mymod.dev.docker;
+  inherit (myvar) userName;
 in
 {
   options.mymod = {
@@ -32,5 +34,11 @@ in
     };
 
     hardware.nvidia-container-toolkit.enable = true;
+
+    environment.systemPackages = [ pkgs.distrobox ];
+
+    hjem.users.${userName}.xdg.config.files."distrobox/distrobox.conf".text = ''
+      container_user_custom_home="$HOME/.local/share/distrobox-home"
+    '';
   };
 }
