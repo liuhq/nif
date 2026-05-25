@@ -16,7 +16,7 @@
 
   environment.shellAliases =
     let
-      opts = "--classify=always --color=always --hyperlink";
+      opts = "--classify=always --color=always --hyperlink=auto";
       longOpts = "--group --time-style long-iso";
     in
     {
