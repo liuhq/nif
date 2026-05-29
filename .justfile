@@ -26,12 +26,12 @@ gc:
 [group('Secret')]
 [working-directory: 'secrets']
 agenix-edit file key:
-  nix run github:ryantm/agenix -- --edit {{file}} --identity {{key}}
+  agenix --edit {{file}} --identity {{key}}
 
 [group('Secret')]
 [working-directory: 'secrets']
 agenix-rekey:
-  nix run github:ryantm/agenix -- --rekey --verbose
+  agenix --rekey --verbose
 
 search file:
   nix run github:nix-community/nix-index-database {{file}}
