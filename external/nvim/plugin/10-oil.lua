@@ -13,11 +13,13 @@ end
 local oil = require('oil')
 
 oil.setup({
+    skip_confirm_for_simple_edits = true,
     delete_to_trash = true,
-    columns = {},
+    columns = { 'permissions', 'size', 'mtime' },
     lsp_file_methods = {
         autosave_changes = 'unmodified',
     },
+    constrain_cursor = 'name',
     watch_for_changes = true,
     use_default_keymaps = false,
     keymaps = {
@@ -91,6 +93,9 @@ oil.setup({
             return ''
         end,
     },
+    preview_win = {
+        preview_method = 'load',
+    },
     confirmation = {
         border = 'solid',
         win_options = {
@@ -116,7 +121,7 @@ vim.keymap.set('n', '<leader>o', function ()
     if is_oil then
         oil.close({ exit_if_last_buf = true })
     else
-        oil.open(oil.get_current_dir(0), { preview = { vertical = true } })
+        oil.open(oil.get_current_dir(0))
     end
 end, { desc = 'Oil' })
 vim.keymap.set('n', '<leader>O', function ()
@@ -125,6 +130,6 @@ vim.keymap.set('n', '<leader>O', function ()
     if is_oil then
         oil.close({ exit_if_last_buf = true })
     else
-        oil.open(vim.uv.cwd(), { preview = { vertical = true } })
+        oil.open(vim.uv.cwd())
     end
 end, { desc = 'Oil (CWD)' })
