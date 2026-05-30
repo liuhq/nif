@@ -9,22 +9,22 @@ let
   cfg = config.mymod.network.mihomo;
   inherit (paths) external;
   geosite = pkgs.fetchurl {
-    url = "https://raw.githubusercontent.com/liuhq/meta-rules-dat/release/geosite.dat";
-    hash = "sha256-MUro/5BakNpuKMN+QOj/sT1DBTvMQ000FH2nddP5r5U=";
+    url = "https://raw.githubusercontent.com/liuhq/meta-rules-dat/168e4d93fef26761b8bdf0fbf989ddcbb3faf288/geosite.dat";
+    hash = "sha256-po1eZf5o4K+3mqTo2xxFIo9jq5q90my30nyaBrk+Q1g=";
     pname = "geosite";
-    version = "20260308";
+    version = "20260529";
   };
   geoip = pkgs.fetchurl {
-    url = "https://raw.githubusercontent.com/liuhq/meta-rules-dat/release/geoip.dat";
-    hash = "sha256-V8ktJgXDHQwwPwoaCAGxKkwQAOPKSeWjb+ocAV4d2k8=";
+    url = "https://raw.githubusercontent.com/liuhq/meta-rules-dat/168e4d93fef26761b8bdf0fbf989ddcbb3faf288/geoip.dat";
+    hash = "sha256-LNqRGO6ZldXcFdNmYancMFNKYnK6aILAwVn3zgjwKIs=";
     pname = "geoip";
-    version = "20260308";
+    version = "20260529";
   };
   country = pkgs.fetchurl {
-    url = "https://raw.githubusercontent.com/liuhq/meta-rules-dat/release/country.mmdb";
-    hash = "sha256-BPR1Bjl/WWtGX/Fpz9YMQI2+B6Pl/bcgLtWwkGzofBU=";
+    url = "https://raw.githubusercontent.com/liuhq/meta-rules-dat/168e4d93fef26761b8bdf0fbf989ddcbb3faf288/country.mmdb";
+    hash = "sha256-l4RcIHTB8NyUZcd81PvOzotEZbmBNWi6f53xQ7ICZU8=";
     pname = "country";
-    version = "20260308";
+    version = "20260529";
   };
 in
 {

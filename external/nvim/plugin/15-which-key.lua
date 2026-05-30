@@ -35,5 +35,6 @@ wk.add({
     { '<leader>g', group = 'Git' },
     { '<leader>n', group = 'Notification' },
     { '<leader>s', group = 'Search' },
+    { '<leader>t', group = 'Tab' },
     { '<leader>v', group = 'Dap' },
 })

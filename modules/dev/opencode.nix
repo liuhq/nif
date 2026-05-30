@@ -17,8 +17,6 @@ let
   };
 in
 {
-  imports = [ ];
-
   options.mymod = {
     dev.opencode = {
       enable = lib.mkEnableOption "OpenCode" // {

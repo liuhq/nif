@@ -22,7 +22,7 @@ let
     regular6 = "88c0d0";
     regular7 = "e5e9f0";
 
-    bright0 = "596377";
+    bright0 = "616E88";
     bright1 = "bf616a";
     bright2 = "a3be8c";
     bright3 = "ebcb8b";
@@ -48,9 +48,8 @@ in
   config = lib.mkIf cfg.enable {
     programs.foot = {
       enable = true;
-      theme = "nord";
       settings = {
-        # inherit colors-dark;
+        inherit colors-dark;
         main = {
           font = "monospace:size=12";
           box-drawings-uses-font-glyphs = "yes";
