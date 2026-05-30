@@ -15,6 +15,8 @@ let
       pkgs.lib.makeBinPath [
         pkgs.nodejs
         pkgs.python3
+        pkgs.lldb
+        pkgs.vscode-js-debug
       ]
     }:$PATH"
     exec ${lib.getExe omp-pkg} "$@"

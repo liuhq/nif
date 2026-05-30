@@ -64,6 +64,7 @@ final: prev: {
           oil-nvim
           plenary-nvim
           rustaceanvim
+          SchemaStore-nvim
           which-key-nvim
         ];
         # ++ builtins.attrValues nvim-treesitter-parsers;

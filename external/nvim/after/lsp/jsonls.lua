@@ -6,50 +6,10 @@ return {
     ---@type lspconfig.settings.jsonls
     settings = {
         json = {
-            schemas = {
-                {
-                    fileMatch = { 'package.json' },
-                    url = 'https://schemastore.org/package.json',
-                },
-                {
-                    fileMatch = { 'tsconfig*.json' },
-                    url = 'https://schemastore.org/tsconfig.json',
-                },
-                {
-                    fileMatch = { 'deno.json', 'deno.jsonc' },
-                    url =
-                    'https://raw.githubusercontent.com/denoland/deno/refs/heads/main/cli/schemas/config-file.v1.json',
-                },
-                {
-                    fileMatch = {
-                        '.prettierrc',
-                        '.prettierrc.json',
-                        'prettier.config.json',
-                    },
-                    url = 'https://schemastore.org/prettierrc.json',
-                },
-                {
-                    fileMatch = { '.eslintrc', '.eslintrc.json' },
-                    url = 'https://schemastore.org/eslintrc.json',
-                },
-                {
-                    fileMatch = {
-                        'dprint.json',
-                        'dprint.jsonc',
-                        '.dprint.json',
-                        '.dprint.jsonc',
-                    },
-                    url = 'https://dprint.dev/schemas/v0.json',
-                },
-                {
-                    fileMatch = { 'opencode.json', 'opencode.jsonc' },
-                    url = 'https://opencode.ai/config.json',
-                },
-                {
-                    fileMatch = { 'tui.json' },
-                    url = 'https://opencode.ai/tui.json',
-                },
-            },
+            colorDecorators = { enable = true },
+            schemaDownload = { enable = true },
+            schemas = require('schemastore').json.schemas(),
+            validate = { enable = true },
         },
     },
 }

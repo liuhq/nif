@@ -9,10 +9,11 @@ return {
                 enable = true,
                 bracketSpacing = true,
             },
-            schemaStore = { enable = true },
-            schemas = {
-                ['https://json.schemastore.org/github-workflow.json'] = '/.github/workflows/*',
+            schemaStore = {
+                enable = false,
+                url = '',
             },
+            schemas = require('schemastore').yaml.schemas(),
         },
         redhat = {
             telemetry = {
