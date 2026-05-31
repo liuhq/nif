@@ -48,7 +48,11 @@ in
       };
 
       files = {
-        ".ssh/config".text = cfg.config;
+        ".ssh/config".text = ''
+          Include config.local
+
+          ${cfg.config}
+        '';
       };
     };
   };
