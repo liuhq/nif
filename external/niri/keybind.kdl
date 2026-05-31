@@ -5,6 +5,11 @@ binds {
     Mod+Escape repeat=false hotkey-overlay-title=null { close-window; }
     Ctrl+Alt+Delete { quit; }
 
+    // #"WhichKey"
+    Mod+Grave hotkey-overlay-title="Which Key" { spawn-sh "which-key-wayland"; }
+    Mod+Shift+Grave hotkey-overlay-title="Which Key: Reload" { spawn-sh "which-key-wayland reload"; }
+    Mod+Ctrl+Grave hotkey-overlay-title="Which Key: Quit" { spawn-sh "which-key-wayland quit"; }
+
     // #"Window"
     Mod+K { focus-window-up-or-bottom; }
     Mod+J { focus-window-down-or-top; }
@@ -18,8 +23,8 @@ binds {
 
     Mod+Shift+C { center-window; }
 
-    Mod+Shift+Grave { toggle-window-floating; }
-    Mod+Grave { switch-focus-between-floating-and-tiling; }
+    Mod+Slash { switch-focus-between-floating-and-tiling; }
+    Mod+Shift+Slash { toggle-window-floating; }
 
     // #"Column"
     Mod+H { focus-column-left-or-last; }
@@ -59,44 +64,27 @@ binds {
     Mod+Shift+Equal { set-window-height "+10%"; }
 
     // Makes the column "fill the rest of the space".
-    Mod+F hotkey-overlay-title="Fill Screen" { expand-column-to-available-width; }
+    Mod+F hotkey-overlay-title="Fill Rest Space" { expand-column-to-available-width; }
 
     // #"Fullscreen"
     Mod+M repeat=false hotkey-overlay-title="Fullscreen" { fullscreen-window; }
     Mod+Shift+M repeat=false hotkey-overlay-title="Windowed Fullscreen" { toggle-windowed-fullscreen; }
 
-    // #"Notification"
-    Mod+Slash hotkey-overlay-title="Dismiss Active Notifications" { spawn-sh "noctalia-shell ipc call notifications dismissAll"; }
-    Mod+Shift+Slash hotkey-overlay-title="Notification History" { spawn-sh "noctalia-shell ipc call notifications toggleHistory"; }
-    Mod+Ctrl+Slash hotkey-overlay-title="Clear Notification History" { spawn-sh "noctalia-shell ipc call notifications clear"; }
-
-    Mod+R hotkey-overlay-title="Random Wallpaper" { spawn-sh "noctalia-shell ipc call wallpaper random"; }
-
     Mod+Backspace repeat=false { toggle-overview; }
 
     // #"Run"
     Mod+Return hotkey-overlay-title="Terminal" { spawn "foot"; }
-    Mod+Q repeat=false hotkey-overlay-title="Calculator" { spawn "gnome-calculator" "-m" "basic"; }
-    Mod+W repeat=false hotkey-overlay-title="Browser" { spawn "google-chrome-stable"; }
-    Mod+E repeat=false hotkey-overlay-title="Files" { spawn "nautilus"; }
 
     // #"Panel"
-    Mod+Delete hotkey-overlay-title="Session Menu" { spawn-sh "noctalia-shell ipc call sessionMenu toggle"; }
-    Mod+Comma hotkey-overlay-title="Settings" { spawn-sh "noctalia-shell ipc call settings toggle"; }
-    Mod+S hotkey-overlay-title="Control Center" { spawn-sh "noctalia-shell ipc call controlCenter toggle"; }
     Mod+D hotkey-overlay-title="Launcher" { spawn-sh "noctalia-shell ipc call launcher toggle"; }
     Mod+V hotkey-overlay-title="Clipboard Pick" { spawn-sh "noctalia-shell ipc call launcher clipboard"; }
-    Mod+X hotkey-overlay-title="System Monitor" { spawn-sh "noctalia-shell ipc call systemMonitor toggle"; }
-    Mod+Shift+X hotkey-overlay-title="Calendar" { spawn-sh "noctalia-shell ipc call calendar toggle"; }
 
     // #"Audio"
     Mod+Up hotkey-overlay-title="Increase output volume" { spawn-sh "noctalia-shell ipc call volume increase"; }
     Mod+Down hotkey-overlay-title="Decrease output volume" { spawn-sh "noctalia-shell ipc call volume decrease"; }
-    Mod+A hotkey-overlay-title="Audio Panel" { spawn-sh "noctalia-shell ipc call volume togglePanel"; }
-    Mod+F9 hotkey-overlay-title="Media Panel" { spawn-sh "noctalia-shell ipc call media toggle"; }
-    Mod+F10 hotkey-overlay-title="Previous Track" { spawn-sh "noctalia-shell ipc call media previous"; }
-    Mod+F11 hotkey-overlay-title="Toggle Playback" { spawn-sh "noctalia-shell ipc call media playPause"; }
-    Mod+F12 hotkey-overlay-title="Next Track" { spawn-sh "noctalia-shell ipc call media next"; }
+    Mod+Right hotkey-overlay-title="Previous Track" { spawn-sh "noctalia-shell ipc call media previous"; }
+    Mod+F12 hotkey-overlay-title="Toggle Playback" { spawn-sh "noctalia-shell ipc call media playPause"; }
+    Mod+Left hotkey-overlay-title="Next Track" { spawn-sh "noctalia-shell ipc call media next"; }
 
     // #"Screenshots"
     Print repeat=false hotkey-overlay-title="Screenshot Region" { screenshot; }
@@ -111,8 +99,5 @@ binds {
 
     // #"Misc"
     Mod+F1 hotkey-overlay-title="Keybind Cheatsheet" { spawn-sh "noctalia-shell ipc call plugin togglePanel keybind-cheatsheet"; }
-    Mod+F2 repeat=false hotkey-overlay-title="Focus Window Info" { spawn "foot" "--hold" "zsh" "-c" "niri msg focused-window"; }
-    Mod+Shift+I hotkey-overlay-title="Toggle Idle Inhibitor" { spawn-sh "noctalia-shell ipc call idleInhibitor toggle"; }
-    Mod+Y hotkey-overlay-title="Show Pressed Keys" { spawn-sh "noctalia-shell ipc call plugin:show-keys toggle"; }
 }
 

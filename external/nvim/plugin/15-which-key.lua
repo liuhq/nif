@@ -33,8 +33,9 @@ wk.add({
     { '<leader>d', group = 'Diagnostics' },
     { '<leader>f', group = 'File' },
     { '<leader>g', group = 'Git' },
+    { '<leader>m', group = 'Multicursor', mode = { 'n', 'x' } },
     { '<leader>n', group = 'Notification' },
     { '<leader>s', group = 'Search' },
     { '<leader>t', group = 'Tab' },
-    { '<leader>v', group = 'Dap' },
+    { '<leader>v', group = 'Dap', mode = { 'n', 'x' } },
 })

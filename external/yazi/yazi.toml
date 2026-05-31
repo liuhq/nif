@@ -1,6 +1,7 @@
 # A TOML linter such as https://taplo.tamasfe.dev/ can use this schema to validate your config.
 # If you encounter any issues, please make an issue at https://github.com/yazi-rs/schemas.
-"$schema" = "https://yazi-rs.github.io/schemas/yazi.json"
+
+#:schema https://yazi-rs.github.io/schemas/yazi.json
 
 [mgr]
 ratio = [1, 5, 4]
@@ -14,7 +15,6 @@ show_hidden = false
 show_symlink = true
 scrolloff = 5
 mouse_events = ["click", "scroll"]
-title_format = "Yazi: {cwd}"
 
 [preview]
 wrap = "yes"
@@ -29,90 +29,88 @@ ueberzug_offset = [0, 0, 0, 0]
 
 [opener]
 edit = [
-    { run = '${EDITOR:-vi} "$@"', desc = "env EDITOR", block = true, for = "unix" },
+  { run = '${EDITOR:-vi} "$@"', desc = "env EDITOR", block = true, for = "unix" },
 ]
 open = [{ run = 'xdg-open "$1"', desc = "Open", for = "linux" }]
 reveal = [
-    { run = 'xdg-open "$(dirname "$1")"', desc = "Reveal", for = "linux" },
-    { run = '''exiftool "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show EXIF", for = "unix" },
+  { run = 'xdg-open "$(dirname "$1")"', desc = "Reveal", for = "linux" },
+  { run = '''exiftool "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show EXIF", for = "unix" },
 ]
 extract = [
-    { run = 'ya pub extract --list "$@"', desc = "Extract here", for = "unix" },
+  { run = 'ya pub extract --list "$@"', desc = "Extract here", for = "unix" },
 ]
 play = [
-    { run = 'mpv --force-window "$@"', orphan = true, for = "unix" },
-    { run = '''mediainfo "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show media info", for = "unix" },
+  { run = 'mpv --force-window "$@"', orphan = true, for = "unix" },
+  { run = '''mediainfo "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show media info", for = "unix" },
 ]
 imv = [
-    { run = 'imv "$@"', orphan = true, desc = "Open images via imv", for = "unix" },
+  { run = 'imv "$@"', orphan = true, desc = "Open images via imv", for = "unix" },
 ]
 imvd = [
-    { run = 'imv-dir "$0"', orphan = true, desc = "Open images in directory via imv", for = "unix" },
+  { run = 'imv-dir "$0"', orphan = true, desc = "Open images in directory via imv", for = "unix" },
 ]
 
 [open]
 rules = [
-    # Folder
-    { url = "*/", use = [
-        "edit",
-        "open",
-        "reveal",
-    ] },
-    # Text
-    { mime = "text/*", use = [
-        "edit",
-        "reveal",
-    ] },
-    # Image
-    { mime = "image/*", use = [
-        "imv",
-        "imvd",
-        "reveal",
-    ] },
-    # Media
-    { mime = "{audio,video}/*", use = [
-        "play",
-        "reveal",
-    ] },
-    # Archive
-    { mime = "application/{,g}zip", use = [
-        "extract",
-        "reveal",
-    ] },
-    { mime = "application/{tar,bzip*,7z*,xz,rar,zstd}", use = [
-        "extract",
-        "reveal",
-    ] },
-    # JSON
-    { mime = "application/{json,ndjson}", use = [
-        "edit",
-        "reveal",
-    ] },
-    # pdf
-    { mime = "application/pdf", use = [
-        "open",
-        "reveal",
-    ] },
-    { mime = "*/javascript", use = [
-        "edit",
-        "reveal",
-    ] },
-    # Empty file
-    { mime = "inode/empty", use = [
-        "edit",
-        "reveal",
-    ] },
-    # Fallback
-    { url = "*", use = [
-        "open",
-        "edit",
-        "reveal",
-    ] },
+  # Text
+  { mime = "text/*", use = [
+    "edit",
+    "reveal",
+  ] },
+  # Image
+  { mime = "image/*", use = [
+    "imv",
+    "imvd",
+    "reveal",
+  ] },
+  # Media
+  { mime = "{audio,video}/*", use = [
+    "play",
+    "reveal",
+  ] },
+  # Archive
+  { mime = "application/{,g}zip", use = [
+    "extract",
+    "reveal",
+  ] },
+  { mime = "application/{tar,bzip*,7z*,xz,rar,zstd}", use = [
+    "extract",
+    "reveal",
+  ] },
+  # JSON
+  { mime = "application/{json,ndjson}", use = [
+    "edit",
+    "reveal",
+  ] },
+  # pdf
+  { mime = "application/pdf", use = [
+    "open",
+    "reveal",
+  ] },
+  { mime = "*/javascript", use = [
+    "edit",
+    "reveal",
+  ] },
+  # Empty file
+  { mime = "inode/empty", use = [
+    "edit",
+    "reveal",
+  ] },
+  # Folder
+  { url = "*/", use = [
+    "edit",
+    "open",
+    "reveal",
+  ] },
+  # Fallback
+  { url = "*", use = [
+    "edit",
+    "open",
+    "reveal",
+  ] },
 ]
 
 [tasks]
-micro_workers = 10
-macro_workers = 25
 bizarre_retry = 5
 image_alloc = 536870912  # 512MB
 image_bound = [0, 0]
@@ -120,49 +118,48 @@ suppress_preload = false
 
 [plugin]
 prepend_fetchers = [
-    { id = "git", url = "*", run = "git" },
-    { id = "git", url = "*/", run = "git" },
-    { id = "mime", url = "local://*", run = "mime-ext.local", prio = "high" },
-    { id = "mime", url = "remote://*", run = "mime-ext.remote", prio = "high" },
-]
-prepend_preloaders = [
-    # Image
-    { mime = "image/{avif,hei?,jxl,svg+xml}", run = "magick" },
-    # { mime = "image/*", run = "image" },
-    # Video
-    # { mime = "video/*", run = "video" },
-    # PDF
-    # { mime = "application/pdf", run = "pdf" },
-    # Font
-    { mime = "font/*", run = "font" },
-    { mime = "application/ms-opentype", run = "font" },
+  { group = "mime", url = "local://*", run = "mime-ext.local", prio = "high" },
+  { group = "mime", url = "remote://*", run = "mime-ext.remote", prio = "high" },
+  { group = "git", url = "*/", run = "git" },
+  { group = "git", url = "*", run = "git" },
 ]
 prepend_previewers = [
-    # { url = "*/", run = "folder", sync = true },
-    # Code
-    # { mime = "text/*", run = "code" },
-    # { mime = "*/{xml,javascript,wine-extension-ini}", run = "code" },
-    # JSON
-    # { mime = "application/{json,ndjson}", run = "json" },
-    # Image
-    { mime = "image/{avif,hei?,jxl,svg+xml}", run = "magick" },
-    # { mime = "image/*", run = "image" },
-    # Video
-    # { mime = "video/*", run = "video" },
-    # PDF
-    # { mime = "application/pdf", run = "pdf" },
-    # Archive
-    # { mime = "application/{,g}zip", run = "archive" },
-    # { mime = "application/{tar,bzip*,7z*,xz,rar,zstd,iso9660-image}", run = "archive" },
-    # Font
-    { mime = "font/*", run = "font" },
-    { mime = "application/ms-opentype", run = "font" },
-    # Empty file
-    # { mime = "inode/empty", run = "empty" },
+  { mime = "text/*", run = "code" },
+  { mime = "*/{xml,javascript,wine-extension-ini}", run = "code" },
+  { mime = "application/{json,ndjson}", run = "json" },
+  { mime = "image/{avif,hei?,jxl,svg+xml}", run = "magick" },
+  { mime = "image/*", run = "image" },
+  # { mime = "video/*", run = "video" },
+  # { mime = "application/pdf", run = "pdf" },
+  { mime = "application/{,g}zip", run = "archive" },
+  { mime = "application/{tar,bzip*,7z*,xz,rar,zstd,iso9660-image}", run = "archive" },
+  { mime = "font/*", run = "font" },
+  { mime = "application/ms-opentype", run = "font" },
+  { mime = "inode/empty", run = "empty" },
+  { url = ".bash*", run = "code" },
+  { url = ".zsh*", run = "code" },
+  { url = "_*", run = "code" },
+  { url = "*justfile", run = "code" },
+  { url = "PKGBUILD", run = "code" },
+  { url = ".SRCINFO", run = "code" },
+  { url = "profile", run = "code" },
+  { url = "*rc", run = "code" },
+  { url = "config", run = "code" },
+  { url = "*.config", run = "code" },
+  { url = "config.*", run = "code" },
+  { url = "*.desktop", run = "code" },
+  { url = "*.dict", run = "code" },
+  { url = "*.history", run = "code" },
+  { url = ".git*", run = "code" },
+  { url = "*.theme", run = "code" },
+  { url = "log", run = "code" },
+  { url = "*.log", run = "code" },
+  { url = "*.kdl", run = "code" },
+  { url = "user-dirs.dirs", run = "code" },
 ]
 append_previewers = [
-    # Fallback
-    { url = "*", run = "file" },
+  { url = "*/", run = "folder", sync = true },
+  { url = "*", run = "file" },
 ]
 
 [input]

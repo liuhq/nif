@@ -13,7 +13,7 @@ window-rule {
 window-rule {
     match app-id="QQ" is-floating=false
     match app-id="org.telegram.desktop" is-floating=false
-    match app-id="spotify"
+    match app-id="Spotify"
     match app-id="steam"
     match app-id="org.polymc.PolyMC"
     open-focused false
@@ -59,7 +59,7 @@ window-rule {
 window-rule {
     match app-id="org.telegram.desktop" is-floating=false
     match app-id="QQ" is-floating=false
-    match app-id="spotify" is-floating=false
+    match app-id="Spotify" is-floating=false
     default-column-width { proportion 0.75; }
     default-window-height { proportion 1.0; }
 }

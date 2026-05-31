@@ -49,6 +49,7 @@ final: prev: {
           mini-ai
           mini-bufremove
           mini-indentscope
+          multicursor-nvim
           nui-nvim
           nvim-autopairs
           nvim-dap
