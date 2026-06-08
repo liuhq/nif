@@ -23,6 +23,11 @@ gc:
   sudo nix store gc
   sudo nix-collect-garbage --delete-old
 
+[group('Nix')]
+[working-directory: 'external/sing-box']
+fetch-hash:
+  ./fetch-hash.sh
+
 [group('Secret')]
 [working-directory: 'secrets']
 agenix-edit file key:

@@ -15,4 +15,5 @@ in
 
   age.secrets."passwd-${userName}".file = ./passwd/${userName}.age;
   age.secrets.proxies.file = ./proxies.age;
+  age.secrets.proxies-mihomo.file = ./proxies-mihomo.age;
 }

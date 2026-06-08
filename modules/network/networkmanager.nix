@@ -7,6 +7,7 @@
 }:
 let
   cfg = config.mymod.network.networkmanager;
+  mihomoCfg = config.mymod.network.mihomo;
 in
 {
   options.mymod.network.networkmanager = {
@@ -16,7 +17,7 @@ in
   config = lib.mkIf cfg.enable {
     networking.networkmanager = {
       enable = true;
-      dns = "none";
+      dns = lib.mkIf mihomoCfg.enable "none";
       wifi = {
         backend = "iwd";
       };

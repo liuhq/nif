@@ -76,7 +76,7 @@ dns:
   enable: true
   cache-algorithm: arc
   prefer-h3: true
-  ipv6: false
+  ipv6: true
   use-hosts: true
   use-system-hosts: false
   listen: 127.0.0.1:53
@@ -88,8 +88,8 @@ dns:
     "villa.parkson-market.org": tls://223.5.5.5
     "geosite:cn,private,biliintl,bilibili,tld-cn,category-games-cn,category-games@cn,steam@cn": tls://223.5.5.5
   nameserver:
-    - https://1.1.1.1/dns-query#Proxy
-    - https://185.222.222.222/dns-query # dns.sb
+    - https://8.8.8.8/dns-query#Proxy
+    - https://9.9.9.9/dns-query#Proxy
 
 
 #================================
@@ -250,16 +250,8 @@ rules:
   - DST-PORT,587,DIRECT # Nodes ban this port
   - PROCESS-NAME,.qbittorrent-wrapped,DIRECT,no-resolve
 
-  ## Wuthering Wave
-  - GEOSITE,kurogames,Games
-  - DOMAIN-SUFFIX,aki-game.net,Games
-  - DOMAIN,pc.perfsight.wetest.net,Games
   ## steam proton
   - PROCESS-NAME,wineserver,Games,no-resolve
-
-  - GEOSITE,cn,DIRECT
-  - GEOIP,CN,DIRECT
-  - DOMAIN-SUFFIX,cn,DIRECT
 
   ## replace to subscription domain
   - DOMAIN,villa.parkson-market.org,DIRECT
@@ -269,26 +261,22 @@ rules:
 
   - GEOSITE,category-porn,SG
   - GEOSITE,dlsite,HK
-  - GEOSITE,flatpak,HK
-  - GEOSITE,github,JP
   - GEOSITE,google-gemini,US
   - GEOSITE,google-play,JP
-  - GEOSITE,mozilla,JP
-  - GEOSITE,patreon,HK
   - GEOSITE,spotify,JP
-  - GEOSITE,telegram,HK
-  - GEOSITE,twitch,JP
-  - GEOSITE,youtube,JP
 
   - GEOSITE,biliintl,DIRECT
   - GEOSITE,bilibili,DIRECT
   - GEOSITE,tracker,DIRECT
-  - GEOSITE,trackernetwork,DIRECT
   - GEOSITE,category-public-tracker,DIRECT
   - GEOSITE,category-games-cn,DIRECT
   - GEOSITE,category-games@cn,DIRECT
   - GEOSITE,steam@cn,DIRECT
 
   - GEOSITE,category-games,Games
+
+  - DOMAIN-SUFFIX,cn,DIRECT
+  - GEOSITE,cn,DIRECT
+  - GEOIP,CN,DIRECT
 
   - MATCH,Proxy

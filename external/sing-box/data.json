@@ -1,0 +1,29 @@
+{
+  "geoip": {
+    "$url": "https://raw.githubusercontent.com/liuhq/sing-geoip/$commit/$tag.srs",
+    "commit": "86ae2ec85f07e08140bd0638588e42055c2cd731",
+    "tag": ["geoip-cn"]
+  },
+  "geosite": {
+    "$url": "https://raw.githubusercontent.com/liuhq/sing-geosite/$commit/$tag.srs",
+    "commit": "99c2cc57bc989b6634ff299cef3c83b8a9b78ed0",
+    "tag": [
+      "geosite-private",
+      "geosite-cn",
+      "geosite-tld-cn",
+      "geosite-category-ads-all",
+      "geosite-steam",
+      "geosite-steam@cn",
+      "geosite-spotify",
+      "geosite-dlsite",
+      "geosite-category-ai-!cn",
+      "geosite-category-public-tracker",
+      "geosite-category-games",
+      "geosite-category-games-cn",
+      "geosite-category-games@cn",
+      "geosite-category-cdn-cn",
+      "geosite-bilibili",
+      "geosite-bilibili-cdn"
+    ]
+  }
+}

@@ -7,6 +7,7 @@
 }:
 let
   cfg = config.mymod.network;
+  mihomoCfg = config.mymod.network.mihomo;
 in
 {
   options.mymod =
@@ -44,8 +45,8 @@ in
     networking = {
       inherit (myvar) hostName;
 
-      useDHCP = false;
-      dhcpcd.enable = false;
+      useDHCP = lib.mkIf mihomoCfg.enable false;
+      dhcpcd.enable = lib.mkIf mihomoCfg.enable false;
     };
 
     networking.firewall = {

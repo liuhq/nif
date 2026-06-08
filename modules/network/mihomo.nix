@@ -43,6 +43,7 @@ in
       webui = pkgs.metacubexd;
     };
 
+    # systemd.services.mihomo.wantedBy = lib.mkForce [ ];
     systemd.services.mihomo.serviceConfig =
       let
         cap = [
@@ -66,7 +67,7 @@ in
         '';
 
         LoadCredential = [
-          "proxies.yaml:${config.age.secrets.proxies.path}"
+          "proxies.yaml:${config.age.secrets.proxies-mihomo.path}"
         ];
 
         AmbientCapabilities = lib.mkForce cap;
