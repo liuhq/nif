@@ -16,7 +16,7 @@ in
   mymod.gpu.nvidia.enable = true;
 
   mymod.network.networkmanager.enable = true;
-  mymod.network.sing-box.enable = true;
+  mymod.network.mihomo.enable = true;
   mymod.network.ssh.config = ''
     Host gh github.com
         Hostname ssh.github.com

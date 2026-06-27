@@ -15,7 +15,7 @@ window-rule {
     match app-id="org.telegram.desktop" is-floating=false
     match app-id="Spotify"
     match app-id="steam"
-    match app-id="org.polymc.PolyMC"
+    match app-id="org.prismlauncher.PrismLauncher"
     open-focused false
     open-on-workspace "chat"
 }
@@ -50,10 +50,11 @@ window-rule {
 }
 
 // open with 2/4 screen
-// window-rule {
-//     default-column-width { proportion 0.5; }
-//     default-window-height { proportion 1.0; }
-// }
+window-rule {
+    match app-id="org.prismlauncher.PrismLauncher"
+    default-column-width { proportion 0.5; }
+    default-window-height { proportion 1.0; }
+}
 
 // open with 3/4 screen
 window-rule {

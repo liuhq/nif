@@ -10,5 +10,4 @@ in
 {
   "passwd/horin.age" = armored;
   "proxies.age" = armored;
-  "proxies-mihomo.age" = armored;
 }

@@ -13,13 +13,19 @@ in
       libnotify
 
       aseprite
+      crosspipe
       eyedropper
       game-devices-udev-rules
       gnome-calculator
       gnome-characters
-      crosspipe
+      inkscape
+      krita
+      ldtk
+      lmms
       papers
+      satty
       spotify
+      tiled
     ];
   };
 }

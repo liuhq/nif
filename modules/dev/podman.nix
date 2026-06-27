@@ -12,10 +12,9 @@ in
 {
   options.mymod = {
     dev.podman = {
-      # enable = lib.mkEnableOption "Podman environment" // {
-      #   default = true;
-      # };
-      enable = lib.mkEnableOption "Podman environment";
+      enable = lib.mkEnableOption "Podman environment" // {
+        default = true;
+      };
     };
   };
 
