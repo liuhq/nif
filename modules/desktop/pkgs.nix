@@ -19,6 +19,7 @@ in
       gnome-calculator
       gnome-characters
       inkscape
+      kdePackages.kdenlive
       krita
       ldtk
       lmms

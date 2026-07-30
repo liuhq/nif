@@ -89,7 +89,6 @@ in
           }
         )
 
-        inputs.nix-flatpak.nixosModules.nix-flatpak
         inputs.noctalia.nixosModules.default
       ];
     };

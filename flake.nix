@@ -33,15 +33,13 @@
       inputs.darwin.follows = "";
     };
 
-    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
-
     noctalia = {
       url = "github:noctalia-dev/noctalia/legacy-v4";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     llm-agents = {
-      url = "github:numtide/llm-agents.nix";
+      url = "github:numtide/llm-agents.nix/5f9d86061f538b3f5f3568583c001fb9c0705b71";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
