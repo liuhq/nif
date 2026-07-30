@@ -19,7 +19,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-sing-box.url = "github:nixos/nixpkgs/nixos-26.05";
+    nixpkgs-krita.url = "github:nixos/nixpkgs/cd648d6ea62bc0ffba91e61fcfe5e33c1e2004b1";
 
     hjem = {
       url = "github:feel-co/hjem";

@@ -355,19 +355,19 @@
         "type": "github"
       }
     },
-    "nixpkgs-sing-box": {
+    "nixpkgs-krita": {
       "locked": {
-        "lastModified": 1785386831,
-        "narHash": "sha256-sPS3CaXH8RAT3FZRuy4VcV47iuYIWMMfa0GbyJKC3o4=",
+        "lastModified": 1783375776,
+        "narHash": "sha256-pg6hLjDeAWaUOzh2JM2Cw0BwYpGtOyNr6A4FBwP9Ymo=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "21ea275a7c46aef9d4d6ddc962e6d562e9d94183",
+        "rev": "cd648d6ea62bc0ffba91e61fcfe5e33c1e2004b1",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
-        "ref": "nixos-26.05",
         "repo": "nixpkgs",
+        "rev": "cd648d6ea62bc0ffba91e61fcfe5e33c1e2004b1",
         "type": "github"
       }
     },
@@ -483,7 +483,7 @@
         "hjem": "hjem",
         "llm-agents": "llm-agents",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-sing-box": "nixpkgs-sing-box",
+        "nixpkgs-krita": "nixpkgs-krita",
         "noctalia": "noctalia",
         "which-key-wayland": "which-key-wayland"
       }

@@ -41,7 +41,10 @@ input {
     touchpad { off; }
     trackpoint { off; }
     trackball { off; }
-    tablet { off; }
+    tablet {
+      map-to-focused-output
+      // map-to-focused-window
+    }
     touch { off; }
 
     warp-mouse-to-focus mode="center-xy"

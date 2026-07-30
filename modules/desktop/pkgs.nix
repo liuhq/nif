@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  inputs,
   ...
 }:
 let
@@ -20,7 +21,8 @@ in
       gnome-characters
       inkscape
       kdePackages.kdenlive
-      krita
+      # krita
+      inputs.nixpkgs-krita.legacyPackages.${pkgs.stdenv.hostPlatform.system}.krita
       ldtk
       lmms
       papers
