@@ -38,7 +38,7 @@ fzf.setup({
             ['Info'] = { text = icons.diagnostics.Info },
         },
     },
-    ui_select = true,
+    ui_select = {},
 })
 
 --- Buffers and Files
