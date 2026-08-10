@@ -11,12 +11,11 @@ in
 {
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      libnotify
-
       aseprite
       crosspipe
       eyedropper
       game-devices-udev-rules
+      gimp
       gnome-calculator
       gnome-characters
       inkscape
@@ -24,6 +23,7 @@ in
       # krita
       inputs.nixpkgs-krita.legacyPackages.${pkgs.stdenv.hostPlatform.system}.krita
       ldtk
+      libnotify
       lmms
       # https://github.com/NixOS/nixpkgs/issues/447234, so use flatpak now
       # mypaint
