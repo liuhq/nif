@@ -13,29 +13,19 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" =
-    { device = "/dev/mapper/vg0-nixos--root";
-      fsType = "xfs";
-    };
-
-  fileSystems."/nix" =
-    { device = "/dev/mapper/vg0-nixos--nix";
-      fsType = "xfs";
-    };
-
-  fileSystems."/home" =
-    { device = "/dev/mapper/vg0-nixos--home";
-      fsType = "xfs";
-    };
-
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/76E0-493E";
+    { device = "/dev/disk/by-label/BOOT";
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
+  fileSystems."/" =
+    { device = "/dev/mapper/vg0-root";
+      fsType = "xfs";
+    };
+
   swapDevices =
-    [ { device = "/dev/mapper/vg0-nixos--swap"; }
+    [ { device = "/dev/mapper/vg0-swap"; }
     ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

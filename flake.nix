@@ -85,7 +85,6 @@
           ttf-misans = callPackage system ./pkgs/ttf-misans.nix;
           bocchi-dyn-cursor = callPackage system ./pkgs/bocchi-dyn-cursor.nix;
           my-wallpaper = callPackage system ./pkgs/my-wallpaper.nix;
-          mmcai-rs = callPackage system ./pkgs/mmcai_rs.nix;
         });
 
       overlays.default = nixpkgs.lib.composeManyExtensions [
@@ -98,7 +97,6 @@
         (final: prev: { ttf-misans = final.callPackage ./pkgs/ttf-misans.nix { }; })
         (final: prev: { bocchi-dyn-cursor = final.callPackage ./pkgs/bocchi-dyn-cursor.nix { }; })
         (final: prev: { my-wallpaper = final.callPackage ./pkgs/my-wallpaper.nix { }; })
-        (final: prev: { mmcai-rs = final.callPackage ./pkgs/mmcai_rs.nix { }; })
       ];
 
       nixosConfigurations.wkst = mkSystem {

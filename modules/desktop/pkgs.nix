@@ -25,8 +25,6 @@ in
       ldtk
       libnotify
       lmms
-      # https://github.com/NixOS/nixpkgs/issues/447234, so use flatpak now
-      # mypaint
       papers
       satty
       spotify
