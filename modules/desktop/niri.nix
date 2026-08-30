@@ -23,7 +23,6 @@ in
       "niri/keybind.kdl".source = "${external}/niri/keybind.kdl";
       "niri/rule.kdl".source = "${external}/niri/rule.kdl";
       "niri/theme.kdl".source = "${external}/niri/theme.kdl";
-
     };
 
     environment.systemPackages = with pkgs; [
