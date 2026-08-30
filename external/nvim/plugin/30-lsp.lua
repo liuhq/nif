@@ -127,6 +127,7 @@ vim.lsp.enable({
     'dotls',
     'eslint',
     'gdscript',
+    'gopls',
     'html',
     'jsonls',
     'lua_ls',
