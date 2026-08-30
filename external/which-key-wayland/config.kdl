@@ -1,0 +1,69 @@
+timeout 0
+
+font {
+  size 16.0
+  line-height 24.0
+}
+
+layout {
+  width 500
+  max-items 10
+  padding 4
+  radius 4
+  anchor 2
+  margin {
+    top 0
+    right 4
+    bottom 4
+    left 0
+  }
+}
+
+bind {
+  Space desc="Open browser" { spawn "google-chrome"; }
+  a desc="Apps" {
+    p desc="Spotify" { spawn "spotify"; }
+    s desc="Steam" { sh "flatpak run --branch=stable --arch=x86_64 --command=/app/bin/steam --file-forwarding com.valvesoftware.Steam"; }
+  }
+  b desc="Bar" {
+    b desc="Toggle bar visibility" { sh "noctalia-shell ipc call bar toggle" }
+    k desc="Bar position: top" { sh "noctalia-shell ipc call bar setPosition top" }
+    j desc="Bar position: bottom" { sh "noctalia-shell ipc call bar setPosition bottom" }
+    h desc="Bar position: left" { sh "noctalia-shell ipc call bar setPosition left" }
+    l desc="Bar position: right" { sh "noctalia-shell ipc call bar setPosition right" }
+  }
+  c desc="Calculator" { spawn "gnome-calculator"; }
+  e desc="File manager" { spawn "nautilus"; }
+  l desc="Lock" { sh "noctalia-shell ipc call lockScreen lock" }
+  m desc="Media" {
+    i desc="Mute input" { sh "noctalia-shell ipc call volume muteInput" }
+    o desc="Mute output" { sh "noctalia-shell ipc call volume muteOutput" }
+  }
+  N desc="Niri" {
+    l desc="Layers" { sh "foot --hold niri msg layers"; }
+    o desc="Outputs" { spawn "foot" "--hold" "niri" "msg" "outputs"; }
+    w desc="Windows" { sh "foot --hold niri msg windows"; }
+  }
+  n desc="Notifications" {
+    c desc="Clear all" { sh "noctalia-shell ipc call notifications clear" }
+    d desc="Dismiss all" { sh "noctalia-shell ipc call notifications dismissAll" }
+    m desc="Do not disturb" { sh "noctalia-shell ipc call notifications toggleDND" }
+    n desc="History" { sh "noctalia-shell ipc call notifications toggleHistory" }
+    t desc="Dismiss toast" { sh "noctalia-shell ipc call toast dismiss" }
+  }
+  p desc="Noctalia panels" {
+    , desc="Settings" { sh "noctalia-shell ipc call settings toggle" }
+    a desc="Audio" { sh "noctalia-shell ipc call volume togglePanel" }
+    b desc="Bluetooth" { sh "noctalia-shell ipc call bluetooth togglePanel" }
+    c desc="Calendar" { sh "noctalia-shell ipc call calendar toggle" }
+    m desc="System monitor" { sh "noctalia-shell ipc call systemMonitor toggle" }
+    n desc="Network" { sh "noctalia-shell ipc call network togglePanel" }
+    o desc="Media" { sh "noctalia-shell ipc call media toggle" }
+    x desc="Control center" { sh "noctalia-shell ipc call controlCenter toggle" }
+  }
+  q desc="Session" { sh "noctalia-shell ipc call sessionMenu toggle" }
+  w desc="Wallpaper" {
+    w desc="Wallpaper selector" { sh "noctalia-shell ipc call wallpaper toggle" }
+    r desc="Apply random wallpaper" { sh "noctalia-shell ipc call wallpaper random" }
+  }
+}
