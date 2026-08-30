@@ -41,7 +41,5 @@ in
     hardware.nvidia-container-toolkit.enable = true;
 
     environment.systemPackages = [ pkgs.podlet ];
-
-    users.users.${userName}.extraGroups = [ "podman" ];
   };
 }
