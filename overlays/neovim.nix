@@ -16,8 +16,6 @@ final: prev: {
           nixd
           nixfmt
 
-          rumdl
-
           taplo
 
           yaml-language-server

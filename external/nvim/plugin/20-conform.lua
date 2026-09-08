@@ -14,7 +14,7 @@ require('conform').setup({
         json = js_fmt_config,
         jsonc = js_fmt_config,
         yaml = { 'oxfmt', 'prettier', 'dprint', 'yamlfmt', stop_after_first = true },
-        markdown = { 'oxfmt', 'prettier', 'dprint', 'rumdl', 'deno_fmt', stop_after_first = true },
+        markdown = { 'rumdl', 'oxfmt', 'prettier', 'dprint', 'deno_fmt', stop_after_first = true },
         sql = { 'dprint', 'deno_fmt', stop_after_first = true },
     },
     default_format_opts = {

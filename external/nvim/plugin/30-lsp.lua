@@ -133,7 +133,6 @@ vim.lsp.enable({
     'lua_ls',
     'nixd',
     'oxlint',
-    'rumdl',
     'tailwindcss',
     'taplo',
     'ts_ls',
