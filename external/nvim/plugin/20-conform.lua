@@ -1,4 +1,4 @@
-local js_fmt_config = { 'prettier', 'dprint', 'deno_fmt', stop_after_first = true }
+local js_fmt_config = { 'oxfmt', 'prettier', 'dprint', 'deno_fmt', stop_after_first = true }
 
 require('conform').setup({
     formatters_by_ft = {
@@ -13,7 +13,7 @@ require('conform').setup({
         css = js_fmt_config,
         json = js_fmt_config,
         jsonc = js_fmt_config,
-        yaml = { 'prettier', 'dprint', 'yamlfmt', stop_after_first = true },
+        yaml = { 'oxfmt', 'prettier', 'dprint', 'yamlfmt', stop_after_first = true },
         markdown = { 'prettier', 'dprint', 'rumdl', 'deno_fmt', stop_after_first = true },
         sql = { 'dprint', 'deno_fmt', stop_after_first = true },
     },
@@ -23,6 +23,17 @@ require('conform').setup({
     formatters = {
         shfmt = { prepend_args = { '-i', '2' } },
         injected = { options = { ignore_errors = true } },
+        oxfmt = {
+            condition = function (_, ctx)
+                return vim.fs.find({
+                        '.oxfmtrc.json',
+                        '.oxfmtrc.jsonc',
+                        'oxfmt.config.ts',
+                        'oxfmt.config.mts',
+                    },
+                    { path = ctx.filename, upward = true, type = 'file' })[1] ~= nil
+            end,
+        },
         prettier = {
             condition = function (_, ctx)
                 return vim.fs.find(

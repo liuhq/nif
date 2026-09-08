@@ -47,11 +47,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    eza = {
-      url = "github:eza-community/eza";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     which-key-wayland = {
       url = "github:liuhq/which-key.wayland";
       inputs.nixpkgs.follows = "nixpkgs";

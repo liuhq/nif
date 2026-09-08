@@ -2,12 +2,11 @@
   config,
   pkgs,
   lib,
-  inputs,
   ...
 }:
 {
   environment.systemPackages = [
-    inputs.eza.packages.${pkgs.stdenv.hostPlatform.system}.default
+    pkgs.eza
   ];
 
   environment.sessionVariables = {
