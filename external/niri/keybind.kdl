@@ -4,11 +4,17 @@
 binds {
     Mod+Escape repeat=false hotkey-overlay-title=null { close-window; }
     Ctrl+Alt+Delete { quit; }
+    Mod+Backspace repeat=false { toggle-overview; }
 
     // #"WhichKey"
     Mod+Grave hotkey-overlay-title="Which Key" { spawn-sh "which-key-wayland"; }
     Mod+Shift+Grave hotkey-overlay-title="Which Key: Reload" { spawn-sh "which-key-wayland reload"; }
     Mod+Ctrl+Grave hotkey-overlay-title="Which Key: Quit" { spawn-sh "which-key-wayland quit"; }
+
+    Mod+A hotkey-overlay-title="Which Key: Apps" { spawn-sh "which-key-wayland show a"; }
+    Mod+B hotkey-overlay-title="Which Key: Noctalia panels" { spawn-sh "which-key-wayland show p"; }
+    Mod+W hotkey-overlay-title="Which Key: Window & Column" { spawn-sh "which-key-wayland show w"; }
+    Mod+Backslash hotkey-overlay-title="Which Key: Notifications" { spawn-sh "which-key-wayland show n"; }
 
     // #"Window"
     Mod+K { focus-window-up-or-bottom; }
@@ -21,10 +27,7 @@ binds {
     Mod+I repeat=false  { consume-window-into-column; }
     Mod+O repeat=false { expel-window-from-column; }
 
-    Mod+Shift+C { center-window; }
-
     Mod+Slash { switch-focus-between-floating-and-tiling; }
-    Mod+Shift+Slash { toggle-window-floating; }
 
     // #"Column"
     Mod+H { focus-column-left-or-last; }
@@ -36,10 +39,6 @@ binds {
     Mod+Shift+WheelScrollDown cooldown-ms=250 { focus-column-right; }
     Mod+Ctrl+Shift+WheelScrollUp cooldown-ms=250 { move-column-left; }
     Mod+Ctrl+Shift+WheelScrollDown cooldown-ms=250 { move-column-right; }
-
-    Mod+C { center-column; }
-
-    Mod+Backslash { toggle-column-tabbed-display; }
 
     // #"Workspace"
     Mod+P { focus-workspace-up; }
@@ -57,20 +56,10 @@ binds {
     // #"Size"
     Mod+Tab repeat=false { switch-preset-column-width; }
     Mod+Shift+Tab repeat=false { switch-preset-window-height; }
-    Mod+0 { reset-window-height; }
     Mod+Minus { set-column-width "-10%"; }
     Mod+Equal { set-column-width "+10%"; }
     Mod+Shift+Minus { set-window-height "-10%"; }
     Mod+Shift+Equal { set-window-height "+10%"; }
-
-    // Makes the column "fill the rest of the space".
-    Mod+F hotkey-overlay-title="Fill Rest Space" { expand-column-to-available-width; }
-
-    // #"Fullscreen"
-    Mod+M repeat=false hotkey-overlay-title="Fullscreen" { fullscreen-window; }
-    Mod+Shift+M repeat=false hotkey-overlay-title="Windowed Fullscreen" { toggle-windowed-fullscreen; }
-
-    Mod+Backspace repeat=false { toggle-overview; }
 
     // #"Run"
     Mod+Return hotkey-overlay-title="Terminal" { spawn "foot"; }
@@ -83,21 +72,12 @@ binds {
     Mod+Up hotkey-overlay-title="Increase output volume" { spawn-sh "noctalia-shell ipc call volume increase"; }
     Mod+Down hotkey-overlay-title="Decrease output volume" { spawn-sh "noctalia-shell ipc call volume decrease"; }
     Mod+Right hotkey-overlay-title="Previous Track" { spawn-sh "noctalia-shell ipc call media previous"; }
-    Mod+F12 hotkey-overlay-title="Toggle Playback" { spawn-sh "noctalia-shell ipc call media playPause"; }
     Mod+Left hotkey-overlay-title="Next Track" { spawn-sh "noctalia-shell ipc call media next"; }
+    Mod+Ctrl+Down hotkey-overlay-title="Toggle Playback" { spawn-sh "noctalia-shell ipc call media playPause"; }
 
     // #"Screenshots"
     Print repeat=false hotkey-overlay-title="Screenshot Region" { screenshot; }
     Mod+Print repeat=false hotkey-overlay-title="Screenshot window" { screenshot-window write-to-disk=false; }
     Shift+Print repeat=false hotkey-overlay-title="Screenshot Output (Save)" { screenshot-screen; }
-
-    // #"Screencast"
-    Mod+Insert repeat=false hotkey-overlay-title="Screencast On/Off" { spawn-sh "noctalia-shell ipc call plugin:screen-recorder toggle"; }
-    Mod+Ctrl+Insert repeat=false hotkey-overlay-title="Screencast Settings" { spawn-sh "noctalia-shell ipc call plugin openSettings screen-recorder"; }
-    Mod+F4 repeat=false hotkey-overlay-title="Set Dynamic Cast Window for Focused" { spawn-sh "niri msg action set-dynamic-cast-window"; }
-    Mod+Shift+F4 repeat=false hotkey-overlay-title="Clear Dynamic Cast Target" { spawn-sh "niri msg action clear-dynamic-cast-target"; }
-
-    // #"Misc"
-    Mod+F1 hotkey-overlay-title="Keybind Cheatsheet" { spawn-sh "noctalia-shell ipc call plugin togglePanel keybind-cheatsheet"; }
 }
 

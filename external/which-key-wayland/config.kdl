@@ -7,8 +7,8 @@ font {
 
 layout {
   width 500
-  max-items 10
-  padding 4
+  max-items 30
+  padding 8
   radius 4
   anchor 2
   margin {
@@ -22,6 +22,8 @@ layout {
 bind {
   Space desc="Open browser" { spawn "google-chrome"; }
   a desc="Apps" {
+    m desc="Steam" { sh "flatpak run --branch=stable --arch=x86_64 --command=polymc org.polymc.PolyMC"; }
+    o desc="OBS Studio" { spawn "obs"; }
     p desc="Spotify" { spawn "spotify"; }
     s desc="Steam" { sh "flatpak run --branch=stable --arch=x86_64 --command=/app/bin/steam --file-forwarding com.valvesoftware.Steam"; }
   }
@@ -42,6 +44,8 @@ bind {
   N desc="Niri" {
     l desc="Layers" { sh "foot --hold niri msg layers"; }
     o desc="Outputs" { spawn "foot" "--hold" "niri" "msg" "outputs"; }
+    S desc="Clear Dynamic Cast Target" { sh "niri msg action clear-dynamic-cast-target" }
+    s desc="Set Dynamic Cast Window for Focused" { sh "niri msg action set-dynamic-cast-window" }
     w desc="Windows" { sh "foot --hold niri msg windows"; }
   }
   n desc="Notifications" {
@@ -56,14 +60,25 @@ bind {
     a desc="Audio" { sh "noctalia-shell ipc call volume togglePanel" }
     b desc="Bluetooth" { sh "noctalia-shell ipc call bluetooth togglePanel" }
     c desc="Calendar" { sh "noctalia-shell ipc call calendar toggle" }
+    k desc="Keybind Cheatsheet" { sh "noctalia-shell ipc call plugin togglePanel keybind-cheatsheet" }
     m desc="System monitor" { sh "noctalia-shell ipc call systemMonitor toggle" }
     n desc="Network" { sh "noctalia-shell ipc call network togglePanel" }
     o desc="Media" { sh "noctalia-shell ipc call media toggle" }
     x desc="Control center" { sh "noctalia-shell ipc call controlCenter toggle" }
   }
   q desc="Session" { sh "noctalia-shell ipc call sessionMenu toggle" }
-  w desc="Wallpaper" {
+  W desc="Wallpaper" {
     w desc="Wallpaper selector" { sh "noctalia-shell ipc call wallpaper toggle" }
     r desc="Apply random wallpaper" { sh "noctalia-shell ipc call wallpaper random" }
+  }
+  w desc="Window & Column" {
+    c desc="Center column" { sh "niri msg action center-column" }
+    f desc="Toggle window floating" { sh "niri msg action toggle-window-floating" }
+    M desc="Windowed Fullscreen" { sh "niri msg action toggle-windowed-fullscreen" }
+    m desc="Fullscreen" { sh "niri msg action fullscreen-window" }
+    r desc="Reset window height" { sh "niri msg action reset-window-height" }
+    s desc="Fill rest screen space" { sh "niri msg action expand-column-to-available-width" }
+    t desc="Toggle column tabbed" { sh "niri msg action toggle-column-tabbed-display" }
+    w desc="Center window" { sh "niri msg action center-window" }
   }
 }
