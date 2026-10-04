@@ -26,23 +26,7 @@ in
       theme = lib.importTOML "${external}/yazi/theme.toml";
     };
   };
-  hjem.users.${userName}.xdg.config.files = {
-    "zsh/zsh.d/yazi.zsh".text = ''
-      #################
-      ### Functions ###
-      #################
 
-      ### Quit and Change Dir in yazi
-      function y() {
-        local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-        yazi "$@" --cwd-file="$tmp"
-        if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-          builtin cd -- "$cwd"
-        fi
-        rm -f -- "$tmp" >/dev/null
-      }
-    '';
-  };
   programs.fish.shellFunctions = {
     y = {
       body = ''

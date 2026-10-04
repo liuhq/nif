@@ -43,8 +43,6 @@ in
           init-module=${hjemCfg.xdg.config.directory}/npm/config/npm-init.js
           logs-dir=${hjemCfg.xdg.state.directory}/npm/logs
         '';
-        "zsh/completions/_pnpm".source = "${pkgs.pnpm}/share/zsh/site-functions/_pnpm";
-        "zsh/zsh.d/_npm".source = "${pkgs.nodejs}/lib/node_modules/npm/lib/utils/completion.sh";
       };
     };
   };

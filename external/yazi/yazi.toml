@@ -29,25 +29,25 @@ ueberzug_offset = [0, 0, 0, 0]
 
 [opener]
 edit = [
-  { run = '${EDITOR:-vi} "$@"', desc = "env EDITOR", block = true, for = "unix" },
+  { run = '$EDITOR "$argv"', desc = "env EDITOR", block = true, for = "unix" },
 ]
-open = [{ run = 'xdg-open "$1"', desc = "Open", for = "linux" }]
+open = [{ run = 'xdg-open "$argv"', desc = "Open", for = "linux" }]
 reveal = [
-  { run = 'xdg-open "$(dirname "$1")"', desc = "Reveal", for = "linux" },
-  { run = '''exiftool "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show EXIF", for = "unix" },
+  { run = 'xdg-open "$(dirname "$argv")"', desc = "Reveal", for = "linux" },
+  { run = '''exiftool "$argv"; echo "Press enter to exit"; read _''', block = true, desc = "Show EXIF", for = "unix" },
 ]
 extract = [
-  { run = 'ya pub extract --list "$@"', desc = "Extract here", for = "unix" },
+  { run = 'ya pub extract --list "$argv"', desc = "Extract here", for = "unix" },
 ]
 play = [
-  { run = 'mpv --force-window "$@"', orphan = true, for = "unix" },
-  { run = '''mediainfo "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show media info", for = "unix" },
+  { run = 'mpv --force-window "$argv"', orphan = true, for = "unix" },
+  { run = '''mediainfo "$argv"; echo "Press enter to exit"; read _''', block = true, desc = "Show media info", for = "unix" },
 ]
 imv = [
-  { run = 'imv "$@"', orphan = true, desc = "Open images via imv", for = "unix" },
+  { run = 'imv "$argv"', orphan = true, desc = "Open images via imv", for = "unix" },
 ]
 imvd = [
-  { run = 'imv-dir "$0"', orphan = true, desc = "Open images in directory via imv", for = "unix" },
+  { run = 'imv-dir "$argv"', orphan = true, desc = "Open images in directory via imv", for = "unix" },
 ]
 
 [open]
@@ -138,6 +138,7 @@ prepend_previewers = [
   { mime = "inode/empty", run = "empty" },
   { url = ".bash*", run = "code" },
   { url = ".zsh*", run = "code" },
+  { url = ".fish*", run = "code" },
   { url = "_*", run = "code" },
   { url = "*justfile", run = "code" },
   { url = "PKGBUILD", run = "code" },

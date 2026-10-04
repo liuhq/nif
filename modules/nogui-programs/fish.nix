@@ -14,7 +14,7 @@ let
 in
 {
   options.mymod = {
-    fish.enable = lib.mkEnableOption "zsh";
+    fish.enable = lib.mkEnableOption "fish";
   };
 
   config = lib.mkIf cfg.enable {
