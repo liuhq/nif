@@ -33,10 +33,10 @@ in
 
   mymod.desktop.enable = true;
 
-  mymod.zsh.enable = true;
+  mymod.fish.enable = true;
 
   users.users.${userName} = {
-    shell = pkgs.zsh;
+    shell = pkgs.fish;
   };
 
   mymod.programs.git.settings = {
