@@ -49,7 +49,6 @@
 
     which-key-wayland = {
       url = "github:liuhq/which-key.wayland";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
   outputs =
