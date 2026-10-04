@@ -23,6 +23,45 @@ in
 
     programs.fish = {
       enable = true;
+      shellAbbrs = {
+        gs = "git switch";
+        ga = "git add";
+        gc = "git commit";
+        npu = "nix-prefetch-url";
+      };
+      shellAliases = {
+        clr = "clear";
+        cp = "cp --verbose";
+        mv = "mv --verbose";
+        rm = "rm --verbose";
+        mkdir = "mkdir --verbose";
+        rmdir = "rmdir --verbose";
+      };
+      interactiveShellInit = ''
+        fish_config theme choose nord 
+
+        set -g fish_greeting
+      '';
+    };
+
+    hjem.users.${userName} = {
+      xdg.config.files = {
+        "fish/conf.d/hjem-environment-variables.fish" =
+          lib.mkIf (hjemCfg.environment.sessionVariables != { })
+            {
+              text = ''
+                ${lib.concatMapAttrsStringSep "\n" (
+                  n: v:
+                  if n == "PATH" then
+                    ''
+                      set -gx PATH ${lib.concatMapStringsSep " " (p: "\"${p}\"") v} $PATH
+                    ''
+                  else
+                    "set -gx ${lib.escapeShellArg n} ${lib.escapeShellArg (lib.toString v)}"
+                ) hjemCfg.environment.sessionVariables}
+              '';
+            };
+      };
     };
   };
 }

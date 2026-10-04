@@ -7,50 +7,51 @@
 }:
 let
   inherit (myvar) userName;
+  hjemCfg = config.hjem.users.${userName};
 in
 {
   hjem.users.${userName} = {
     xdg.config.files = {
       "user-dirs.dirs".text = ''
-        XDG_DESKTOP_DIR="$HOME/.xdg/Desktop"
-        XDG_DOCUMENTS_DIR="$HOME/.xdg/Documents"
-        XDG_PUBLICSHARE_DIR="$HOME/.xdg/Public"
-        XDG_TEMPLATES_DIR="$HOME/.xdg/Templates"
+        XDG_DESKTOP_DIR="${hjemCfg.directory}/.xdg/Desktop"
+        XDG_DOCUMENTS_DIR="${hjemCfg.directory}/.xdg/Documents"
+        XDG_PUBLICSHARE_DIR="${hjemCfg.directory}/.xdg/Public"
+        XDG_TEMPLATES_DIR="${hjemCfg.directory}/.xdg/Templates"
 
-        XDG_DOWNLOAD_DIR="$HOME/downloads"
+        XDG_DOWNLOAD_DIR="${hjemCfg.directory}/downloads"
 
-        XDG_MUSIC_DIR="$HOME/media/music"
-        XDG_PICTURES_DIR="$HOME/media/pictures"
-        XDG_VIDEOS_DIR="$HOME/media/videos"
+        XDG_MUSIC_DIR="${hjemCfg.directory}/media/music"
+        XDG_PICTURES_DIR="${hjemCfg.directory}/media/pictures"
+        XDG_VIDEOS_DIR="${hjemCfg.directory}/media/videos"
 
-        XDG_SCRIPTS_DIR="$HOME/scripts"
-        XDG_WORKSPACES_DIR="$HOME/workspaces"
+        XDG_SCRIPTS_DIR="${hjemCfg.directory}/scripts"
+        XDG_WORKSPACES_DIR="${hjemCfg.directory}/workspaces"
 
-        XDG_HOME_BIN="$HOME/bin"
+        XDG_HOME_BIN="${hjemCfg.directory}/bin"
       '';
     };
 
     environment.sessionVariables = {
-      XDG_CONFIG_HOME = "\${HOME}/.config";
-      XDG_CACHE_HOME = "\${HOME}/.cache";
-      XDG_DATA_HOME = "\${HOME}/.local/share";
-      XDG_STATE_HOME = "\${HOME}/.local/state";
+      XDG_CONFIG_HOME = hjemCfg.xdg.config.directory;
+      XDG_CACHE_HOME = hjemCfg.xdg.cache.directory;
+      XDG_DATA_HOME = hjemCfg.xdg.data.directory;
+      XDG_STATE_HOME = hjemCfg.xdg.state.directory;
 
-      XDG_DESKTOP_DIR = "\${HOME}/.xdg/Desktop";
-      XDG_DOCUMENTS_DIR = "\${HOME}/.xdg/Documents";
-      XDG_PUBLICSHARE_DIR = "\${HOME}/.xdg/Public";
-      XDG_TEMPLATES_DIR = "\${HOME}/.xdg/Templates";
+      XDG_DESKTOP_DIR = "${hjemCfg.directory}/.xdg/Desktop";
+      XDG_DOCUMENTS_DIR = "${hjemCfg.directory}/.xdg/Documents";
+      XDG_PUBLICSHARE_DIR = "${hjemCfg.directory}/.xdg/Public";
+      XDG_TEMPLATES_DIR = "${hjemCfg.directory}/.xdg/Templates";
 
-      XDG_DOWNLOAD_DIR = "\${HOME}/downloads";
+      XDG_DOWNLOAD_DIR = "${hjemCfg.directory}/downloads";
 
-      XDG_MUSIC_DIR = "\${HOME}/media/music";
-      XDG_PICTURES_DIR = "\${HOME}/media/pictures";
-      XDG_VIDEOS_DIR = "\${HOME}/media/videos";
+      XDG_MUSIC_DIR = "${hjemCfg.directory}/media/music";
+      XDG_PICTURES_DIR = "${hjemCfg.directory}/media/pictures";
+      XDG_VIDEOS_DIR = "${hjemCfg.directory}/media/videos";
 
-      XDG_SCRIPTS_DIR = "\${HOME}/scripts";
-      XDG_WORKSPACES_DIR = "\${HOME}/workspaces";
+      XDG_SCRIPTS_DIR = "${hjemCfg.directory}/scripts";
+      XDG_WORKSPACES_DIR = "${hjemCfg.directory}/workspaces";
 
-      XDG_HOME_BIN = "\${HOME}/bin";
+      XDG_HOME_BIN = "${hjemCfg.directory}/bin";
     };
   };
 

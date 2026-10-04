@@ -8,6 +8,7 @@
 let
   cfg = config.mymod.dev.rust;
   inherit (myvar) userName;
+  hjemCfg = config.hjem.users.${userName};
 in
 {
   imports = [ ];
@@ -24,12 +25,12 @@ in
     hjem.users.${userName} = {
       environment.sessionVariables =
         let
-          CARGO_INSTALL_ROOT = "\${HOME}/.local/cargo";
+          CARGO_INSTALL_ROOT = "${hjemCfg.directory}/.local/cargo";
         in
         {
-          CARGO_HOME = "\${HOME}/.config/cargo";
+          CARGO_HOME = "${hjemCfg.xdg.config.directory}/cargo";
           inherit CARGO_INSTALL_ROOT;
-          RUSTUP_HOME = "\${HOME}/.config/rustup";
+          RUSTUP_HOME = "${hjemCfg.xdg.config.directory}/rustup";
 
           PATH = [ "${CARGO_INSTALL_ROOT}/bin" ];
         };

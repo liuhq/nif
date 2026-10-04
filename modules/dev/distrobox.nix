@@ -8,6 +8,7 @@
 let
   cfg = config.mymod.dev.distrobox;
   inherit (myvar) userName;
+  hjemCfg = config.hjem.users.${userName};
 in
 {
   options.mymod = {
@@ -43,7 +44,7 @@ in
     };
 
     hjem.users.${userName}.xdg.config.files."distrobox/distrobox.conf".text = ''
-      container_user_custom_home="$HOME/.local/share/distrobox-home"
+      container_user_custom_home="${hjemCfg.xdg.data.directory}/distrobox-home"
     '';
   };
 }

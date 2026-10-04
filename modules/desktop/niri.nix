@@ -18,6 +18,9 @@ in
       useNautilus = true;
     };
 
+    # Fixed: niri-session caused $SHLVL offset
+    systemd.user.services.niri.serviceConfig.UnsetEnvironment = "SHLVL";
+
     hjem.users.${userName}.xdg.config.files = {
       "niri/config.kdl".source = "${external}/niri/config.kdl";
       "niri/keybind.kdl".source = "${external}/niri/keybind.kdl";

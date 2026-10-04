@@ -8,7 +8,6 @@
 }:
 let
   cfg = config.mymod.dev.chatgpt;
-  cfgDesktop = config.mymod.desktop;
   inherit (myvar) userName;
 in
 {
@@ -23,9 +22,7 @@ in
   config = lib.mkIf cfg.enable {
     environment.systemPackages = [
       inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.codex
-    ]
-    ++ lib.lists.optionals cfgDesktop.enable [
-      inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.chatgpt
+      pkgs.bubblewrap
     ];
   };
 }

@@ -25,7 +25,7 @@ in
     hjem.users.${userName} = {
       environment.sessionVariables =
         let
-          DENO_INSTALL_ROOT = "\${HOME}/.local/deno/bin";
+          DENO_INSTALL_ROOT = "${hjemCfg.directory}/.local/deno/bin";
         in
         {
           NPM_CONFIG_USERCONFIG = "${hjemCfg.xdg.config.directory}/npm/npmrc";
