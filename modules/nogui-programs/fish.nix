@@ -46,6 +46,8 @@ in
 
     hjem.users.${userName} = {
       xdg.config.files = {
+        "fish/functions/runspt.fish".source = "${external}/fish/functions/runspt.fish";
+        "fish/completions/runspt.fish".source = "${external}/fish/completions/runspt.fish";
         "fish/conf.d/hjem-environment-variables.fish" =
           lib.mkIf (hjemCfg.environment.sessionVariables != { })
             {
