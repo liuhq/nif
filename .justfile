@@ -1,18 +1,23 @@
+set dotenv-load
+set dotenv-required
+
+gh_token := env('GH_TOKEN')
+
 [private]
 @default:
   just --list
 
 [group('Nix')]
 rebuild-switch-wkst:
-  sudo nixos-rebuild switch --flake .#wkst
+  sudo nixos-rebuild switch --flake .#wkst --option access-tokens "github.com:{{gh_token}}"
 
 [group('Nix')]
 rebuild-boot-wkst:
-  sudo nixos-rebuild boot --flake .#wkst
+  sudo nixos-rebuild boot --flake .#wkst --option access-tokens "github.com:{{gh_token}}"
 
 [group('Nix')]
 update:
-  nix flake update
+  nix flake update --option access-tokens "github.com:{{gh_token}}"
 
 [group('Nix')]
 history:
@@ -39,6 +44,6 @@ agenix-rekey:
   agenix --rekey --verbose
 
 search file:
-  nix run github:nix-community/nix-index-database {{file}}
+  nix run github:nix-community/nix-index-database {{file}} --option access-tokens "github.com:{{gh_token}}"
 
 # vim: set ts=2 sw=2 sts=2 et:

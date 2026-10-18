@@ -130,6 +130,7 @@ vim.lsp.enable({
     'gopls',
     'html',
     'jsonls',
+    'just',
     'lua_ls',
     'nixd',
     'oxlint',

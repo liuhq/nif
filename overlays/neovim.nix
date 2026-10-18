@@ -20,6 +20,8 @@ final: prev: {
 
           yaml-language-server
           yamlfmt
+
+          just-lsp
         ];
       in
       "--suffix PATH : '${final.lib.makeBinPath extraPackages}'";

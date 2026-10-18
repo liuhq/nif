@@ -13,6 +13,7 @@ window-rule {
 window-rule {
     match app-id="QQ" is-floating=false
     match app-id="org.telegram.desktop" is-floating=false
+    match app-id="discord-canary" is-floating=false
     match app-id="Spotify"
     match app-id="steam"
     match app-id="org.prismlauncher.PrismLauncher"
