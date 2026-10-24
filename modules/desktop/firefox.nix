@@ -53,6 +53,7 @@ in
         Extensions = {
           Install = [
             "https://addons.mozilla.org/firefox/downloads/file/5070529/nord_firefox-3.0.xpi"
+            "https://addons.mozilla.org/firefox/downloads/file/4474326/vimium_c-2.12.3.xpi"
           ];
         };
         FirefoxHome = {
