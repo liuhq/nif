@@ -15,7 +15,7 @@ in
       after = cfg.systemdTargets;
       serviceConfig = {
         Type = "simple";
-        ExecStart = "${lib.getExe pkgs.discord-canary}";
+        ExecStart = "${lib.getExe pkgs.discord}";
         Restart = "on-failure";
       };
       wantedBy = cfg.systemdTargets;

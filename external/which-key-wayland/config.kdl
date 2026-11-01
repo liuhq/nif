@@ -27,19 +27,14 @@ bind {
     p desc="Spotify" { spawn "spotify"; }
     s desc="Steam" { sh "flatpak run --branch=stable --arch=x86_64 --command=/app/bin/steam --file-forwarding com.valvesoftware.Steam"; }
   }
-  b desc="Bar" {
-    b desc="Toggle bar visibility" { sh "noctalia-shell ipc call bar toggle" }
-    k desc="Bar position: top" { sh "noctalia-shell ipc call bar setPosition top" }
-    j desc="Bar position: bottom" { sh "noctalia-shell ipc call bar setPosition bottom" }
-    h desc="Bar position: left" { sh "noctalia-shell ipc call bar setPosition left" }
-    l desc="Bar position: right" { sh "noctalia-shell ipc call bar setPosition right" }
-  }
+  b desc="Toggle bar visibility" { sh "noctalia msg bar-toggle"; }
   c desc="Calculator" { spawn "gnome-calculator"; }
+  C desc="Clear clipboard history" { spawn "noctalia msg clipboard-clear"; }
   e desc="File manager" { spawn "nautilus"; }
-  l desc="Lock" { sh "noctalia-shell ipc call lockScreen lock" }
+  l desc="Lock" { sh "noctalia msg session lock" }
   m desc="Media" {
-    i desc="Mute input" { sh "noctalia-shell ipc call volume muteInput" }
-    o desc="Mute output" { sh "noctalia-shell ipc call volume muteOutput" }
+    i desc="Mute input" { sh "noctalia msg mic-mute" }
+    o desc="Mute output" { sh "noctalia msg volume-mute" }
   }
   N desc="Niri" {
     l desc="Layers" { sh "foot --hold niri msg layers"; }
@@ -49,27 +44,27 @@ bind {
     w desc="Windows" { sh "foot --hold niri msg windows"; }
   }
   n desc="Notifications" {
-    c desc="Clear all" { sh "noctalia-shell ipc call notifications clear" }
-    d desc="Dismiss all" { sh "noctalia-shell ipc call notifications dismissAll" }
-    m desc="Do not disturb" { sh "noctalia-shell ipc call notifications toggleDND" }
-    n desc="History" { sh "noctalia-shell ipc call notifications toggleHistory" }
-    t desc="Dismiss toast" { sh "noctalia-shell ipc call toast dismiss" }
+    c desc="Clear all" { sh "noctalia msg notification-clear-history" }
+    d desc="Dismiss all" { sh "noctalia msg notification-clear-active" }
+    m desc="Do not disturb" { sh "noctalia msg notification-dnd-toggle" }
   }
   p desc="Noctalia panels" {
-    , desc="Settings" { sh "noctalia-shell ipc call settings toggle" }
-    a desc="Audio" { sh "noctalia-shell ipc call volume togglePanel" }
-    b desc="Bluetooth" { sh "noctalia-shell ipc call bluetooth togglePanel" }
-    c desc="Calendar" { sh "noctalia-shell ipc call calendar toggle" }
-    k desc="Keybind Cheatsheet" { sh "noctalia-shell ipc call plugin togglePanel keybind-cheatsheet" }
-    m desc="System monitor" { sh "noctalia-shell ipc call systemMonitor toggle" }
-    n desc="Network" { sh "noctalia-shell ipc call network togglePanel" }
-    o desc="Media" { sh "noctalia-shell ipc call media toggle" }
-    x desc="Control center" { sh "noctalia-shell ipc call controlCenter toggle" }
+    , desc="Settings" { sh "noctalia msg settings-toggle" }
+    a desc="Audio" { sh "noctalia msg panel-toggle control-center audio" }
+    b desc="Bluetooth" { sh "noctalia msg panel-toggle control-center bluetooth" }
+    c desc="Calendar" { sh "noctalia msg panel-toggle control-center calendar" }
+    k desc="Keybind Cheatsheet" { sh "noctalia msg panel-toggle kenn/keybind-cheatsheet:cheatsheet" }
+    m desc="System monitor" { sh "noctalia msg panel-toggle control-center system" }
+    n desc="Network" { sh "noctalia msg panel-toggle control-center network" }
+    o desc="Media" { sh "noctalia msg panel-toggle control-center media" }
+    s desc="Screen time" { sh "noctalia msg panel-toggle control-center screen-time" }
+    w desc="Weather" { sh "noctalia msg panel-toggle control-center weather" }
+    x desc="Control center" { sh "noctalia msg panel-toggle control-center" }
   }
-  q desc="Session" { sh "noctalia-shell ipc call sessionMenu toggle" }
+  q desc="Session" { sh "noctalia msg panel-toggle session" }
   W desc="Wallpaper" {
-    w desc="Wallpaper selector" { sh "noctalia-shell ipc call wallpaper toggle" }
-    r desc="Apply random wallpaper" { sh "noctalia-shell ipc call wallpaper random" }
+    w desc="Wallpaper selector" { sh "noctalia msg panel-toggle wallpaper" }
+    r desc="Apply random wallpaper" { sh "noctalia msg wallpaper-random" }
   }
   w desc="Window & Column" {
     c desc="Center column" { sh "niri msg action center-column" }

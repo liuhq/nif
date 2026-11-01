@@ -4,7 +4,7 @@ environment {
     CLUTTER_BACKEND "wayland"
 }
 
-spawn-at-startup "noctalia-shell"
+//spawn-at-startup "noctalia-shell"
 spawn-sh-at-startup "sleep 2s; setxkbmap -option caps:swapescape"
 
 prefer-no-csd
@@ -106,7 +106,8 @@ layout {
 
 overview {
     zoom 0.5
-    workspace-shadow {
+    // see ./rule.kdl#L179
+    /-workspace-shadow {
         softness 48
         spread 4
         offset x=0 y=12

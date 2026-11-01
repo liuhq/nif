@@ -83,13 +83,15 @@ in
         (
           { config, ... }:
           {
+            hjem.extraModules = [
+              inputs.noctalia.hjemModules.default
+            ];
+
             hjem.users.${userName} = {
               clobberFiles = true;
             };
           }
         )
-
-        inputs.noctalia.nixosModules.default
       ];
     };
 

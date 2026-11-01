@@ -4,183 +4,203 @@ workspace "game"
 
 // general
 window-rule {
-    tiled-state true
-    geometry-corner-radius 4
-    clip-to-geometry true
+  tiled-state true
+  geometry-corner-radius 4
+  clip-to-geometry true
+
+  // https://docs.noctalia.dev/noctalia/v5.4.1/compositor-settings/niri/?section=blur#blur
+  background-effect {
+    blur true
+    xray false
+  }
 }
 
 // open on chat with no-focus
 window-rule {
-    match app-id="QQ" is-floating=false
-    match app-id="org.telegram.desktop" is-floating=false
-    match app-id="discord-canary" is-floating=false
-    match app-id="Spotify"
-    match app-id="steam"
-    match app-id="org.prismlauncher.PrismLauncher"
-    open-focused false
-    open-on-workspace "chat"
+  match app-id="QQ" is-floating=false
+  match app-id="org.telegram.desktop" is-floating=false
+  match app-id="discord" is-floating=false
+  match app-id="Spotify"
+  match app-id="steam"
+  match app-id="org.prismlauncher.PrismLauncher"
+  open-focused false
+  open-on-workspace "chat"
 }
 
 // open on game with focus
 window-rule {
-    match app-id=r#"^steam_app_[1-9]\d*$"#
-    match app-id=r#"Minecraft.*"#
-    open-focused true
-    open-fullscreen true
-    open-on-workspace "game"
-    variable-refresh-rate true
+  match app-id=r#"^steam_app_[1-9]\d*$"#
+  match app-id=r#"Minecraft.*"#
+  open-focused true
+  open-fullscreen true
+  open-on-workspace "game"
+  variable-refresh-rate true
 }
 
 // enable vrr with non-game
 window-rule {
-    match app-id=r#"^mpv$"#
-    variable-refresh-rate true
+  match app-id=r#"^mpv$"#
+  variable-refresh-rate true
 }
 
 // force open with tiling
 window-rule {
-    match app-id="steam_app_0" title=""
-    open-floating false
+  match app-id="steam_app_0" title=""
+  open-floating false
 }
 
 // open with 1/4 screen
 window-rule {
-    match app-id="steam" title="Friends List" is-floating=false
-    default-column-width { proportion 0.25; }
-    default-window-height { proportion 1.0; }
+  match app-id="steam" title="Friends List" is-floating=false
+  default-column-width { proportion 0.25; }
+  default-window-height { proportion 1.0; }
 }
 
 // open with 2/4 screen
 window-rule {
-    match app-id="org.prismlauncher.PrismLauncher"
-    default-column-width { proportion 0.5; }
-    default-window-height { proportion 1.0; }
+  match app-id="org.prismlauncher.PrismLauncher"
+  default-column-width { proportion 0.5; }
+  default-window-height { proportion 1.0; }
 }
 
 // open with 3/4 screen
 window-rule {
-    match app-id="org.telegram.desktop" is-floating=false
-    match app-id="QQ" is-floating=false
-    match app-id="Spotify" is-floating=false
-    default-column-width { proportion 0.75; }
-    default-window-height { proportion 1.0; }
+  match app-id="org.telegram.desktop" is-floating=false
+  match app-id="QQ" is-floating=false
+  match app-id="discord" is-floating=false
+  match app-id="Spotify" is-floating=false
+  default-column-width { proportion 0.75; }
+  default-window-height { proportion 1.0; }
 }
 
 // open with filled screen
 window-rule {
-    match app-id=r#"^mpv$"# is-floating=false
-    match app-id="google-chrome" is-floating=false
-    match app-id="gimp" is-floating=false
-    match app-id="Aseprite" is-floating=false
-    match app-id="com.obsproject.Studio" is-floating=false
-    match app-id="steam" title="Steam" is-floating=false
-    match app-id="UnrealEditor" is-floating=false
-    match app-id="dev.zed.Zed" is-floating=false
-    exclude app-id="dev.zed.Zed" title="Zed — Settings" is-floating=false
-    default-column-width { proportion 1.0; }
-    default-window-height { proportion 1.0; }
+  match app-id=r#"^mpv$"# is-floating=false
+  match app-id="google-chrome" is-floating=false
+  match app-id="gimp" is-floating=false
+  match app-id="Aseprite" is-floating=false
+  match app-id="com.obsproject.Studio" is-floating=false
+  match app-id="steam" title="Steam" is-floating=false
+  match app-id="UnrealEditor" is-floating=false
+  match app-id="dev.zed.Zed" is-floating=false
+  exclude app-id="dev.zed.Zed" title="Zed — Settings" is-floating=false
+  default-column-width { proportion 1.0; }
+  default-window-height { proportion 1.0; }
 }
 
 // open with floating
 window-rule {
-    match app-id="imv"
-    open-maximized false
-    open-fullscreen false
-    open-floating true
-    default-floating-position x=0 y=128 relative-to="top"
+  match app-id="imv"
+  open-maximized false
+  open-fullscreen false
+  open-floating true
+  default-floating-position x=0 y=128 relative-to="top"
 }
 
 window-rule {
-    match app-id=r#"Pinentry.*"#
-    open-maximized false
-    open-fullscreen false
-    open-floating true
-    default-floating-position x=0 y=360 relative-to="top"
+  match app-id="com.saivert.pwvucontrol"
+  match app-id="io.github.dp0sk.Crosspipe"
+  match app-id="org.telegram.desktop" title="Media viewer"
+  match app-id="QQ" title="图片查看器"
+  match app-id="QQ" title=r#"群公告*"#
+  match app-id="gimp" title="Change Foreground Color"
+  match app-id="dev.noctalia.Noctalia"
+  open-focused true
+  open-maximized false
+  open-fullscreen false
+  open-floating true
+  default-column-width { fixed 1024; }
+  default-window-height { fixed 768; }
+  default-floating-position x=0 y=128 relative-to="top"
 }
 
 window-rule {
-    match app-id="com.saivert.pwvucontrol"
-    match app-id="io.github.dp0sk.Crosspipe"
-    match app-id="org.telegram.desktop" title="Media viewer"
-    match app-id="QQ" title="图片查看器"
-    match app-id="QQ" title=r#"群公告*"#
-    open-focused true
-    open-maximized false
-    open-fullscreen false
-    open-floating true
-    default-column-width { fixed 1024; }
-    default-window-height { fixed 768; }
-    default-floating-position x=0 y=128 relative-to="top"
+  match app-id="org.gnome.Calculator"
+  open-maximized false
+  open-fullscreen false
+  open-floating true
+  default-column-width { proportion 0.25; }
+  default-floating-position x=0 y=156 relative-to="top"
 }
 
 window-rule {
-    match app-id="org.gnome.Calculator"
-    open-maximized false
-    open-fullscreen false
-    open-floating true
-    default-column-width { proportion 0.25; }
-    default-floating-position x=0 y=156 relative-to="top"
-}
-
-window-rule {
-    match app-id="gimp" title="Change Foreground Color"
-
-    open-floating true
-    default-column-width { fixed 1024; }
-    default-window-height { fixed 768; }
-    default-floating-position x=0 y=128 relative-to="top"
-}
-
-window-rule {
-    match title="Picture in picture"
-    open-floating true
-    default-floating-position x=32 y=32 relative-to="bottom-right"
+  match title="Picture in picture"
+  open-floating true
+  default-floating-position x=32 y=32 relative-to="bottom-right"
 }
 
 
 // Block out windows
 window-rule {
-    match app-id="org.telegram.desktop"
-    match app-id="QQ"
-    match title="KOOK"
-    block-out-from "screencast"
+  match app-id="org.telegram.desktop"
+  match app-id="QQ"
+  match title="KOOK"
+  block-out-from "screencast"
 }
 
 // Indicate screencasted windows
 window-rule {
-    match is-window-cast-target=true
+  match is-window-cast-target=true
 
-    focus-ring {
-        active-color "#d08770"
-        inactive-color "#d08770"
-    }
+  focus-ring {
+    active-color "#d08770"
+    inactive-color "#d08770"
+  }
 
-    border {
-        inactive-color "#d08770"
-    }
+  border {
+    inactive-color "#d08770"
+  }
 
-    tab-indicator {
-        active-color "#81a1c1"
-        inactive-color "#d08770"
-    }
+  tab-indicator {
+    active-color "#81a1c1"
+    inactive-color "#d08770"
+  }
 }
 
 layer-rule {
-    match namespace="notifications"
+  match namespace="notifications"
 
-    shadow {
-        on
-        draw-behind-window true
-        softness 24
-        spread 4
-        offset x=0 y=4
-    }
+  shadow {
+    on
+    draw-behind-window true
+    softness 24
+    spread 4
+    offset x=0 y=4
+  }
 
-    geometry-corner-radius 4
+  geometry-corner-radius 4
 }
 
-// Set the overview wallpaper on the backdrop.
+// https://docs.noctalia.dev/noctalia/v5.4.1/compositor-settings/niri/?section=blur#blur
 layer-rule {
-    match namespace="^noctalia-overview*"
-    place-within-backdrop true
+  match namespace="^noctalia-(bar-[^\"]+|notification|dock|panel|attached-panel|osd)$"
+  background-effect {
+    xray false
+  }
+}
+
+layer-rule {
+  match namespace="noctalia-window-switcher"
+  background-effect {
+    blur true
+    xray false
+  }
+}
+
+// https://docs.noctalia.dev/noctalia/v5.4.1/compositor-settings/niri/?section=option-2-stationary-wallpaper#option-2-stationary-wallpaper
+layer-rule {
+  match namespace="^noctalia-wallpaper"
+  place-within-backdrop true
+}
+
+// Set transparent workspace background color so the backdrop is visible at all times.
+layout {
+  background-color "transparent"
+}
+
+// Optionally, disable workspace shadows in the overview.
+overview {
+  workspace-shadow {
+    off
+  }
 }
