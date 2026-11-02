@@ -168,15 +168,18 @@ in
               "control-center"
             ];
 
-            thickness = 36;
-            margin_edge = 4;
-            margin_ends = 4;
+            thickness = 28;
+            margin_edge = 0;
+            margin_ends = 0;
+            padding = 10;
             widget_spacing = 14;
 
-            radius = 4;
+            radius = 0;
+            background_opacity = 0.94;
+            contact_shadow = true;
 
-            reserve_space = false;
-            smart_auto_hide = true;
+            reserve_space = true;
+            smart_auto_hide = false;
           };
           widget = {
             launcher = {
